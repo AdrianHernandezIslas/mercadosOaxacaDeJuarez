@@ -1,0 +1,190 @@
+.nav-bar-color {
+  background-color: #fd3b72;
+}
+
+.icon-navbar{
+	width: 170px;
+	height: 42px;
+}
+
+.type-leter{
+     font-family: 'Raleway', sans-serif;
+}
+
+.separator-option{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+.separator-info{
+  margin-left: 137px;
+  margin-right: 35px;
+}
+.separator-info2{
+  margin-left: 137px;
+  margin-right: 55px;
+}
+.separator-info3{
+  margin-left: 137px;
+  margin-right: 47px;
+}
+
+.separator-card{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.text-min{
+  color: #999999;
+  font-size: 14px;
+}
+
+.pink-card{
+  color: #fd3b72;
+  font-size: 14px;
+}
+
+.columnas-separator{
+
+    -webkit-column-count:2;
+       -moz-column-count:2;
+       column-count:2;
+
+}
+
+.color-pink{
+	color: #fd3b72;
+}
+
+.color-orange{
+	color: #F78E06;
+}
+
+.text-black{
+  background-color: #000000;
+}
+
+.text-orange{
+  color: #f8b65b;
+}
+
+.centro{
+  top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.texto-chico{
+  font-size: 17px;
+  color: #fd3b72;
+}
+
+.texto-direccion{
+  font-size: 10px;
+}
+
+.centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.img-tam{
+  height:30px;
+  width:30px;
+}
+
+.img-logo-oaxaca{
+  height:80px;
+  width:70px;
+}
+
+.texto-foot{
+  font-size: 16px;
+}
+
+.texto-foot-2{
+  font-size: 13px;
+}
+
+.btn-ovalo{
+	border-radius:50px;
+	border-color: #fd3b72;
+}
+
+.contenedor{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+ 
+.texto-encima{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.font-img-size{
+	font-size: 250%;
+}
+
+.img-tam{
+	height:30px;
+	width:30px;
+}
+
+hr{
+	border-width: 3px;
+}
+
+.gallery {
+-webkit-column-count: 3;
+-moz-column-count: 3;
+column-count: 3;
+-webkit-column-width: 33%;
+-moz-column-width: 33%;
+column-width: 33%; }
+.gallery .pics {
+-webkit-transition: all 350ms ease;
+transition: all 350ms ease; }
+.gallery .animation {
+-webkit-transform: scale(1);
+-ms-transform: scale(1);
+transform: scale(1); }
+
+@media (max-width: 450px) {
+.gallery {
+-webkit-column-count: 1;
+-moz-column-count: 1;
+column-count: 1;
+-webkit-column-width: 100%;
+-moz-column-width: 100%;
+column-width: 100%;
+}
+}
+
+@media (max-width: 400px) {
+.btn.filter {
+padding-left: 1.1rem;
+padding-right: 1.1rem;
+}
+}
+
+.style-tarjeta{
+  width: 18rem; 
+  margin: 0 auto;
+}
+
+.style-centrado{ 
+  margin: 0 auto;
+}
+
