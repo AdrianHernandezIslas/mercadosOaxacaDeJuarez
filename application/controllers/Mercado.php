@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mercado extends CI_Controller {
 
+	private $LOCAL_KEY;
+
 	function __construct(){
 		parent::__construct();
 		// aqui se caragan todas la librerias que 
@@ -10,21 +12,12 @@ class Mercado extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('Modelomercado');
 		$this->load->library('image_lib');
+		$this->LOCAL_KEY = 'r5da3dfd0dssw4hfohu9fdgrv14';
 	}
 
 	public function index()
 	{
          $this->load->view('prueba');
-	}
-
-	public function mercado1($clave,$idMercado){
-		$resultado['mercado'] = $this->Modelomercado->getMercado($idMercado);
-
-		if($clave == 'saulpopo'){
-			echo json_encode($resultado);
-		}else{
-			echo '<b>ACCESO DENEGADO POR MENSO</b>';
-		}
 	}
 
 	public function nuevo(){
@@ -45,6 +38,13 @@ class Mercado extends CI_Controller {
          $resultado['logo'] = $this->Modelomercado->getlogoMercado($idMercado);
          $resultado['locales'] = $this->Modelomercado->getLocales($idMercado);
          $resultado['imagenes'] = $this->Modelomercado->getImagenesGaleria($idMercado);
+         $resultado['alimentos'] = $this->Modelomercado->getLocalByGiro($idMercado,'Alimentos');
+         $resultado['panaderia'] = $this->Modelomercado->getLocalByGiro($idMercado,'Panaderia');
+         $resultado['menudo'] = $this->Modelomercado->getLocalByGiro($idMercado,'Menudo');
+         $resultado['flores'] = $this->Modelomercado->getLocalByGiro($idMercado,'Flores');
+         $resultado['carnes'] = $this->Modelomercado->getLocalByGiro($idMercado,'Carnes');
+         $resultado['artesanias'] = $this->Modelomercado->getLocalByGiro($idMercado,'Artesanias');
+         $resultado['textil'] = $this->Modelomercado->getLocalByGiro($idMercado,'Textil');
          $this->load->view('vistaMercado',$resultado);
 	}
 
@@ -69,77 +69,7 @@ class Mercado extends CI_Controller {
 		}
 	}
 
-	public function divideMercados($local){
-		
-		//print_r($local);
-		$q = new SplStack();
-		foreach ($local as $key => $value) {
-			switch ($value['idMercado']) {
-			    case 1:
-			    $q->push($value);
-			        //array_push($array[0],$value);
-			        break;
-			    case 2:
-			     	//array_push($array[1],$value);
-			        break;
-			    case 3:
-			        //array_push($array[2],$value);
-			        break;
-			    case 4:
-			        //array_push($array[3],$value);
-			        break;
-			    case 5:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 6:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 7:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 8:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 9:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 10:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 11:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 12:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 13:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 14:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 15:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    case 16:
-			        //array_push($array[0], "manzana", "arándano");
-			        break;
-			    
-			}
-		}
-
-				$q->rewind();
-				//$localesDivididos->rewind();
-		while($q->valid()){
-		    print_r( $q->current());
-		    echo "<br>";
-		    $q->next();
-	     }	
-
-	     //$localesDivididos['noviembre'] = $q;
-	     //$localesDivididos['noria'] = $listanoria;
-	     //$this->load->view('vistaToniofake',$localesDivididos);
-	}
+	//aqui va divide mercados 
 
 	public function nuevoMercado(){
 		if (!$_POST) {
@@ -181,28 +111,70 @@ class Mercado extends CI_Controller {
 		}
 	}
 
-	public function getGirosByMercado($idMercado){
-		$resultado['giros'] = $this->Modelomercado->getGirosByMercado($idMercado);
-		echo json_encode($resultado);
+	public function getGirosByMercado($key,$idMercado){
+		if($key == $this->LOCAL_KEY){
+			$resultado['giros'] = $this->Modelomercado->getGirosByMercado($idMercado);
+			echo json_encode($resultado);
+		}else{
+			echo "<br><br><br><br><br><br><center><b>Authentication Error</b></center>";
+		}	
 	}
 
-	public function getLocalByGiro($idMercado,$giro){
-		$resultado['locales'] = $this->Modelomercado->getLocalByGiro($idMercado,$giro);
-		echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+	public function getLocalByGiro($key,$idMercado,$giro){
+		if ($key == $this->LOCAL_KEY) {
+			$resultado['locales'] = $this->Modelomercado->getLocalByGiro($idMercado,$giro);
+			echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+		}else{
+			echo "<br><br><br><br><br><br><center><b>Authentication Error</b></center>";
+		}
+		
 	}
 
-	public function mercados(){
-		$resultado['mercados'] = $this->Modelomercado->getMercados();
-		echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+	public function mercados($key){
+		if ($key == $this->LOCAL_KEY) {
+			$resultado['mercados'] = $this->Modelomercado->getMercados();
+			echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+		}else{
+			echo "<br><br><br><br><br><br><center><b>Authentication Error</b></center>";
+		}
+		
 	}
 
-	public function localesDelMercado($idMercado){
-		$resultado['locales'] = $this->Modelomercado->getLocalesDeMercado($idMercado);
-		echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+	public function localesDelMercado($key,$idMercado){
+		if ($key == $this->LOCAL_KEY) {
+			$resultado['locales'] = $this->Modelomercado->getLocalesDeMercado($idMercado);
+			echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+		}else{
+			echo "<br><br><br><br><br><br><center><b>Authentication Error</b></center>";
+		}
+		
 	}
 
-	public function local($idLocal){
-		$resultado['local'] = $this->Modelomercado->getLocal($idLocal);
-		echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+	public function local($key,$idLocal){
+		if ($key == $this->LOCAL_KEY) {
+			$resultado['local'] = $this->Modelomercado->getLocal($idLocal);
+			echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+		}else{
+			echo "<br><br><br><br><br><br><center><b>Authentication Error</b></center>";
+		}
+		
+    }
+
+    public function mercadoById($key,$idMercado){
+		if($key == $this->LOCAL_KEY){
+			$resultado['mercado'] =  $this->Modelomercado->getMercadosApp($idMercado);
+			echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+		}else{
+			echo "<br><br><br><br><br><br><center><b>Authentication Error</b></center>";
+		}
+	}
+
+	public function imgFromMercado($key,$idMercado){
+		if($key == $this->LOCAL_KEY){
+			$resultado['imagenes'] = $this->Modelomercado->getImg($idMercado);
+			echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
+		}else{
+			echo "Error";
+		}
 	}
 }

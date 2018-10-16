@@ -145,9 +145,24 @@ class Modelomercado extends CI_Model {
       return $consulta->result_array();
     }
 
+    public function getImg($idMercado){
+      $this->db->select("rutaMediana as imagen");
+      $this->db->from("recurso");
+      $this->db->where("idMercado",$idMercado);
+      $consulta = $this->db->get();
+      return $consulta->result_array();
+    }
     public function actualizarRecurso($idMercado,$data){
           $this->db->where('idMercado',$idMercado );
           return $this->db->update('mercado', $data);
+    }
+
+    public function getMercadosApp($idMercado){
+      $this->db->select('mercado.nombre,direccion,historia,horario,rutaAbsoluta as imagen');
+      $this->db->from('mercado');
+      $this->db->join('imagen','mercado.idMercado = imagen.idMercado');
+      $this->db->where('Mercado.idMercado',$idMercado);
+      return $this->db->get()->result_array();
     }
 
     

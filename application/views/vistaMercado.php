@@ -7,19 +7,19 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/homeStyle.css">
- <link rel="stylesheet" href="<?php echo base_url();?>assets/css/lightbox.min.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/homeStyle.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/lightbox.min.css">
 
     <title>Mercado <?php echo $mercado->nombre;?></title>
   </head>
-  <body class="type-leter">
+<body class="type-leter">
 
   <div class="row">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top nav-bar-color">  
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-   <div class="collapse navbar-collapse" id="navbarCollapse">
+     <div class="collapse navbar-collapse" id="navbarCollapse">
       <img class="icon-navbar" src="<?php echo base_url();?>assets/img/lm.png"  alt="Smiley face">
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item active">
@@ -37,9 +37,8 @@
           <button class="btn btn-light" type="submit">Buscar</button>
         </form>
       </div>
-</nav>
+    </nav>
   </div>
-
 
 
 <div class="container-fluid">
@@ -53,38 +52,31 @@
 
 <br><br>
 <div class="container">
-	<div class="row">
-			<div class="col-xs-12 col-md-12">
-				<h1 class = "text-center color-pink"><b>Descripción General</b></h1>
-				<hr>
-			</div>
-		</div>
+  <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <h1 class = "text-center color-pink"><b>Información General</b></h1>
+        <hr>
+      </div>
+    </div>
 
     <div class="row style-centrado">
-    <div class="col-xs-12 col-md-5" >
+    <div class="col-xs-12 col-md-4" >
         <br><br>
         <img class="img-fluid" src="<?php echo base_url().$logo->rutaAbsoluta;?>" height="200">
-      </div>
-    <div class="col-xs-12 col-md-7">
-      <br><br>
-      <p class="text-justify text-secondary"><?php echo $mercado->descripcion;?></p>
-
-    </div>
-    
     </div>
 
-     <br><br>
-     <div class="row">
-      <div class="col-xs-1 col-md-1">
-      </div>
-     <div class="col-xs-12 col-md-10">
-       <div class="card text-center">
-         <div class="card-header nav-bar-color text-white">
-              <h5><b>Información</b></h5>
-        </div>
+<div class="col-xs-12 col-md-8">
+<br>
+
+<div class="row">
+<div class="col-xs-12 col-md-11">
+       <div class="card text-center radio">
+         <div class="card-header nav-bar-color text-white bold">
+              <h5>Información</h5>
+       </div>
 <div class="card-body">
 
- <table class="table col-xs-12 col-md-10 col-xl-8 style-centrado">
+<table class="table col-xs-12 col-md-10 col-xl-8 style-centrado">
   <thead class="thead-dark">
     
   </thead>
@@ -104,93 +96,24 @@
   </tbody>
 </table>
      
-     </div>
-       
-      </div>
-      </div>
+</div>
+</div>
+</div>  
+</div>
+</div>
+</div>
 
-    
-     </div>
-
-		
-			<div class="row">
-
-      <div class="col-xs-12 col-md-12">
-        <br><br>
-        <h1 class = "text-center color-pink"><label><b>Locales</b></label></h1>
-        <hr>
-      
-      </div>
-    </div>
-
-   <br>
-  
-  <div class= "row mx-auto p-3 style-centrado">
-   
-      <?php 
-         foreach ($locales as $key) {   
-      ?>
-       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
-       <div class="card separator-card shadow-lg style-tarjeta">
-        <img class="card-img-top" src="<?php echo base_url().$key['logo'];?>" alt="Card image cap" height="225">
-          <div class="card-body">
-          <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
-          <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
-          <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
-          
-          </div> 
-       </div> 
-       <br>
-       </div>
-
-      <?php } ?>
-    </div>
-
-
-  <div class="row col-xs-4">
-    <div class="col-xs-12 col-md-12">
-        <br><br>
-        <h1 class = "text-center color-pink"><label><b>Galería</b></label></h1>
-        <hr>
-      
-    </div>
-    </div> <br><br>
-
-
-<!-- Grid row -->
 <div class="row">
-
-  <!-- Grid column -->
-</div>
-<!-- Grid row -->
-
-<!-- Grid row -->
-<div class="gallery" id="gallery">
-
-  <?php foreach ($imagenes as $key) { ?>
-    <div class="mb-3 pics animation all 2">
-    <a href="<?php echo base_url().$key['rutaAbsoluta'];?>" data-lightbox="roadtrip"><img class="img-fluid" src="<?php echo base_url().$key['rutaAbsoluta'];?>" alt="Card image cap"></a>
-  </div>
-
-  <?php } ?>
-
- 
-
-</div>
-
-
-
-     <div class="row">
     <div class="col-xs-12 col-md-12">
-        <br><br>
+        <br><br><br>
         <h1 class = "text-center color-pink"><label><b>Historia</b></label></h1>
         <hr>
       
     </div>
-    </div>
+</div>
 
-     <br>
-    <div class="row">
+<br>
+<div class="row">
     <div class="columnas-separator col-xs-12 col-md-1">
     </div>
      <div class="columnas-separator col-xs-12 col-md-10">
@@ -199,24 +122,292 @@
      </div>
      <div class="columnas-separator col-xs-12 col-md-1">
     </div>
-    </div>
-    <br>
+</div>
+<br>
 
-     <div class="row">
+<br>
+<div class="row margen-abajo">
+
+      <div class="col-xs-12 col-md-12">
+        <br>
+        <h1 class = "text-center color-pink"><label><b>Locales</b></label></h1>
+        <hr>
+      </div>
+</div>
+
+<?php if ($mercado->idMercado == '1'): ?>
+    <div class= "row mx-auto p-3 style-centrado">
+          <?php 
+            foreach ($locales as $key) {   
+          ?>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
+          <div class="card separator-card shadow-lg style-tarjeta">
+            <img class="card-img-top" src="<?php echo base_url().$key['logo'];?>" alt="Card image cap" height="225">
+            <div class="card-body">
+              <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
+              <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
+              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+            </div> 
+          </div> 
+           <br>
+          </div>
+          <?php } ?>
+    </div>
+
+<?php else: ?>
+<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active pink-pill" id="pills-alimentos-tab" data-toggle="pill" href="#pills-alimentos" role="tab" aria-controls="pills-alimentos" aria-selected="true">Alimentos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link pink-pill" id="pills-panaderia-tab" data-toggle="pill" href="#pills-panaderia" role="tab" aria-controls="pills-panaderia" aria-selected="false">Panadería</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link pink-pill" id="pills-menudo-tab" data-toggle="pill" href="#pills-menudo" role="tab" aria-controls="pills-menudo" aria-selected="false">Menudo</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link pink-pill" id="pills-flores-tab" data-toggle="pill" href="#pills-flores" role="tab" aria-controls="pills-flores" aria-selected="false">Flores</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link pink-pill" id="pills-carnes-tab" data-toggle="pill" href="#pills-carnes" role="tab" aria-controls="pills-carnes" aria-selected="false">Carnes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link pink-pill" id="pills-artesanias-tab" data-toggle="pill" href="#pills-artesanias" role="tab" aria-controls="pills-artesanias" aria-selected="false">Artesanías</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link pink-pill" id="pills-textil-tab" data-toggle="pill" href="#pills-textil" role="tab" aria-controls="pills-textil" aria-selected="false">Textil</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-alimentos" role="tabpanel" aria-labelledby="pills-alimentos-tab">
+    
+   <?php if ($alimentos == null): ?>
+      <div class= "texto-centrado">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <h6>Ningún local en esta categoría</h6>
+      </div>
+
+  <?php else: ?>
+     <div class= "row mx-auto p-3 style-centrado">
+      <?php 
+         foreach ($alimentos as $key) {   
+      ?>
+       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
+       <div class="card separator-card shadow-lg style-tarjeta">
+        <img class="card-img-top" src="<?php echo base_url().$key['logo'];?>" alt="Card image cap" height="225">
+          <div class="card-body">
+          <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
+          <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
+          <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+          </div> 
+       </div> 
+       <br>
+       </div>
+      <?php } ?>
+    </div>
+  <?php endif ?>
+
+    </div>
+  <div class="tab-pane fade" id="pills-panaderia" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <?php if ($panaderia == null): ?>
+          <div class= "texto-centrado">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <h6>Ningún local en esta categoría</h6>
+          </div>
+
+    <?php else: ?>
+        <div class= "row mx-auto p-3 style-centrado">
+          <?php 
+            foreach ($panaderia as $key) {   
+          ?>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
+          <div class="card separator-card shadow-lg style-tarjeta">
+            <img class="card-img-top" src="<?php echo base_url().$key['logo'];?>" alt="Card image cap" height="225">
+            <div class="card-body">
+              <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
+              <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
+              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+            </div> 
+          </div> 
+           <br>
+          </div>
+          <?php } ?>
+        </div>
+    <?php endif ?>
+ </div>
+ <div class="tab-pane fade" id="pills-menudo" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <?php if ($menudo == null): ?>
+        <div class= "texto-centrado">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <h6>Ningún local en esta categoría</h6>
+          </div>
+
+      <?php else: ?>
+      <div class= "row mx-auto p-3 style-centrado">
+          <?php 
+            foreach ($menudo as $key) {   
+          ?>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
+          <div class="card separator-card shadow-lg style-tarjeta">
+            <img class="card-img-top" src="<?php echo base_url().$key['logo'];?>" alt="Card image cap" height="225">
+            <div class="card-body">
+              <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
+              <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
+              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+            </div> 
+          </div> 
+           <br>
+          </div>
+          <?php } ?>
+        </div>
+    <?php endif ?>
+  </div>
+  <div class="tab-pane fade" id="pills-flores" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <?php if ($flores == null): ?>
+       <div class= "texto-centrado">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <h6>Ningún local en esta categoría</h6>
+          </div>
+
+      <?php else: ?>
+      <div class= "row mx-auto p-3 style-centrado">
+          <?php 
+            foreach ($flores as $key) {   
+          ?>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
+          <div class="card separator-card shadow-lg style-tarjeta">
+            <img class="card-img-top" src="<?php echo base_url().$key['logo'];?>" alt="Card image cap" height="225">
+            <div class="card-body">
+              <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
+              <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
+              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+            </div> 
+          </div> 
+           <br>
+          </div>
+          <?php } ?>
+        </div>
+     <?php endif ?>
+  </div>
+  <div class="tab-pane fade" id="pills-carnes" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <?php if ($carnes == null): ?>
+          <div class= "texto-centrado">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <h6>Ningún local en esta categoría</h6>
+          </div>
+
+       <?php else: ?>
+      <div class= "row mx-auto p-3 style-centrado">
+          <?php 
+            foreach ($carnes as $key) {   
+          ?>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
+          <div class="card separator-card shadow-lg style-tarjeta">
+            <img class="card-img-top" src="<?php echo base_url().$key['logo'];?>" alt="Card image cap" height="225">
+            <div class="card-body">
+              <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
+              <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
+              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+            </div> 
+          </div> 
+           <br>
+          </div>
+          <?php } ?>
+        </div>
+    <?php endif ?>
+  </div>
+  <div class="tab-pane fade" id="pills-artesanias" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <?php if ($artesanias == null): ?>
+        <div class= "texto-centrado">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <h6>Ningún local en esta categoría</h6>
+          </div>
+      <?php else: ?>
+      <div class= "row mx-auto p-3 style-centrado">
+          <?php 
+            foreach ($artesanias as $key) {   
+          ?>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
+          <div class="card separator-card shadow-lg style-tarjeta">
+            <img class="card-img-top" src="<?php echo base_url().$key['logo'];?>" alt="Card image cap" height="225">
+            <div class="card-body">
+              <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
+              <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
+              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+            </div> 
+          </div> 
+           <br>
+          </div>
+          <?php } ?>
+        </div>
+    <?php endif ?>
+  </div>
+  <div class="tab-pane fade" id="pills-textil" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <?php if ($textil == null): ?>
+          <div class= "texto-centrado">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <h6>Ningún local en esta categoría</h6>
+          </div>
+
+      <?php else: ?>
+      <div class= "row mx-auto p-3 style-centrado">
+          <?php 
+            foreach ($textil as $key) {   
+          ?>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
+          <div class="card separator-card shadow-lg style-tarjeta">
+            <img class="card-img-top" src="<?php echo base_url().$key['logo'];?>" alt="Card image cap" height="225">
+            <div class="card-body">
+              <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
+              <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
+              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+            </div> 
+          </div> 
+           <br>
+          </div>
+          <?php } ?>
+        </div>
+     <?php endif ?>
+  </div>
+</div>
+<?php endif ?>
+
+<br><br>
+<div class="row col-xs-4">
+    <div class="col-xs-12 col-md-12">
+        <br><br>
+        <h1 class = "text-center color-pink"><label><b>Galería</b></label></h1>
+        <hr>
+      
+    </div>
+</div> <br><br>
+
+<div class="gallery" id="gallery">
+
+  <?php foreach ($imagenes as $key) { ?>
+    <div class="mb-3 pics animation all 2">
+    <a href="<?php echo base_url().$key['rutaAbsoluta'];?>" data-lightbox="roadtrip"><img class="img-fluid" src="<?php echo base_url().$key['rutaAbsoluta'];?>" alt="Card image cap"></a>
+  </div>
+
+  <?php } ?>
+</div>
+
+<br><br>
+<div class="row">
     <div class="col-xs-12 col-md-12">
         <br><br>
         <h1 class = "text-center color-pink"><label><b>Localización</b></label></h1>
         <hr>
       
     </div>
-    </div>
+</div>
 
-    <!--Google map-->
 <!--Google map-->
 <div id="mapa" style="height: 500px"></div>
      
    
-    <!--Google Maps-->
+ <!--Google Maps-->
 <script  type ="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDz_WZm_szEfRfP8UB55fg3xbOFiC3MbHM"></script>
 <!-- Google Maps settings -->
 <script type="text/javascript">
@@ -299,27 +490,6 @@
   
    }
 
-  // Regular map
-  /*function regular_map() {
-      var var_location = new google.maps.LatLng(17.063288, -96.729833);
-
-      var var_mapoptions = {
-          center: var_location,
-          zoom: 18
-      };
-
-      var var_map = new google.maps.Map(document.getElementById("map-container"),
-          var_mapoptions);
-
-      var var_marker = new google.maps.Marker({
-          position: var_location,
-          map: var_map,
-          title: "Mercado"
-      });
-  }*/
-
-  // Initialize maps
-  //google.maps.event.addDomListener(window, 'load', regular_map);
 </script>
 
 </div>
