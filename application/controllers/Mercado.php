@@ -62,14 +62,159 @@ class Mercado extends CI_Controller {
 	public function busqueda(){
 		if ($_POST) {
 			$resultado = $this->Modelomercado->busca($_POST['tags']);
-			$resultado['local'] = $this->divideMercados($resultado);
-			
+			$resultado = $this->divideMercados($resultado);
+			$this->load->view('vistaResultBusqueda',$resultado);
 		}else{
 			
 		}
 	}
 
-	//aqui va divide mercados 
+	public function divideMercados($local)
+	{	
+		$qSocrates = new SplStack();
+		$qPazm = new SplStack();
+		$qHidalgo = new SplStack();
+		$qCascada = new SplStack();
+		$qCandiani = new SplStack();
+		$qVenustianoc = new SplStack();
+		$qBenitoj = new SplStack();
+		$qVeinten = new SplStack();
+		$qArtesanias = new SplStack();
+		$qCentenario = new SplStack();
+		$qSanchezp = new SplStack();
+		$qMerced = new SplStack();
+		$qFlores = new SplStack();
+		$qSantarosa = new SplStack();
+		$qAbastos = new SplStack();
+		$qNoria = new SplStack();
+
+		foreach ($local as $key => $value) {
+			switch ($value['idMercado']) {
+			    case 1:
+			    	$qSocrates->push($value);
+			    	
+			        break;
+			    case 2:
+			    	$qPazm->push($value);
+			        break;
+			    case 3:
+			        $qHidalgo->push($value);
+			        break;
+			    case 4:
+			        $qCascada->push($value);
+			        break;
+			    case 5:
+			        $qCandiani->push($value);
+			        break;
+			    case 6:
+			        $qVenustianoc->push($value);
+			        break;
+			    case 7:
+			        $qBenitoj->push($value);
+			        break;
+			    case 8:
+			        $qVeinten->push($value);
+			        break;
+			    case 9:
+			        $qArtesanias->push($value);
+			        break;
+			    case 10:
+			        $qCentenario->push($value);
+			        break;
+			    case 11:
+			        $qSanchezp->push($value);
+			        break;
+			    case 12:
+			        $qMerced->push($value);
+			        break;
+			    case 13:
+			        $qFlores->push($value);
+			        break;
+			    case 14:
+			        $qSantarosa->push($value);
+			        break;
+			    case 15:
+			        $qAbastos->push($value);
+			        break;
+			    case 16:
+			        $qNoria->push($value);
+			        break;
+			}
+		}
+                 $qSocrates->rewind();
+                 $qPazm->rewind();
+                 $qHidalgo->rewind();
+                 $qCascada->rewind();
+				 $qCandiani->rewind();
+		
+	     
+	     if (!($qSocrates->isEmpty())) {
+	     	$localesDivididos['socrates'] = $qSocrates;
+	     }
+
+	     if (!($qPazm->isEmpty())) {
+	     	$localesDivididos['paz'] = $qPazm;
+	     }
+
+	    if (!($qHidalgo->isEmpty())) {
+	    	$localesDivididos['hidalgo'] = $qHidalgo;
+	    }
+	     	
+	    if (!($qCascada->isEmpty())) {
+	     	$localesDivididos['cascada'] = $qCascada;
+	 	}
+
+	 	if (!($qCandiani->isEmpty())) {
+	     	$localesDivididos['candiani'] = $qCandiani;
+	 	}
+
+	 	if (!($qVenustianoc->isEmpty())) {
+	     	$localesDivididos['venustiano'] = $qVenustianoc;
+	     }
+
+	     if (!($qBenitoj->isEmpty())) {
+	     	$localesDivididos['benito'] = $qBenitoj;
+	     }
+
+	     if (!($qVeinten->isEmpty())) {
+	     	$localesDivididos['veinte'] = $qVeinten;
+	     }
+
+	     if (!($qArtesanias->isEmpty())) {
+	     	$localesDivididos['artesanias'] = $qArtesanias;
+	     }
+
+	     if (!($qCentenario->isEmpty())) {
+	     	$localesDivididos['centenario'] = $qCentenario;
+	     }
+
+	     if (!($qSanchezp->isEmpty())) {
+	     	$localesDivididos['sanchez'] = $qSanchezp;
+	     }
+
+	     if (!($qMerced->isEmpty())) {
+	     	$localesDivididos['merced'] = $qMerced;
+	     }
+
+	     if (!($qFlores->isEmpty())) {
+	     	$localesDivididos['flores'] = $qFlores;
+	     }
+
+	     if (!($qSantarosa->isEmpty())) {
+	     	$localesDivididos['santarosa'] = $qSantarosa;
+	     }
+
+	     if (!($qAbastos->isEmpty())) {
+	     	$localesDivididos['abastos'] = $qAbastos;
+	     }
+
+	     if (!($qNoria->isEmpty())) {
+	     	$localesDivididos['noria'] = $qNoria;
+	     }
+	    // $this->load->view('vistaResultBusqueda',$localesDivididos);
+	    return $localesDivididos;
+	}
+
 
 	public function nuevoMercado(){
 		if (!$_POST) {

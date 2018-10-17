@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/homeStyle.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/carrucel-card-style.css">
     <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/lm.png">
-    <title>Conoce Oaxaca</title>
+    <title>Mercados de Oaxaca</title>
   </head>
   <body class="type-leter">
     <div class="row">
@@ -189,7 +189,7 @@ Oaxaca es célebre por su gastronomía. Como parte de sus riquezas naturales, 
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-justify">
         <p>La ciudad de Oaxaca es una de las más grandes joyas de México. Desde el momento mismo de su origen hasta el día de hoy, Oaxaca se ha distinguido por la estrecha convivencia entre su bella naturaleza y la creatividad artística del hombre. Esto ha dado lugar a una de las ciudades más hermosas y armoniosas del país.  
 
  
@@ -295,7 +295,7 @@ Los mercados oaxaqueños son una fiesta para los sentidos.
 
             <a href="https://www.facebook.com/GobCdOax/"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/facebook-icono.png"></a>
             <a href="https://twitter.com/gobcdoax?lang=es"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/twitter-icono.png"></a>
-             <a href="https://www.instagram.com/explore/locations/234302199/oaxaca-city/"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/instagram-icono.png"></a>
+             <a href="https://www.instagram.com/oaxtravel/?hl=es-la"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/instagram-icono.png"></a>
            </div>
            <div class="col-xs-1 col-md-1 col-xl-1">
           </div>

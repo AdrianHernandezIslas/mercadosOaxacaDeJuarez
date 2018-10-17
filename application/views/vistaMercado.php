@@ -32,10 +32,10 @@
             <a class="nav-link disabled separator-option" href="<?php echo base_url(); ?>Mercado/nosotros">Nosotros</a>
           </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Mercado" aria-label="Mercado">
-          <button class="btn btn-light" type="submit">Buscar</button>
-        </form>
+         <form method="POST" action="<?php echo base_url();?>Mercado/busqueda" class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Mercado" aria-label="Mercado" id="tags" name="tags">
+                <button class="btn btn-light" type="submit">Buscar</button>
+              </form>
       </div>
     </nav>
   </div>
@@ -44,8 +44,8 @@
 <div class="container-fluid">
   <br>
   <div class="contenedor">
-     <img class ="img-fluid" src="<?php echo base_url().$principal->rutaAbsoluta; ?>" height="500">
-     <div class="centrado"><h1 class="text-white"><?php echo '#'.$mercado->nombre; ?></h1></div>
+     <img class ="img-fluid imageninicio" src="<?php echo base_url().$principal->rutaAbsoluta; ?>" height="500">
+     <div class="centrado"><h1 class="text-white bold"><?php echo '#'.$mercado->nombre; ?></h1></div>
   </div>
 </div>
 
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="row style-centrado">
+<div class="row style-centrado">
     <div class="col-xs-12 col-md-4" >
         <br><br>
         <img class="img-fluid" src="<?php echo base_url().$logo->rutaAbsoluta;?>" height="200">
@@ -116,7 +116,7 @@
 <div class="row">
     <div class="columnas-separator col-xs-12 col-md-1">
     </div>
-     <div class="columnas-separator col-xs-12 col-md-10">
+     <div class="columnas-separator col-xs-12 col-md-10 text-justify">
 
        <h6><?php echo $mercado->historia;?></h6>
      </div>
@@ -146,7 +146,7 @@
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
-              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+              <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
             </div> 
           </div> 
            <br>
@@ -199,7 +199,7 @@
           <div class="card-body">
           <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
           <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
-          <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+          <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
           </div> 
        </div> 
        <br>
@@ -227,7 +227,7 @@
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
-              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+              <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
             </div> 
           </div> 
            <br>
@@ -254,7 +254,7 @@
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
-              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+              <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
             </div> 
           </div> 
            <br>
@@ -281,7 +281,7 @@
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
-              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+              <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
             </div> 
           </div> 
            <br>
@@ -308,7 +308,7 @@
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
-              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+              <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
             </div> 
           </div> 
            <br>
@@ -334,7 +334,7 @@
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
-              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+              <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
             </div> 
           </div> 
            <br>
@@ -361,7 +361,7 @@
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
-              <h6 class="card-text text-min"><?php echo $key['historia'] ?></h6>
+              <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
             </div> 
           </div> 
            <br>
@@ -500,8 +500,6 @@
         <div class="row">
           <div class="col-xs-1 col-md-1 col-xl-1">
           </div>
-
-             
              <div class="col-xs-5 col-md-8 col-xl-8">
              <h1 class="texto-foot text-orange"><b>CONTACTO</b></h1>
              <p class="text-white texto-foot-2"><b>Dirección: </b>PLAZA DE LA DANZA S/N CENTRO HISTÓRICO OAXACA DE JUÁREZ, OAX. C.P. 68000 MÉXICO
@@ -514,7 +512,7 @@
 
             <a href="https://www.facebook.com/GobCdOax/"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/facebook-icono.png"></a>
             <a href="https://twitter.com/gobcdoax?lang=es"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/twitter-icono.png"></a>
-             <a href="https://www.instagram.com/explore/locations/234302199/oaxaca-city/"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/instagram-icono.png"></a>
+             <a href="https://www.instagram.com/oaxtravel/?hl=es-la"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/instagram-icono.png"></a>
            </div>
            <div class="col-xs-1 col-md-1 col-xl-1">
           </div>

@@ -27,7 +27,6 @@ class Modelomercado extends CI_Model {
       $this->db->where('idMercado',$idMercado);
       $consulta = $this->db->get();
       return $consulta->row();
-
     }
 
     public function getImagenPrincipal($idMercado)
@@ -37,7 +36,6 @@ class Modelomercado extends CI_Model {
       $this->db->where('idMercado',$idMercado);
       $consulta = $this->db->get();
       return $consulta->row();
-
     }
 
     public function getLogoMercado($idMercado)
@@ -59,15 +57,15 @@ class Modelomercado extends CI_Model {
     }
 
     public function busca($tags){
-      $this->db->select("mercado.idMercado,mercado.nombre as nombreMercado,local.nombre as nombreLocal,eslogan,descripcion");
+      $this->db->select("mercado.idMercado,mercado.nombre as nombreMercado,local.nombre as nombreLocal,eslogan,local.historia,local.logo");
       $this->db->from('mercado');
       $this->db->join('local', 'mercado.idMercado = local.idMercado');
       $this->db->like('tags',$tags);
       $this->db->order_by("nombreMercado");
       $consulta = $this->db->get();
-      return $consulta->result_array();;
+      return $consulta->result_array();
     }
-
+    
     public function getGirosByMercado($idMercado){
       $this->db->select("nombreGiro");
       $this->db->from("local");
@@ -100,6 +98,7 @@ class Modelomercado extends CI_Model {
       $this->db->from("mercado");
       $this->db->join("imagen","mercado.idMercado = imagen.idMercado");
       $this->db->where("zona",$zona);
+      $this->db->where("imagen.tipo","1");
       $consulta = $this->db->get();
       return $consulta->result_array();
     }
@@ -131,9 +130,10 @@ class Modelomercado extends CI_Model {
     }
 
     public function getImagenesGaleria($idMercado){
-      $this->db->select("*");
-      $this->db->from("recurso");
+      $this->db->select("rutaAbsoluta");
+      $this->db->from("imagen");
       $this->db->where("idMercado",$idMercado);
+      $this->db->where("tipo",'2');
       $consulta = $this->db->get();
       return $consulta->result_array();
     }

@@ -12,7 +12,7 @@
    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/lightbox.min.css">
 
 
-    <title>Conoce Oaxaca</title>
+    <title>Mercados de Oaxaca</title>
   </head>
   <body class="type-leter">
      <nav class="navbar navbar-expand-md navbar-dark fixed-top nav-bar-color">
@@ -36,10 +36,10 @@
             <a class="nav-link disabled separator-option" href="<?php echo base_url(); ?>Mercado/nosotros">Nosotros</a>
           </li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Mercado" aria-label="Mercado">
-          <button class="btn btn-light" type="submit">Buscar</button>
-        </form>
+         <form method="POST" action="<?php echo base_url();?>Mercado/busqueda" class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Mercado" aria-label="Mercado" id="tags" name="tags">
+                <button class="btn btn-light" type="submit">Buscar</button>
+              </form>
       </div>
     </nav>
 
@@ -89,7 +89,7 @@
 
             <a href="https://www.facebook.com/GobCdOax/"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/facebook-icono.png"></a>
             <a href="https://twitter.com/gobcdoax?lang=es"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/twitter-icono.png"></a>
-             <a href="https://www.instagram.com/explore/locations/234302199/oaxaca-city/"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/instagram-icono.png"></a>
+             <a href="https://www.instagram.com/oaxtravel/?hl=es-la"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/instagram-icono.png"></a>
            </div>
            <div class="col-xs-1 col-md-1 col-xl-1">
           </div>
