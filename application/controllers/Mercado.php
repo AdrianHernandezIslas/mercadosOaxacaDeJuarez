@@ -21,14 +21,17 @@ class Mercado extends CI_Controller {
 	}
 
 	public function nuevo(){
-		
-			if($_POST){
-				print_r($_POST);
-				//$this->Modelomercado->insertar($_POST);
-				echo "1";
-			}else{
-				echo 'Not fount';
-			}	
+		if (!$_POST) {
+			$this->load->view('admin/mercado/formMercado');
+		}
+	}
+	
+	public function actualizar($idMercado){
+	  
+	   if($_POST){
+	       echo $this->Modelomercado->actualizarRecurso($idMercado,$_POST);
+	   }
+	    
 	}
 
 	public function mercado($idMercado)
@@ -63,14 +66,19 @@ class Mercado extends CI_Controller {
 		if ($_POST) {
 			$resultado = $this->Modelomercado->busca($_POST['tags']);
 			$resultado = $this->divideMercados($resultado);
-			$this->load->view('vistaResultBusqueda',$resultado);
+			if ($resultado==true) {
+				$this->load->view('vistaResultBusqueda',$resultado);
+			}
+			else{
+				$this->load->view('mensajeBusqueda');
+			}
+			
 		}else{
 			
 		}
 	}
 
-	public function divideMercados($local)
-	{	
+	public function divideMercados($local){
 		$qSocrates = new SplStack();
 		$qPazm = new SplStack();
 		$qHidalgo = new SplStack();
@@ -87,6 +95,9 @@ class Mercado extends CI_Controller {
 		$qSantarosa = new SplStack();
 		$qAbastos = new SplStack();
 		$qNoria = new SplStack();
+
+		$bandera=false;
+
 
 		foreach ($local as $key => $value) {
 			switch ($value['idMercado']) {
@@ -150,84 +161,181 @@ class Mercado extends CI_Controller {
 	     
 	     if (!($qSocrates->isEmpty())) {
 	     	$localesDivididos['socrates'] = $qSocrates;
+	     	$bandera=true;
 	     }
 
 	     if (!($qPazm->isEmpty())) {
 	     	$localesDivididos['paz'] = $qPazm;
+	     	$bandera=true;
 	     }
 
 	    if (!($qHidalgo->isEmpty())) {
 	    	$localesDivididos['hidalgo'] = $qHidalgo;
+	    	$bandera=true;
 	    }
 	     	
 	    if (!($qCascada->isEmpty())) {
 	     	$localesDivididos['cascada'] = $qCascada;
+	     	$bandera=true;
 	 	}
 
 	 	if (!($qCandiani->isEmpty())) {
 	     	$localesDivididos['candiani'] = $qCandiani;
+	     	$bandera=true;
 	 	}
 
 	 	if (!($qVenustianoc->isEmpty())) {
 	     	$localesDivididos['venustiano'] = $qVenustianoc;
+	     	$bandera=true;
 	     }
 
 	     if (!($qBenitoj->isEmpty())) {
 	     	$localesDivididos['benito'] = $qBenitoj;
+	     	$bandera=true;
+
 	     }
 
 	     if (!($qVeinten->isEmpty())) {
 	     	$localesDivididos['veinte'] = $qVeinten;
+	     	$bandera=true;
 	     }
 
 	     if (!($qArtesanias->isEmpty())) {
 	     	$localesDivididos['artesanias'] = $qArtesanias;
+	     	$bandera=true;
 	     }
 
 	     if (!($qCentenario->isEmpty())) {
 	     	$localesDivididos['centenario'] = $qCentenario;
+	     	$bandera=true;
 	     }
 
 	     if (!($qSanchezp->isEmpty())) {
 	     	$localesDivididos['sanchez'] = $qSanchezp;
+	     	$bandera=true;
 	     }
 
 	     if (!($qMerced->isEmpty())) {
 	     	$localesDivididos['merced'] = $qMerced;
+	     	$bandera=true;
 	     }
+
 
 	     if (!($qFlores->isEmpty())) {
 	     	$localesDivididos['flores'] = $qFlores;
+	     	$bandera=true;
 	     }
 
 	     if (!($qSantarosa->isEmpty())) {
 	     	$localesDivididos['santarosa'] = $qSantarosa;
+	     	$bandera=true;
 	     }
 
 	     if (!($qAbastos->isEmpty())) {
 	     	$localesDivididos['abastos'] = $qAbastos;
+	     	$bandera=true;
 	     }
 
 	     if (!($qNoria->isEmpty())) {
 	     	$localesDivididos['noria'] = $qNoria;
+	     	$bandera=true;
 	     }
+
+	     if ($bandera==false) {
+	     	return $bandera;
+	     }
+	     
 	    // $this->load->view('vistaResultBusqueda',$localesDivididos);
 	    return $localesDivididos;
-	}
+}	
 
-
-	public function nuevoMercado(){
-		if (!$_POST) {
-			$this->load->view('formMercado');
-		}
-	}
 
 	public function updateMercado($idMercado){
 		$values['mercado'] = $this->Modelomercado->getMercado($idMercado);
-
-		$this->load->view('admin/vistaUpdateMercado',$values);
-		
+		$values['imagenes'] = $this->Modelomercado->imgsDelMercado($idMercado);
+		$this->load->view('admin/vistaUpdateMercado',$values);	
 	}
+
+	public function insertImgMercado($idMercado){
+		if ($_POST) {
+		    ini_set( 'memory_limit', '200M' );
+			ini_set('upload_max_filesize', '200M');  
+			ini_set('post_max_size', '200M');  
+			ini_set('max_input_time', 3600);  
+			ini_set('max_execution_time', 3600);
+
+			$config['upload_path']          = 'assets/recursos/img/temp/';
+            $config['allowed_types']        = 'jpeg|jpg|png|PNG|JPEG|JPG';
+            $config['max_size'] = '1000000';
+			$config['max_width']  = '1024000';
+			$config['max_height']  = '768000';
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('foto')){
+	                        $error = array('error' => $this->upload->display_errors());
+	                        print_r($error);
+	                        //accion en caso de error
+	        }else{
+	        	$fecha = getdate();
+	            $fecha = $fecha['year']."-".$fecha['mon']."-".$fecha['mday'];
+	            $data = array('upload_data' => $this->upload->data());
+
+	            //creando imagen originalRedimensionada
+				$config = array(
+							    'source_image'      => $data['upload_data']['full_path'],
+							    'new_image'         => 'assets/recursos/img/original/',
+							    'maintain_ratio'    => true,
+							    'width'             => 1280,
+							    'height'            => 720
+							    );
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();//Aqui me quede
+
+	            //creando imagen mediana
+				$config = array(
+							    'source_image'      => $data['upload_data']['full_path'],
+							    'new_image'         => 'assets/recursos/img/mediana/',
+							    'maintain_ratio'    => true,
+							    'width'             => 600,
+							    'height'            => 600
+							    );
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();//Aqui me quede
+
+				 //creando imagen miniatura
+				$config = array(
+							    'source_image'      => $data['upload_data']['full_path'],
+							    'new_image'         => 'assets/recursos/img/miniatura/',
+							    'maintain_ratio'    => true,
+							    'width'             => 150,
+							    'height'            => 150
+							    );
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();//Aqui me quede
+
+				unlink('assets/recursos/img/temp/'.$data['upload_data']['file_name']);
+
+				$nombreArchivo	= $data['upload_data']['file_name'];
+				$rutaMediana	= 'assets/recursos/img/mediana/'.$data['upload_data']['file_name'];
+				$rutaCompleta	= 'assets/recursos/img/original/'.$data['upload_data']['file_name'];
+				$peso			= $data['upload_data']['file_size'];
+
+
+				 $result = $this->db->query('INSERT INTO 
+                        							imagen(idMercado,nombre,rutaMediana,rutaAbsoluta,peso,fechaCreacion,tipo) 
+                        							VALUES (
+                        							"'.$idMercado.'",
+                        							"'.$nombreArchivo.'",
+                        							"'.$rutaMediana.'",
+                        							"'.$rutaCompleta.'",
+                        							"'.$peso.'",
+                        							"'.$fecha.'",
+                        							"'.$_POST['tipo'].'"
+                        							)');
+				 echo "Registro Completo";
+        	}
+		}	
+	}
+
 
 	public function admin(){
 		$values['CH'] = $this->Modelomercado->getMercadoZona('CH');

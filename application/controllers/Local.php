@@ -22,7 +22,15 @@ class Local extends CI_Controller {
 	public function nuevo(){
 		$values['mercados'] = $this->Modelomercado->getMercadosidName();
 		$values['giros']    = $this->ModeloGiro->getGiros();
-		$this->load->view('formLocal',$values);
+		//$values['imagen']   = $this->ModeloLocal->getImg();
+		$this->load->view('admin/local/formLocal',$values);
+	}
+
+	public function update($idLocal){
+		$values['mercados'] = $this->Modelomercado->getMercadosidName();
+		$values['giros']    = $this->ModeloGiro->getGiros();
+		$values['local']	= $this->ModeloLocal->getLocal($idLocal);
+		$this->load->view('admin/viewUpdateLocal',$values);
 	}
 
 	public function registrar(){
@@ -40,7 +48,7 @@ class Local extends CI_Controller {
 			ini_set('max_input_time', 3600);  
 			ini_set('max_execution_time', 3600);
 
-			$config['upload_path']          = 'assets/recursos/img/original/';
+			$config['upload_path']          = 'assets/recursos/img/temp/';
             $config['allowed_types']        = 'jpeg|jpg|png|PNG|JPEG|JPG';
             $config['max_size'] = '1000000';
 			$config['max_width']  = '1024000';
@@ -59,8 +67,18 @@ class Local extends CI_Controller {
                 $fecha = $fecha['year']."-".$fecha['mon']."-".$fecha['mday'];
                 $data = array('upload_data' => $this->upload->data());
 
+                $config = array(
+							    'source_image'      => $data['upload_data']['full_path'],
+							    'new_image'         => 'assets/recursos/img/original/',
+							    'maintain_ratio'    => true,
+							    'width'             => 1280,
+							    'height'            => 720
+							    );
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();//Aqui me quede
+
                 //creando imagen mediana
-						$config = array(
+				$config = array(
 						    'source_image'      => $data['upload_data']['full_path'],
 						    'new_image'         => 'assets/recursos/img/mediana/',
 						    'maintain_ratio'    => true,
@@ -69,7 +87,18 @@ class Local extends CI_Controller {
 						    );
 						    $this->image_lib->initialize($config);
 						    $this->image_lib->resize();//Aqui me quede 
+				 //creando imagen miniatura
+				$config = array(
+							    'source_image'      => $data['upload_data']['full_path'],
+							    'new_image'         => 'assets/recursos/img/miniatura/',
+							    'maintain_ratio'    => true,
+							    'width'             => 150,
+							    'height'            => 150
+							    );
+				$this->image_lib->initialize($config);
+				$this->image_lib->resize();//Aqui me quede
 
+				unlink('assets/recursos/img/temp/'.$data['upload_data']['file_name']);
                         	
                 $nombreArchivo	= $data['upload_data']['file_name'];
 				$tipoArchivo	= $data['upload_data']['file_type'];

@@ -7,93 +7,87 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/panelStyle.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/prueba.css">
     <title>Hello, world!</title>
   </head>
   <body>
     
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top color-pink">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    <a class="nav-link text-white" href="<?php base_url();?>"><h5><b>Algo</b></h5></a>
-      <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mercados</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown08">
-              <a class="dropdown-item" href="#">Locales</a>
-              <a class="dropdown-item" href="#">Intencidad</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+<div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 class="text-white">Administrador SU</h3>
             </div>
-          </li>
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown08">
-              <a class="dropdown-item" href="#">Configuracion</a>
-              <a class="dropdown-item" href="#">Bien Bien</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-         <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">C</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown08">
-              <a class="dropdown-item" href="#">Configuracion</a>
-              <a class="dropdown-item" href="#">Otro</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">D</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown08">
-              <a class="dropdown-item" href="#">Configuracion</a>
-              <a class="dropdown-item" href="#">Otro Algo</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
+
+            <ul class="list-unstyled components">
+                <p>Mercados Oaxaca</p>
+                <li class="">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mercado</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Registar</a>
+                        </li>
+                        <li>
+                            <a href="#">Algo 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Algo 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Imagenes</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Reportes</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Usuarios</a>
+                </li>
+                <li>
+                    <a href="#">Extras</a>
+                </li>
+            </ul>
+
+            
+        </nav>
+</div>
+        <!-- Page Content  -->
+<div id="content">
+<div class= "row mx-auto  style-centrado">
+  <div class="col-9">
+    <h1>Zona Centro Histórico</h1>
+      <div class="card-columns">
+
+      <?php foreach ($CH as $key) { ?>
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            <h6 class="card-text"><?php echo $key['nombre'];  ?></h6>
+          </div>
+          <img class="card-img-top" src="<?php echo base_url().$key['imagen'];?>" alt="Card image cap">
+          <div class="card-body">
+            <a href="<?php echo base_url().'Mercado/updateMercado/'.$key['idMercado'];?>" class="btn btn-sm btn-ovalo btn-lrg nav-bar-color text-white">Editar</a>
+            <a href="#" class="btn btn-sm btn-ovalo nav-bar-color text-white">Eliminar</a>
+          </div>
+        </div>
+        <?php } ?>
       </div>
-    <a class="text-white" href="<?php echo base_url(); ?>">Adrian</a>
-</nav>
+    </div>
+</div>
 
-    
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br><br><br><br>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br><br><br>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br><br><br><br>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</p>
-
-
+            <div class="line"></div>         
+</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

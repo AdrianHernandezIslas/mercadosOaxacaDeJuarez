@@ -27,5 +27,19 @@ class ModeloLocal extends CI_Model {
 		return  ($result) ? $this->db->insert_id() : 0 ;
 	}
 
+	public function getImg($idLocal){
+		  $this->db->select("idRecurso,rutaMediana");
+	      $this->db->from("recurso");
+	      $this->db->where("idLocal",$idLocal);
+	      return $this->db->get()->result_array()[0];
+	}
+
+	public function getLocal($idLocal){
+		  $this->db->select("*");
+	      $this->db->from("local");
+	      $consulta = $this->db->get();
+	      return $consulta->result_array()[0];
+	}
+
     
 }

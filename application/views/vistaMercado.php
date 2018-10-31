@@ -3,24 +3,21 @@
   <head>
    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/homeStyle.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/lightbox.min.css">
-
+    <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/icono.png">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
     <title>Mercado <?php echo $mercado->nombre;?></title>
   </head>
 <body class="type-leter">
-
   <div class="row">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top nav-bar-color">  
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
      <div class="collapse navbar-collapse" id="navbarCollapse">
-      <img class="icon-navbar" src="<?php echo base_url();?>assets/img/lm.png"  alt="Smiley face">
+       <a href="<?php echo base_url();?>"><img class="icon-navbar" src="<?php echo base_url();?>assets/img/lm.png"  alt="Smiley face"></a>
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link separator-option" href="<?php echo base_url();?>">Inicio <span class="sr-only">(current)</span></a>
@@ -39,8 +36,6 @@
       </div>
     </nav>
   </div>
-
-
 <div class="container-fluid">
   <br>
   <div class="contenedor">
@@ -48,8 +43,6 @@
      <div class="centrado"><h1 class="text-white bold"><?php echo '#'.$mercado->nombre; ?></h1></div>
   </div>
 </div>
-
-
 <br><br>
 <div class="container">
   <div class="row">
@@ -58,7 +51,6 @@
         <hr>
       </div>
     </div>
-
 <div class="row style-centrado">
     <div class="col-xs-12 col-md-4" >
         <br><br>
@@ -67,7 +59,6 @@
 
 <div class="col-xs-12 col-md-8">
 <br>
-
 <div class="row">
 <div class="col-xs-12 col-md-11">
        <div class="card text-center radio">
@@ -75,10 +66,8 @@
               <h5>Información</h5>
        </div>
 <div class="card-body">
-
 <table class="table col-xs-12 col-md-10 col-xl-8 style-centrado">
   <thead class="thead-dark">
-    
   </thead>
   <tbody>
     <tr>
@@ -95,7 +84,6 @@
     </tr>
   </tbody>
 </table>
-     
 </div>
 </div>
 </div>  
@@ -184,7 +172,7 @@
     
    <?php if ($alimentos == null): ?>
       <div class= "texto-centrado">
-           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.png">
            <h6>Ningún local en esta categoría</h6>
       </div>
 
@@ -212,7 +200,7 @@
   <div class="tab-pane fade" id="pills-panaderia" role="tabpanel" aria-labelledby="pills-profile-tab">
     <?php if ($panaderia == null): ?>
           <div class= "texto-centrado">
-           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.png">
            <h6>Ningún local en esta categoría</h6>
           </div>
 
@@ -239,7 +227,7 @@
  <div class="tab-pane fade" id="pills-menudo" role="tabpanel" aria-labelledby="pills-contact-tab">
       <?php if ($menudo == null): ?>
         <div class= "texto-centrado">
-           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.png">
            <h6>Ningún local en esta categoría</h6>
           </div>
 
@@ -266,7 +254,7 @@
   <div class="tab-pane fade" id="pills-flores" role="tabpanel" aria-labelledby="pills-contact-tab">
       <?php if ($flores == null): ?>
        <div class= "texto-centrado">
-           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.png">
            <h6>Ningún local en esta categoría</h6>
           </div>
 
@@ -293,7 +281,7 @@
   <div class="tab-pane fade" id="pills-carnes" role="tabpanel" aria-labelledby="pills-contact-tab">
       <?php if ($carnes == null): ?>
           <div class= "texto-centrado">
-           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.png">
            <h6>Ningún local en esta categoría</h6>
           </div>
 
@@ -320,7 +308,7 @@
   <div class="tab-pane fade" id="pills-artesanias" role="tabpanel" aria-labelledby="pills-contact-tab">
       <?php if ($artesanias == null): ?>
         <div class= "texto-centrado">
-           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.png">
            <h6>Ningún local en esta categoría</h6>
           </div>
       <?php else: ?>
@@ -346,7 +334,7 @@
   <div class="tab-pane fade" id="pills-textil" role="tabpanel" aria-labelledby="pills-contact-tab">
       <?php if ($textil == null): ?>
           <div class= "texto-centrado">
-           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.PNG">
+           <img class="img-no-local" src="<?php echo base_url();?>assets/img/nolocal.png">
            <h6>Ningún local en esta categoría</h6>
           </div>
 
@@ -402,11 +390,8 @@
       
     </div>
 </div>
-
 <!--Google map-->
 <div id="mapa" style="height: 500px"></div>
-     
-   
  <!--Google Maps-->
 <script  type ="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDz_WZm_szEfRfP8UB55fg3xbOFiC3MbHM"></script>
 <!-- Google Maps settings -->
@@ -487,11 +472,8 @@
           alert('Error '+status);
         }
       }
-  
    }
-
 </script>
-
 </div>
 <br>
 <footer class="footer nav-bar-color">
@@ -518,20 +500,13 @@
           </div>
            <br>
            <div class="col-xs-0 col-md-0 col-xl-1"></div>
-
-
-          
            <div class="col-xs-12 col-xl-12">
             <p class="text-white texto-foot-2 text-center">© 2018 Todos los derechos reservados</p>
            </div>
 
           </div>
       </div>
-      
 </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<?php echo base_url();?>assets/js/jquery-3.3.1.slim.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/popper.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>

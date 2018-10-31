@@ -45,4 +45,9 @@ class Welcome extends CI_Controller {
 	public function admin(){
 		$this->load->view('admin/vistaMercados');
 	}
+
+	public function admin2(){
+		$values['CH'] = $this->Modelomercado->getMercadoZona('CH');
+		$this->load->view('admin/vistaPanel',$values);
+	}
 }

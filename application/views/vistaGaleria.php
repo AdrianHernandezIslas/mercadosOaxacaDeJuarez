@@ -8,10 +8,9 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/homeStyle.css">
-   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/piepaginaStyle.css">
-   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/lightbox.min.css">
-
-
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/lightbox.min.css">
+    <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/icono.png">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
     <title>Mercados de Oaxaca</title>
   </head>
   <body class="type-leter">
@@ -24,7 +23,7 @@
       
          
 
-      <img class="icon-navbar" src="<?php echo base_url();?>assets/img/lm.png"  alt="Smiley face">
+       <a href="<?php echo base_url();?>"><img class="icon-navbar" src="<?php echo base_url();?>assets/img/lm.png"  alt="Smiley face"></a>
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link separator-option" href="<?php echo base_url();?>">Inicio <span class="sr-only">(current)</span></a>
@@ -76,7 +75,6 @@
           <div class="col-xs-1 col-md-1 col-xl-1">
           </div>
 
-             
              <div class="col-xs-5 col-md-8 col-xl-8">
              <h1 class="texto-foot text-orange"><b>CONTACTO</b></h1>
              <p class="text-white texto-foot-2"><b>Dirección: </b>PLAZA DE LA DANZA S/N CENTRO HISTÓRICO OAXACA DE JUÁREZ, OAX. C.P. 68000 MÉXICO
@@ -95,9 +93,6 @@
           </div>
            <br>
            <div class="col-xs-0 col-md-0 col-xl-1"></div>
-
-
-          
            <div class="col-xs-12 col-xl-12">
             <p class="text-white texto-foot-2 text-center">© 2018 Todos los derechos reservados</p>
            </div>
@@ -108,10 +103,6 @@
 </footer>
 
 
- 
-     
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<?php echo base_url();?>assets/js/jquery-3.3.1.slim.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/popper.min.js"></script>
     <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>

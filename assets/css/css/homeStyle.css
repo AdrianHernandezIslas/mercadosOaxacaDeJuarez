@@ -1,252 +1,97 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+h2{ font-weight:normal;  margin:40px 10px 40px 15px}
 
-h2{
-  font-weight: normal;
-  margin: 40px 10px 40px 15px;
-}
+.pink-pill{ color:#fd3b72;  border-style:solid;  border-width:1px !important;  margin-left:3px !important;  margin-right:3px !important;  margin-top:4px !important;  margin-bottom:4px !important}
 
-.pink-pill{
-  color: #fd3b72;
-  border-style: solid;
-  border-width: 1px !important;
-  margin-left: 3px !important;
-  margin-right: 3px !important;
-  margin-top: 4px !important;
-  margin-bottom: 4px !important;
-}
+.margen-abajo{ margin-bottom:40px;  margin-top:20px}
 
-.margen-abajo{
-  margin-bottom: 40px;
-  margin-top: 20px;
-}
+.radio{ border-radius:15px;  margin-top:10px}
 
-.radio{
-  border-radius: 15px;
-  margin-top: 10px;
-}
+.texto-centrado{ margin-top:50px;  text-align:center;  font-weight:bold}
 
-.texto-centrado{
-  margin-top: 50px;
-  text-align: center;
-  font-weight: bold;
-}
+.img-no-local{ height:210px;  width:190px}
 
-.img-no-local{
-  height: 210px;
-  width: 190px;
-}
+.nav-pills .nav-link.active, 
+.show.nav-pills .nav-link{ background:#fd3b72 !important}
 
-.nav-pills .nav-link.active,
-.show.nav-pills .nav-link{
-    background: #fd3b72 !important;
-}
+.pmodal{ margin:40px 10px 10px 0px}
 
-.pmodal{
-   margin: 40px 10px 10px 0px;
-}
+.margen_texto1{ margin:30px 0px 10px 0px}
 
-.margen_texto1{
-   margin: 30px 0px 10px 0px;
-}
+.bold{ font-weight:bold}
 
-.bold{
-  font-weight: bold;
-}
+.imageninicio{ width:100%;  filter:brightness(0.6)}
 
-.imageninicio{
-   width: 100%;
-   filter:brightness(0.6);
-}
+.nav-bar-color{ background-color:#fd3b72}
 
+.icon-navbar{width:170px; height:42px}
 
+.type-leter{ font-family:'Raleway',sans-serif}
 
-.nav-bar-color {
-  background-color: #fd3b72;
-}
+.separator-option{ margin-left:20px;  margin-right:20px}
 
-.icon-navbar{
-	width: 170px;
-	height: 42px;
-}
+.separator-info{ margin-left:137px;  margin-right:35px}
+.separator-info2{ margin-left:137px;  margin-right:55px}
+.separator-info3{ margin-left:137px;  margin-right:47px}
 
-.type-leter{
-     font-family: 'Raleway', sans-serif;
-}
+.separator-card{ margin-left:40px;  margin-right:40px}
 
-.separator-option{
-  margin-left: 20px;
-  margin-right: 20px;
-}
+.text-min{ color:#999;  font-size:14px}
 
+.pink-card{ color:#fd3b72;  font-size:14px}
 
-.separator-info{
-  margin-left: 137px;
-  margin-right: 35px;
-}
-.separator-info2{
-  margin-left: 137px;
-  margin-right: 55px;
-}
-.separator-info3{
-  margin-left: 137px;
-  margin-right: 47px;
-}
+.columnas-separator{ -webkit-column-count:2;  -moz-column-count:2;  column-count:2}
 
-.separator-card{
-  margin-left: 40px;
-  margin-right: 40px;
-}
+.color-pink{color:#fd3b72}
 
-.text-min{
-  color: #999999;
-  font-size: 14px;
-}
+.color-orange{color:#F78E06}
 
-.pink-card{
-  color: #fd3b72;
-  font-size: 14px;
-}
+.text-black{ background-color:#000}
 
-.columnas-separator{
+.text-orange{ color:#f8b65b}
 
-    -webkit-column-count:2;
-       -moz-column-count:2;
-       column-count:2;
+.centro{ top:50%;  left:50%;  transform:translate(-50%,-50%)}
 
-}
+.texto-chico{ font-size:17px;  color:#fd3b72}
 
-.color-pink{
-	color: #fd3b72;
-}
+.texto-direccion{ font-size:10px}
 
-.color-orange{
-	color: #F78E06;
-}
+.centrado{ position:absolute;  top:50%;  left:50%;  transform:translate(-50%,-50%)}
 
-.text-black{
-  background-color: #000000;
-}
+.img-tam{ height:30px;  width:30px}
 
-.text-orange{
-  color: #f8b65b;
-}
+.img-logo-oaxaca{ height:80px;  width:70px}
 
-.centro{
-  top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+.texto-foot{ font-size:16px}
 
-.texto-chico{
-  font-size: 17px;
-  color: #fd3b72;
-}
+.texto-foot-2{ font-size:13px}
 
-.texto-direccion{
-  font-size: 10px;
-}
+.btn-ovalo{border-radius:50px; border-color:#fd3b72}
 
-.centrado{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.img-tam{
-  height:30px;
-  width:30px;
-}
-
-.img-logo-oaxaca{
-  height:80px;
-  width:70px;
-}
-
-.texto-foot{
-  font-size: 16px;
-}
-
-.texto-foot-2{
-  font-size: 13px;
-}
-
-.btn-ovalo{
-	border-radius:50px;
-	border-color: #fd3b72;
-}
-
-.contenedor{
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-}
+.contenedor{ position:relative;  display:inline-block;  text-align:center;  width:100%}
  
-.texto-encima{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-.centrado{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.texto-encima{ position:absolute;  top:10px;  left:10px}
+.centrado{ position:absolute;  top:50%;  left:50%;  transform:translate(-50%,-50%)}
+
+.font-img-size{font-size:250%}
+
+.img-tam{height:30px; width:30px}
+
+hr{border-width:3px}
+
+.gallery{-webkit-column-count:3; -moz-column-count:3; column-count:3; -webkit-column-width:33%; -moz-column-width:33%; column-width:33%}
+.gallery .pics{-webkit-transition:all 350ms ease; transition:all 350ms ease}
+.gallery .animation{-webkit-transform:scale(1); -ms-transform:scale(1); transform:scale(1)}
+
+@media (max-width:450px){.gallery{-webkit-column-count:1; -moz-column-count:1; column-count:1; -webkit-column-width:100%; -moz-column-width:100%; column-width:100%}
 }
 
-.font-img-size{
-	font-size: 250%;
+@media (max-width:400px){.btn.filter{padding-left:1.1rem; padding-right:1.1rem}
 }
 
-.img-tam{
-	height:30px;
-	width:30px;
-}
+.style-tarjeta{ width:18rem;  margin:0 auto}
 
-hr{
-	border-width: 3px;
-}
+.style-centrado{ margin:0 auto}
 
-.gallery {
--webkit-column-count: 3;
--moz-column-count: 3;
-column-count: 3;
--webkit-column-width: 33%;
--moz-column-width: 33%;
-column-width: 33%; }
-.gallery .pics {
--webkit-transition: all 350ms ease;
-transition: all 350ms ease; }
-.gallery .animation {
--webkit-transform: scale(1);
--ms-transform: scale(1);
-transform: scale(1); }
-
-@media (max-width: 450px) {
-.gallery {
--webkit-column-count: 1;
--moz-column-count: 1;
-column-count: 1;
--webkit-column-width: 100%;
--moz-column-width: 100%;
-column-width: 100%;
+.sepbtn{
+	margin-left:5px;  margin-right:5px
 }
-}
-
-@media (max-width: 400px) {
-.btn.filter {
-padding-left: 1.1rem;
-padding-right: 1.1rem;
-}
-}
-
-.style-tarjeta{
-  width: 18rem; 
-  margin: 0 auto;
-}
-
-.style-centrado{ 
-  margin: 0 auto;
-}
-

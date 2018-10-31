@@ -28,12 +28,22 @@ class Modelomercado extends CI_Model {
       $consulta = $this->db->get();
       return $consulta->row();
     }
+    
+    public function imgsDelMercado($idMercado){
+      $this->db->select('nombre,rutaMediana as imagen,tipo');
+      $this->db->from('imagen');
+      $this->db->where('idMercado',$idMercado);
+      $this->db->order_by('tipo');
+      $consulta = $this->db->get();
+      return $consulta->result_array();
+     }
 
     public function getImagenPrincipal($idMercado)
     {
-      $this->db->select('*');
+      $this->db->select('rutaAbsoluta');
       $this->db->from('imagen');
       $this->db->where('idMercado',$idMercado);
+      $this->db->where('tipo','1');
       $consulta = $this->db->get();
       return $consulta->row();
     }
@@ -111,7 +121,7 @@ class Modelomercado extends CI_Model {
     }
 
     public function getLocalesDeMercado($idMercado){
-      $this->db->select("local.idLocal,local.nombre,nombreGiro,rutaMediana as imagen");
+      $this->db->select("local.idLocal,local.nombre,nombreGiro,rutaMediana as imagen,historia,tags");
       $this->db->from("local");
       $this->db->join("giro","local.idGiro = giro.idGiro");
       $this->db->join("recurso","local.idLocal = recurso.idLocal");
@@ -140,15 +150,16 @@ class Modelomercado extends CI_Model {
 
     public function getGaleria(){
       $this->db->select("rutaAbsoluta");
-      $this->db->from("recurso");
+      $this->db->from("imagen");
       $consulta = $this->db->get();
       return $consulta->result_array();
     }
 
     public function getImg($idMercado){
       $this->db->select("rutaMediana as imagen");
-      $this->db->from("recurso");
+      $this->db->from("imagen");
       $this->db->where("idMercado",$idMercado);
+      $this->db->where("tipo","2");
       $consulta = $this->db->get();
       return $consulta->result_array();
     }
@@ -161,7 +172,8 @@ class Modelomercado extends CI_Model {
       $this->db->select('mercado.nombre,direccion,historia,horario,rutaAbsoluta as imagen');
       $this->db->from('mercado');
       $this->db->join('imagen','mercado.idMercado = imagen.idMercado');
-      $this->db->where('Mercado.idMercado',$idMercado);
+      $this->db->where('mercado.idMercado',$idMercado);
+      $this->db->where('tipo','1');
       return $this->db->get()->result_array();
     }
 
