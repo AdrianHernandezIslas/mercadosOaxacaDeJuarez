@@ -22,7 +22,6 @@ class Local extends CI_Controller {
 	public function nuevo(){
 		$values['mercados'] = $this->Modelomercado->getMercadosidName();
 		$values['giros']    = $this->ModeloGiro->getGiros();
-		//$values['imagen']   = $this->ModeloLocal->getImg();
 		$this->load->view('admin/local/formLocal',$values);
 	}
 
@@ -66,7 +65,8 @@ class Local extends CI_Controller {
                 $fecha = getdate();
                 $fecha = $fecha['year']."-".$fecha['mon']."-".$fecha['mday'];
                 $data = array('upload_data' => $this->upload->data());
-
+                
+                
                 $config = array(
 							    'source_image'      => $data['upload_data']['full_path'],
 							    'new_image'         => 'assets/recursos/img/original/',
@@ -97,27 +97,29 @@ class Local extends CI_Controller {
 							    );
 				$this->image_lib->initialize($config);
 				$this->image_lib->resize();//Aqui me quede
-
+				$nName = $this->renombrar($data['upload_data']['file_name'],$data['upload_data']['file_ext'],$idMercado);
 				unlink('assets/recursos/img/temp/'.$data['upload_data']['file_name']);
                         	
-                $nombreArchivo	= $data['upload_data']['file_name'];
+                $nombreArchivo	= explode('.',$nName)[0];
 				$tipoArchivo	= $data['upload_data']['file_type'];
-				$rutaMediana	= 'assets/recursos/img/mediana/'.$data['upload_data']['file_name'];;
-				$rutaCompleta	= 'assets/recursos/img/original/'.$data['upload_data']['file_name'];
+				$rutaMiniatura	= 'assets/recursos/img/miniatura/'.$nName;
+				$rutaMediana	= 'assets/recursos/img/mediana/'.$nName;
+				$rutaCompleta	= 'assets/recursos/img/original/'.$nName;
 				$extension		= $data['upload_data']['file_ext'];
 				$peso			= $data['upload_data']['file_size'];
 				$ancho			= $data['upload_data']['image_width'];
 				$alto			= $data['upload_data']['image_height'];
 				
-				$idLocal = $this->ModeloLocal->insertLocal($idMercado,$nombre,$giro,$eslogan,$rutaCompleta,$historia,$tags);	
+				$idLocal = $this->ModeloLocal->insertLocal($idMercado,$nombre,$giro,$eslogan,$historia,$tags);	
 				//pasarlo al modelo
                 $result = $this->db->query('INSERT INTO 
-                        							recurso(idMercado,idLocal,nombre,tipo,rutaMediana,rutaAbsoluta,extension,peso,medidas,fechaCreacion) 
+                        							recurso(idMercado,idLocal,nombre,tipo,rutaMiniatura,rutaMediana,rutaAbsoluta,extension,peso,medidas,fechaCreacion) 
                         							VALUES (
                         							"'.$idMercado.'",
                         							"'.$idLocal.'",
-                        							"'.$nombre.'",
+                        							"'.$nombreArchivo.'",
                         							"'.$tipoArchivo.'",
+                        							"'.$rutaMiniatura.'",
                         							"'.$rutaMediana.'",
                         							"'.$rutaCompleta.'",
                         							"'.$extension.'",
@@ -129,6 +131,17 @@ class Local extends CI_Controller {
 
                 }
 
+
+
 		}
+
+	}
+
+	public function renombrar($nombre,$ext,$idMercado){
+		$nuevoName = 'img_'.$idMercado.'_'.time().$ext;
+		rename('assets/recursos/img/original/'.$nombre,'assets/recursos/img/original/'.$nuevoName);
+		rename('assets/recursos/img/mediana/'.$nombre,'assets/recursos/img/mediana/'.$nuevoName);
+		rename('assets/recursos/img/miniatura/'.$nombre,'assets/recursos/img/miniatura/'.$nuevoName);
+		return $nuevoName;
 	}
 }

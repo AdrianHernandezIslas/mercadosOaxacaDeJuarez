@@ -19,8 +19,7 @@ class Model_Imagen extends CI_Model {
 		$this->db->where('nombre',$nombre);
 		$result = false;
  		if($this->db->delete('imagen')){
- 		   $result = unlink('assets/recursos/img/mediana/'.$nombre) 
- 		            && unlink('assets/recursos/img/original/'.$nombre);
+ 		  $result = unlink('assets/recursos/img/mediana/'.$nombre) && unlink('assets/recursos/img/original/'.$nombre);
  		}
 
  		return $result;
