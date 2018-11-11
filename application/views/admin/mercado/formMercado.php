@@ -25,7 +25,6 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mercado</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-
                             <a href="<?php echo base_url().'Mercado/nuevo'; ?>">Registrar</a>
                         </li>
                         <li>
@@ -90,7 +89,7 @@
                                 <input type="numeric" class="form-control" id="telefono" name="telefono" placeholder="9511002240" required>
                             </div>
                         </div>
-                         <div class="form-group col-3">
+                         <div class="form-group col-4">
                             <label for="inputState">Zona</label>
                             <select id="zona" name="zona" class="form-control">
                               <option selected>Seleccione...</option>
@@ -105,18 +104,24 @@
             </div>
             <div class="row">
                    <div class="col-3"></div>
-                        <div class="col-3">
+                        <div class="col-8">
                            <div class="form-group">
                                 <label>Descripción</label>
                                 <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" required>
                             </div>
                         </div>
-                        <div class="col-3">
+                        
+            </div>
+            <div class="row">
+              <div class="col-lg-3 col-md-1 col-sm-1"></div>
+              <div class="col-8">
                           <div class="form-group">
                             <label>Historia</label>
-                            <input type="text" class="form-control" id="historia" name="historia"></input>
+                            <textarea class="form-control" id="historia" name="historia" rows="10">
+                              
+                            </textarea>
                           </div>
-                        </div>
+               </div>
             </div>
             <div class="row">
                    <div class="col-3"></div>
@@ -135,12 +140,19 @@
             </div>
             <div class="row">
                    <div class="col-3"></div>
-                        <div class="col-6">
+                        <div class="col-4">
                            <div class="form-group">
-                                <label>Horario</label>
-                                <input type="text" class="form-control" id="horario" name="horario" placeholder="Horario" required>
+                                <label>Hora Apertura</label>
+                                <input type="time" class="form-control" id="horario" name="horario" placeholder="Horario" required>
                            </div>
                         </div>
+                         <div class="col-4">
+                           <div class="form-group">
+                                <label>Hora Cierre</label>
+                                <input type="time" class="form-control" id="horario" name="horario" placeholder="Horario" required>
+                           </div>
+                        </div>
+                       
             </div>
             <div class="row">
               <div class="col-3"></div>
