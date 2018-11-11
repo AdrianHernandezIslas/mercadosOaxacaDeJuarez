@@ -253,7 +253,7 @@ class Mercado extends CI_Controller {
 	public function updateMercado($idMercado){
 		$values['mercado'] = $this->Modelomercado->getMercado($idMercado);
 		$values['imagenes'] = $this->Modelomercado->imgsDelMercado($idMercado);
-		$this->load->view('admin/mercado/vistaUpdateMercado',$values);	
+		$this->load->view('admin/vistaUpdateMercado',$values);	
 	}
 
 	public function insertImgMercado($idMercado){
@@ -425,15 +425,6 @@ class Mercado extends CI_Controller {
 	public function imgFromMercado($key,$idMercado){
 		if($key == $this->LOCAL_KEY){
 			$resultado['imagenes'] = $this->Modelomercado->getImg($idMercado);
-			echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
-		}else{
-			echo "Error";
-		}
-	}
-
-	public function imgsMercados($key){
-		if($key == $this->LOCAL_KEY){
-			$resultado['imagenes'] = $this->Modelomercado->getImgPrincipalDeMercado();
 			echo json_encode($resultado,JSON_UNESCAPED_UNICODE);
 		}else{
 			echo "Error";

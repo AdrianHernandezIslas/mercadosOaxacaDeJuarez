@@ -57,13 +57,13 @@
                 </li>
             </ul>
 
-            <div class="line"></div> 
+            
         </nav>
 </div>
         <!-- Page Content  -->
 <div id="content">
 <div class= "row mx-auto  style-centrado">
-  <div class="col-12">
+  <div class="col-9">
     <h1 class="color-orange">Zona Centro Histórico</h1>
       <div class="card-columns">
 
@@ -82,7 +82,7 @@
       </div>
     </div>
 </div>
-          
+  <div class="line"></div>         
 </div>
 
 <script src="<?php echo base_url();?>assets/js/jquery-3.3.1.slim.min.js"></script>

@@ -177,12 +177,5 @@ class Modelomercado extends CI_Model {
       return $this->db->get()->result_array();
     }
 
-    public function getImgPrincipalDeMercado(){
-      $this->db->select("idMercado,rutaMediana as imagen");
-      $this->db->from("imagen");
-      $this->db->where("tipo","1");
-      $consulta = $this->db->get();
-      return $consulta->result_array();
-    }
     
 }

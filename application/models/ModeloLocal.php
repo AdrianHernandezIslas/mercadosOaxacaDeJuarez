@@ -22,8 +22,8 @@ class ModeloLocal extends CI_Model {
 	      return $consulta->result_array();
 	}
 
-	public function insertLocal($idMercado,$nombre,$giro,$eslogan,$historia,$tags){
-		$result = $this->db->query('INSERT INTO local(idMercado,nombre,idGiro,eslogan,historia,tags) VALUES ('.$idMercado.',"'.$nombre.'","'.$giro.'","'.$eslogan.'","'.$historia.'","'.$tags.'")');
+	public function insertLocal($idMercado,$nombre,$giro,$eslogan,$logo,$historia,$tags){
+		$result = $this->db->query('INSERT INTO local(idMercado,nombre,idGiro,eslogan,logo,historia,tags) VALUES ('.$idMercado.',"'.$nombre.'","'.$giro.'","'.$eslogan.'","'.$logo.'","'.$historia.'","'.$tags.'")');
 		return  ($result) ? $this->db->insert_id() : 0 ;
 	}
 
