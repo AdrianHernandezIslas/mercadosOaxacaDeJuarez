@@ -6,8 +6,8 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/css/homeStyle.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/css/homeStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
     <title>Sin resultados</title>
   </head>
@@ -18,19 +18,19 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-              <img class="icon-navbar" src="<?php echo base_url();?>assets/img/lm.png"  alt="Smiley face">
+              <img class="icon-navbar" src="/assets/img/lm.png"  alt="Smiley face">
                 <ul class="nav navbar-nav ml-auto">
                   <li class="nav-item active">
                     <a class="nav-link separator-option" href="../">Inicio <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link separator-option" href="<?php echo base_url(); ?>Mercado/galeria">Galeria</a>
+                    <a class="nav-link separator-option" href="/Mercado/galeria">Galeria</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link disabled separator-option" href="<?php echo base_url(); ?>Mercado/nosotros">Nosotros</a>
+                    <a class="nav-link disabled separator-option" href="/Mercado/nosotros">Nosotros</a>
                   </li>
                 </ul>
-              <form method="POST" action="<?php echo base_url();?>Mercado/busqueda" class="form-inline mt-2 mt-md-0">
+              <form method="POST" action="/Mercado/busqueda" class="form-inline mt-2 mt-md-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Mercado" aria-label="Mercado" id="tags" name="tags">
                 <button class="btn btn-light" type="submit">Buscar</button>
               </form>
@@ -40,9 +40,9 @@
 
     <br>
 
-    <!-- <img src="<?php echo base_url();?>assets/img/lm.png" height="150" width="630" style="margin-left: 26%;">-->
+    <!-- <img src="/assets/img/lm.png" height="150" width="630" style="margin-left: 26%;">-->
     <div style="margin: 10%;">
-     <img src="<?php echo base_url();?>assets/img/cocodrilo.png" height="300" width="400" style="margin-left: 31%;">
+     <img src="/assets/img/cocodrilo.png" height="300" width="400" style="margin-left: 31%;">
      <h1 class="texto-centrado color-pink">¡Ninguna coincidencia en la búsqueda!</h1></div>
 
 <footer class="footer nav-bar-color">
@@ -63,9 +63,9 @@
             <div class="col-xs-5 col-md-2 col-xl-2 text-center">
             <h5 class="text-orange texto-foot">Redes Sociales</h5>
 
-            <a href="https://www.facebook.com/GobCdOax/"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/facebook-icono.png"></a>
-            <a href="https://twitter.com/gobcdoax?lang=es"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/twitter-icono.png"></a>
-             <a href="https://www.instagram.com/oaxtravel/?hl=es-la"><img class="img-tam text-right" src="<?php echo base_url();?>assets/img/instagram-icono.png"></a>
+            <a href="https://www.facebook.com/GobCdOax/"><img class="img-tam text-right" src="/assets/img/facebook-icono.png"></a>
+            <a href="https://twitter.com/gobcdoax?lang=es"><img class="img-tam text-right" src="/assets/img/twitter-icono.png"></a>
+             <a href="https://www.instagram.com/oaxtravel/?hl=es-la"><img class="img-tam text-right" src="/assets/img/instagram-icono.png"></a>
            </div>
            <div class="col-xs-1 col-md-1 col-xl-1">
           </div>
@@ -85,8 +85,8 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS  -->
-    <script src="<?php echo base_url();?>assets/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/popper.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
   </body>
 </html>

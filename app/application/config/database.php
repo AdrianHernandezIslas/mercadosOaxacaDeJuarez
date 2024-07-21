@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mysql-server-islas',
+	'hostname' => 'mysql-local-islas',
 	'username' => 'root',
 	'password' => 'Ahi.290795',
 	'database' => 'dbmercados',

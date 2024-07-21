@@ -15,8 +15,7 @@ services:
       - ./db/dump-dbmercados-202407201948.sql:/docker-entrypoint-initdb.d/backup.sql
     expose:
       - '3306'
-    container_name: mysql-local
-    hostname: mysql-server-islas
+    container_name: mysql-local-islas
     networks:
       - mercadosnetislas
   app:
