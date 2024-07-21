@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mysql-local',
+	'hostname' => base_url(),
 	'username' => 'root',
 	'password' => 'Ahi.290795',
 	'database' => 'dbmercados',
