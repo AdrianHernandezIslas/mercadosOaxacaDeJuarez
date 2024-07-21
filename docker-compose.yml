@@ -16,8 +16,9 @@ services:
     expose:
       - '3306'
     container_name: mysql-local
+    hostname: mysql-server-islas
     networks:
-      - mynetwork
+      - mercadosnetislas
   app:
     depends_on:
       - mysqldb
@@ -33,10 +34,10 @@ services:
     stdin_open: true
     tty: true
     networks:
-      - mynetwork
+      - mercadosnetislas
 
 networks:
-  mynetwork:
+  mercadosnetislas:
     driver: bridge
 
 volumes:
