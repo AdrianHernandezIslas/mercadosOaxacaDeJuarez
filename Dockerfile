@@ -5,10 +5,19 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure pdo_pgsql --with-pdo-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo_pgsql
+    && docker-php-ext-install pdo_pgsql pgsql
+
+RUN docker-php-ext-enable pdo_pgsql pgsql
+
+# Establecer el driver PDO para PostgreSQL en el php.ini
+RUN echo "extension=pdo_pgsql.so" >> "$PHP_INI_DIR/php.ini"
+RUN echo "extension=pgsql.so" >> "$PHP_INI_DIR/php.ini"
 
 # Habilitar mod_rewrite de Apache
 RUN a2enmod rewrite
+
+# 4. start with base php config, then add extensions
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 # Configurar ServerName para Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf

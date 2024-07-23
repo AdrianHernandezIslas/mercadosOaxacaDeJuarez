@@ -75,12 +75,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mysql-local-islas',
+	'hostname' => 'postgres-local-islas',
 	'username' => 'root',
 	'password' => 'Ahi.290795',
 	'database' => 'dbmercados',
 	"port" => '5432',
-	'dbdriver' => 'pdo',
+	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
