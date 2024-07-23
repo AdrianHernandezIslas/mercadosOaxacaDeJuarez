@@ -9,8 +9,6 @@ services:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     ports:
       - $POSTGRES_LOCAL_PORT:$POSTGRES_DOCKER_PORT
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
     expose:
       - '5432'
     container_name: postgres-local-islas
