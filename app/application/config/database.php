@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'postgres-local-islas',
-	'username' => 'root',
-	'password' => 'Ahi.290795',
-	'database' => 'dbmercados',
-	"port" => '5432',
+	'hostname' => getenv('POSTGRES_HOST'),
+	'username' => getenv('POSTGRES_USER'),
+	'password' => getenv('POSTGRES_PASSWORD'),
+	'database' => getenv('POSTGRES_DB'),
+	"port" => getenv('POSTGRES_LOCAL_PORT'),
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
