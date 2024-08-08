@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 	  
 	<title>Nuevo Local</title>
 </head>
@@ -14,7 +14,7 @@
 		
 		<hr>
 <div class="container">
-	<form method="POST" enctype="multipart/form-data" action="<?php echo base_url();?>Local/registrar">
+	<form method="POST" enctype="multipart/form-data" action="/Local/registrar">
 	<div class="row">
 		<div class="col-3"></div>
 		<div class="col-lg-6 col-md-7 col-sm-12">
@@ -105,8 +105,8 @@
 </form>
 </div>
 
-	<script src="<?php echo base_url();?>assets/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/popper.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>	
+	<script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>	
 </body>
 </html>

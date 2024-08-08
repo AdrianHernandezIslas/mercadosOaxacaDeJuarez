@@ -9,8 +9,10 @@ class Local extends CI_Controller {
 		//vamos a utilizar
 		$this->load->helper('url');
 		$this->load->library('image_lib');
+		$this->load->library('RecursoImagen');
 		$this->load->model('Modelomercado');
 		$this->load->model('ModeloLocal');
+		$this->load->model('ModeloRecurso');
 		$this->load->model('ModeloGiro');
 
 	}
@@ -40,21 +42,9 @@ class Local extends CI_Controller {
 			$eslogan 	= addslashes($_POST['eslogan']);
 			$historia 	= addslashes($_POST['historia']);
 			$tags 		= addslashes($_POST['tags']);
-			
-			ini_set( 'memory_limit', '200M' );
-			ini_set('upload_max_filesize', '200M');  
-			ini_set('post_max_size', '200M');  
-			ini_set('max_input_time', 3600);  
-			ini_set('max_execution_time', 3600);
 
-			$config['upload_path']          = 'assets/recursos/img/temp/';
-            $config['allowed_types']        = 'jpeg|jpg|png|PNG|JPEG|JPG';
-            $config['max_size'] = '1000000';
-			$config['max_width']  = '1024000';
-			$config['max_height']  = '768000';
-                            
-
-            $this->load->library('upload', $config);
+			$this->recursoimagen->configCarga();
+			$this->load->library('upload',$this->recursoimagen->configLoadImg());
 
             if (!$this->upload->do_upload('userfile')){
                         $error = array('error' => $this->upload->display_errors());
@@ -62,43 +52,16 @@ class Local extends CI_Controller {
                         //accion en caso de error
             }else{
                 		
-                $fecha = getdate();
-                $fecha = $fecha['year']."-".$fecha['mon']."-".$fecha['mday'];
+                $fecha = $this->recursoimagen->getFecha();
                 $data = array('upload_data' => $this->upload->data());
                 
                 
-                $config = array(
-							    'source_image'      => $data['upload_data']['full_path'],
-							    'new_image'         => 'assets/recursos/img/original/',
-							    'maintain_ratio'    => true,
-							    'width'             => 1280,
-							    'height'            => 720
-							    );
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();//Aqui me quede
+                $this->recursoimagen->resizeImg($data['upload_data']['full_path'],'original',1280,720);
+	           	$this->recursoimagen->resizeImg($data['upload_data']['full_path'],'mediana',600,600);
+	           	$this->recursoimagen->resizeImg($data['upload_data']['full_path'],'miniatura',150,150);
 
-                //creando imagen mediana
-				$config = array(
-						    'source_image'      => $data['upload_data']['full_path'],
-						    'new_image'         => 'assets/recursos/img/mediana/',
-						    'maintain_ratio'    => true,
-						    'width'             => 600,
-						    'height'            => 600
-						    );
-						    $this->image_lib->initialize($config);
-						    $this->image_lib->resize();//Aqui me quede 
-				 //creando imagen miniatura
-				$config = array(
-							    'source_image'      => $data['upload_data']['full_path'],
-							    'new_image'         => 'assets/recursos/img/miniatura/',
-							    'maintain_ratio'    => true,
-							    'width'             => 150,
-							    'height'            => 150
-							    );
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();//Aqui me quede
-				$nName = $this->renombrar($data['upload_data']['file_name'],$data['upload_data']['file_ext'],$idMercado);
-				unlink('assets/recursos/img/temp/'.$data['upload_data']['file_name']);
+				$nName = $this->recursoimagen->renombrar($data['upload_data']['file_name'],$data['upload_data']['file_ext'],$idMercado);
+				$this->recursoimagen->deleteImg($data['upload_data']['file_name']);
                         	
                 $nombreArchivo	= explode('.',$nName)[0];
 				$tipoArchivo	= $data['upload_data']['file_type'];
@@ -112,21 +75,7 @@ class Local extends CI_Controller {
 				
 				$idLocal = $this->ModeloLocal->insertLocal($idMercado,$nombre,$giro,$eslogan,$historia,$tags);	
 				//pasarlo al modelo
-                $result = $this->db->query('INSERT INTO 
-                        							recurso(idMercado,idLocal,nombre,tipo,rutaMiniatura,rutaMediana,rutaAbsoluta,extension,peso,medidas,fechaCreacion) 
-                        							VALUES (
-                        							"'.$idMercado.'",
-                        							"'.$idLocal.'",
-                        							"'.$nombreArchivo.'",
-                        							"'.$tipoArchivo.'",
-                        							"'.$rutaMiniatura.'",
-                        							"'.$rutaMediana.'",
-                        							"'.$rutaCompleta.'",
-                        							"'.$extension.'",
-                        							"'.$peso.'",
-                        							"'.$ancho.'x'.$alto.'",
-                        							"'.$fecha.'"
-                        							)');
+                $this->ModeloRecurso->insertRecurso($idMercado,$idLocal,$nombreArchivo,$tipoArchivo,$rutaMiniatura,$rutaMediana,$rutaCompleta,$extension,$peso,$ancho,$alto,$fecha);
                 echo "<br><a  href='".base_url()."Local/nuevo'>Registro exitoso (Click Regresar)</a>";
 
                 }
@@ -137,11 +86,5 @@ class Local extends CI_Controller {
 
 	}
 
-	public function renombrar($nombre,$ext,$idMercado){
-		$nuevoName = 'img_'.$idMercado.'_'.time().$ext;
-		rename('assets/recursos/img/original/'.$nombre,'assets/recursos/img/original/'.$nuevoName);
-		rename('assets/recursos/img/mediana/'.$nombre,'assets/recursos/img/mediana/'.$nuevoName);
-		rename('assets/recursos/img/miniatura/'.$nombre,'assets/recursos/img/miniatura/'.$nuevoName);
-		return $nuevoName;
-	}
+	
 }

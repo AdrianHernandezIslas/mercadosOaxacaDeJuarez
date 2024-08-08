@@ -1,28 +1,43 @@
 var Main = (function(){
-	var _main = function(){
-		XHR.get({
-			"url":"http://localhost/Mercado/mercados/r5da3dfd0dssw4hfohu9fdgrv14",
-			"exito":function(respuesta){ _printObj(respuesta.responseText);},
-			"fallo":function(respuesta){console.log(respuesta);}
-		});
+	
+	var ejecutar = function(){
+		var horaA = document.getElementById("horaA").value;
+		var horaC = document.getElementById("horaC").value;
+		var resultado = Validar.horas(horaA,horaC);
+		if(_noSelectec(document.getElementById('zona'),0)){
+			alert('Selecciona La Zona');
+			return false;
+		}
+
+		if(resultado){
+			return resultado;
+		}else{
+			$('#exampleModalCenter').modal('show');
+			return resultado;
+		}
+		
+		return false;
 	};
 
-	var _printObj = function(res){
-		var mercados = ProcesadorJSON.toObject(res);
-		for(let key in mercados ){
-			for (var i = 0; i < mercados[key].length; i++) {
-				_manipulaObj(mercados[key][i]);
-			}
-		}
+	var _noSelectec = function(elemento,valor){
+		return elemento.selectedIndex === valor;
 	};
 
-	var _manipulaObj = function(objeto){
-		for(let key in objeto ){
-			console.log(key+ " : "+objeto[key]);
-		}
+	var _eliminar = function(idMercado){
+		var btn = document.getElementById('btn-confirma');
+		btn.setAttribute("onclick","Main.borrar("+idMercado+")");
+		$('#exampleModalCenter').modal('show');
+	};
+
+	var _borrar = function(idMercado){
+		$('#exampleModalCenter').modal('hide');
+		window.location.replace("eliminar/"+idMercado);
 	}
+	
+  return{
+  	"ejecutar":ejecutar,
+  	"eliminar":_eliminar,
+  	"borrar":_borrar
+  };
 
-	return{
-		"main":_main
-	};
 })();
