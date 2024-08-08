@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/assets/css/css/homeStyle.css">
     <link rel="shortcut icon" href="/assets/img/icono.png">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">  
     <title>Nosotros</title>
   </head>
   <body class="type-leter">
@@ -22,15 +23,18 @@
           <li class="nav-item active">
             <a class="nav-link separator-option" href="/">Inicio <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link separator-option" href="/Mercado/galeria">Galeria</a>
+          <li class="nav-item active titulo-negritas">
+            <a class="nav-link separator-option" href="#">Nosotros</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link disabled separator-option" href="#">Nosotros</a>
+            <a class="nav-link separator-option" href="/Mercado/galeria">Galería</a>
+          </li>
+           <li class="nav-item active">
+            <a class="nav-link separator-option" href="/Mercado/descargas">App Móvil</a>
           </li>
         </ul>
          <form method="POST" action="/Mercado/busqueda" class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Mercado" aria-label="Mercado" id="tags" name="tags">
+                <input class="form-control mr-sm-2" type="text" placeholder="Ej. nieve,tlayuda" aria-label="Mercado" id="tags" name="tags">
                 <button class="btn btn-light" type="submit">Buscar</button>
               </form>
       </div>
@@ -91,7 +95,6 @@
 
             <a href="https://www.facebook.com/GobCdOax/"><img class="img-tam text-right" src="/assets/img/facebook-icono.png"></a>
             <a href="https://twitter.com/gobcdoax?lang=es"><img class="img-tam text-right" src="/assets/img/twitter-icono.png"></a>
-             <a href="https://www.instagram.com/oaxtravel/?hl=es-la"><img class="img-tam text-right" src="/assets/img/instagram-icono.png"></a>
            </div>
            <div class="col-xs-1 col-md-1 col-xl-1">
           </div>

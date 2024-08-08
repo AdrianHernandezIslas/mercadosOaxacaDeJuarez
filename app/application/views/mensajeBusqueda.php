@@ -24,14 +24,17 @@
                     <a class="nav-link separator-option" href="../">Inicio <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link separator-option" href="/Mercado/galeria">Galeria</a>
+                    <a class="nav-link disabled separator-option" href="/Mercado/nosotros">Nosotros</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link disabled separator-option" href="/Mercado/nosotros">Nosotros</a>
+                    <a class="nav-link separator-option" href="/Mercado/galeria">Galería</a>
+                  </li>
+                   <li class="nav-item active">
+                    <a class="nav-link separator-option" href="/Mercado/descargas">App Móvil</a>
                   </li>
                 </ul>
               <form method="POST" action="/Mercado/busqueda" class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Mercado" aria-label="Mercado" id="tags" name="tags">
+                <input class="form-control mr-sm-2" type="text" placeholder="Ej. nieve,tlayuda" aria-label="Mercado" id="tags" name="tags">
                 <button class="btn btn-light" type="submit">Buscar</button>
               </form>
           </div>

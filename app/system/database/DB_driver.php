@@ -396,7 +396,7 @@ abstract class CI_DB_driver {
 		}
 
 		// ----------------------------------------------------------------
-//show_error(json_encode($this->pconnect));
+
 		// Connect to the database and set the connection ID
 		$this->conn_id = $this->db_connect($this->pconnect);
 

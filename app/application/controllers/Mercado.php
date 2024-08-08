@@ -11,7 +11,9 @@ class Mercado extends CI_Controller {
 		//vamos a utilizar
 		$this->load->helper('url');
 		$this->load->model('Modelomercado');
-		$this->load->library('image_lib');
+		$this->load->model('ModeloImagen');
+		$this->load->library('RecursoImagen');
+		$this->load->helper('download');
 		$this->LOCAL_KEY = 'r5da3dfd0dssw4hfohu9fdgrv14';
 	}
 
@@ -21,12 +23,19 @@ class Mercado extends CI_Controller {
 	}
 
 	public function nuevo(){
-		if (!$_POST) {
-			return $this->load->view('admin/mercado/formMercado');
+		if(!$_POST){
+			$this->load->view('admin/mercado/formMercado');
 		}
-
-		$this->Modelomercado->insertar($_POST);
 	}
+
+	public function eliminar($idMercado){
+		$this->recursoimagen->deleteImgs($this->Modelomercado->getImgRutas($idMercado));
+		$si = $this->Modelomercado->eliminarMercado($idMercado);
+		if ($si) {
+			redirect('Mercado/admin');
+		}
+	}
+	
 	
 	public function actualizar($idMercado){
 	  
@@ -43,19 +52,24 @@ class Mercado extends CI_Controller {
          $resultado['logo'] = $this->Modelomercado->getlogoMercado($idMercado);
          $resultado['locales'] = $this->Modelomercado->getLocales($idMercado);
          $resultado['imagenes'] = $this->Modelomercado->getImagenesGaleria($idMercado);
-         $resultado['alimentos'] = $this->Modelomercado->getLocalByGiro($idMercado,'Alimentos');
-         $resultado['panaderia'] = $this->Modelomercado->getLocalByGiro($idMercado,'Panaderia');
-         $resultado['menudo'] = $this->Modelomercado->getLocalByGiro($idMercado,'Menudo');
-         $resultado['flores'] = $this->Modelomercado->getLocalByGiro($idMercado,'Flores');
-         $resultado['carnes'] = $this->Modelomercado->getLocalByGiro($idMercado,'Carnes');
-         $resultado['artesanias'] = $this->Modelomercado->getLocalByGiro($idMercado,'Artesanias');
-         $resultado['textil'] = $this->Modelomercado->getLocalByGiro($idMercado,'Textil');
+         $resultado['alimentos'] = $this->Modelomercado->getLocalGiro($idMercado,'Alimentos');
+         $resultado['panaderia'] = $this->Modelomercado->getLocalGiro($idMercado,'Panaderia');
+         $resultado['menudo'] = $this->Modelomercado->getLocalGiro($idMercado,'Menudo');
+         $resultado['flores'] = $this->Modelomercado->getLocalGiro($idMercado,'Flores');
+         $resultado['carnes'] = $this->Modelomercado->getLocalGiro($idMercado,'Carnes');
+         $resultado['artesanias'] = $this->Modelomercado->getLocalGiro($idMercado,'Artesanias');
+         $resultado['textil'] = $this->Modelomercado->getLocalGiro($idMercado,'Textil');
          $this->load->view('vistaMercado',$resultado);
 	}
 
 	public function galeria()
 	{
-         $resultado['imagenes'] = $this->Modelomercado->getGaleria();
+         $resultado['noviembre'] = $this->Modelomercado->getImagenesGaleria(8);
+         $resultado['artesanias'] = $this->Modelomercado->getImagenesGaleria(9);
+         $resultado['centenario'] = $this->Modelomercado->getImagenesGaleria(10);
+         $resultado['pascuas'] = $this->Modelomercado->getImagenesGaleria(11);
+         $resultado['merced'] = $this->Modelomercado->getImagenesGaleria(12);
+         $resultado['socrates'] = $this->Modelomercado->getImagenesGaleria(1);
          
          $this->load->view('vistaGaleria',$resultado);
 	}
@@ -64,19 +78,25 @@ class Mercado extends CI_Controller {
 		$this->load->view('vistaNosotros');
 	}
 
+	public function descargas(){
+		$this->load->view('vistaAplicacion');
+	}
+
+	public function getFile(){
+		force_download('assets/app/Mercados_Oaxaca_App.apk', NULL);
+		redirect('Mercado/descargas');
+	}
+
 	public function busqueda(){
-		if ($_POST) {
+		if($_POST) {
 			$resultado = $this->Modelomercado->busca($_POST['tags']);
 			$resultado = $this->divideMercados($resultado);
-			if ($resultado==true) {
+			if ($resultado) {
 				$this->load->view('vistaResultBusqueda',$resultado);
 			}
 			else{
 				$this->load->view('mensajeBusqueda');
-			}
-			
-		}else{
-			
+			}	
 		}
 	}
 
@@ -243,7 +263,7 @@ class Mercado extends CI_Controller {
 	     	$bandera=true;
 	     }
 
-	     if ($bandera==false) {
+	     if (!$bandera) {
 	     	return $bandera;
 	     }
 	     
@@ -258,86 +278,51 @@ class Mercado extends CI_Controller {
 		$this->load->view('admin/mercado/vistaUpdateMercado',$values);	
 	}
 
-	public function insertImgMercado($idMercado){
-		if ($_POST) {
-		    ini_set( 'memory_limit', '200M' );
-			ini_set('upload_max_filesize', '200M');  
-			ini_set('post_max_size', '200M');  
-			ini_set('max_input_time', 3600);  
-			ini_set('max_execution_time', 3600);
-
-			$config['upload_path']          = 'assets/recursos/img/temp/';
-            $config['allowed_types']        = 'jpeg|jpg|png|PNG|JPEG|JPG';
-            $config['max_size'] = '1000000';
-			$config['max_width']  = '1024000';
-			$config['max_height']  = '768000';
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('foto')){
-	                        $error = array('error' => $this->upload->display_errors());
-	                        print_r($error);
+	public function insertMercado(){
+		//RENOMBRAR IMAGENES FALTA
+			$this->recursoimagen->configCarga();
+			$this->load->library('upload',$this->recursoimagen->configLoadImg());
+			if(!$this->upload->do_upload('foto')){
+	             $error = array('error' => $this->upload->display_errors());
+	             print_r($error);
 	                        //accion en caso de error
 	        }else{
-	        	$fecha = getdate();
-	            $fecha = $fecha['year']."-".$fecha['mon']."-".$fecha['mday'];
+	        	$fecha = $this->recursoimagen->getFecha();
 	            $data = array('upload_data' => $this->upload->data());
 
-	            //creando imagen originalRedimensionada
-				$config = array(
-							    'source_image'      => $data['upload_data']['full_path'],
-							    'new_image'         => 'assets/recursos/img/original/',
-							    'maintain_ratio'    => true,
-							    'width'             => 1280,
-							    'height'            => 720
-							    );
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();//Aqui me quede
+	           	$this->recursoimagen->resizeImg($data['upload_data']['full_path'],'original',1280,720);
+	           	$this->recursoimagen->resizeImg($data['upload_data']['full_path'],'mediana',600,600);
+	           	$this->recursoimagen->resizeImg($data['upload_data']['full_path'],'miniatura',150,150);
 
-	            //creando imagen mediana
-				$config = array(
-							    'source_image'      => $data['upload_data']['full_path'],
-							    'new_image'         => 'assets/recursos/img/mediana/',
-							    'maintain_ratio'    => true,
-							    'width'             => 600,
-							    'height'            => 600
-							    );
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();//Aqui me quede
-
-				 //creando imagen miniatura
-				$config = array(
-							    'source_image'      => $data['upload_data']['full_path'],
-							    'new_image'         => 'assets/recursos/img/miniatura/',
-							    'maintain_ratio'    => true,
-							    'width'             => 150,
-							    'height'            => 150
-							    );
-				$this->image_lib->initialize($config);
-				$this->image_lib->resize();//Aqui me quede
-
-				unlink('assets/recursos/img/temp/'.$data['upload_data']['file_name']);
-
-				$nombreArchivo	= $data['upload_data']['file_name'];
-				$rutaMediana	= 'assets/recursos/img/mediana/'.$data['upload_data']['file_name'];
-				$rutaCompleta	= 'assets/recursos/img/original/'.$data['upload_data']['file_name'];
+				$idMercado = $this->insertarMercado($_POST);
+				$nName = $this->recursoimagen->renombrar($data['upload_data']['file_name'],$data['upload_data']['file_ext'],$idMercado);
+				$this->recursoimagen->deleteImg($data['upload_data']['file_name']);
+				$nombreArchivo	= explode('.',$nName)[0];
+				$rutaMiniatura	= 'assets/recursos/img/miniatura/'.$nName;
+				$rutaMediana	= 'assets/recursos/img/mediana/'.$nName;
+				$rutaCompleta	= 'assets/recursos/img/original/'.$nName;
 				$peso			= $data['upload_data']['file_size'];
+				$tipo = 1;
 
-
-				 $result = $this->db->query('INSERT INTO 
-                        							imagen(idMercado,nombre,rutaMediana,rutaAbsoluta,peso,fechaCreacion,tipo) 
-                        							VALUES (
-                        							"'.$idMercado.'",
-                        							"'.$nombreArchivo.'",
-                        							"'.$rutaMediana.'",
-                        							"'.$rutaCompleta.'",
-                        							"'.$peso.'",
-                        							"'.$fecha.'",
-                        							"'.$_POST['tipo'].'"
-                        							)');
+				$this->ModeloImagen->insertarImagen($idMercado,$nombreArchivo,$rutaMediana,$rutaCompleta,$peso,$fecha,$tipo);
 				 echo "Registro Completo";
-        	}
-		}	
+        	}	
 	}
 
+	private function insertarMercado($values){
+		$datos = array('nombre'     => $values['nombre'],
+				  'direccion'  => $values['direccion'],
+				  'telefono'   => $values['telefono'],
+				  'zona'       => $values['zona'],
+				  'descripcion'=> $values['descripcion'],
+				  'historia'   => $values['historia'],
+				  'latitud'    => $values['latitud'],
+				  'longitud'   => $values['longitud'],
+				  'horario'    => $values['horaA'].'-'.$values['horaC']
+		         );
+			return $this->Modelomercado->insertar($datos);		
+			
+	}
 
 	public function admin(){
 		$values['CH'] = $this->Modelomercado->getMercadoZona('CH');
@@ -441,4 +426,6 @@ class Mercado extends CI_Controller {
 			echo "Error";
 		}
 	}
+
+
 }

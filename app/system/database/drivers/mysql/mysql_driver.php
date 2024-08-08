@@ -136,8 +136,7 @@ class CI_DB_mysql_driver extends CI_DB {
 			: mysql_connect($this->hostname, $this->username, $this->password, TRUE, $client_flags);
 
 		// ----------------------------------------------------------------
-	
-		//show_error($this->hostname.'valor');
+
 		// Select the DB... assuming a database name is specified in the config file
 		if ($this->database !== '' && ! $this->db_select())
 		{
@@ -208,7 +207,6 @@ class CI_DB_mysql_driver extends CI_DB {
 
 		if (mysql_select_db($database, $this->conn_id))
 		{
-			
 			$this->database = $database;
 			$this->data_cache = array();
 			return TRUE;

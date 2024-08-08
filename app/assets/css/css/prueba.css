@@ -1,6 +1,13 @@
 .btn-ovalo{border-radius:50px; border-color:#fd3b65;
 background-color:#fd3b72;}
 .color-orange{color:#F78E06}
+
+.btn-subir{ 
+    color: white;
+    background-color:#fd3b72;
+    border-color:#F7BDF9;
+}
+
 a,
 a:hover,
 a:focus {
