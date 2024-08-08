@@ -3,11 +3,13 @@
   <head>
    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/css/homeStyle.css">
-    <link rel="stylesheet" href="/assets/css/css/carrucel-card-style.css">
-    <link rel="shortcut icon" href="/assets/img/icono.png">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+    <link rel="stylesheet" href="<?php echo '/';?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo '/';?>assets/css/css/homeStyle.css">
+    <link rel="stylesheet" href="<?php echo '/';?>assets/css/css/carrucel-card-style.css">
+    <link rel="stylesheet" href="<?php echo '/';?>assets/css/css/carouselM.css">
+    <link rel="shortcut icon" href="<?php echo '/';?>assets/img/icono.png">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet"> 
     <title>Mercados de Oaxaca</title>
   </head>
   <body class="type-leter">
@@ -17,21 +19,25 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-              <a href="/"><img class="icon-navbar" src="/assets/img/lm.png"  alt="Smiley face"></a>
+              <a href="<?php echo '/';?>"><img class="icon-navbar" src="<?php echo '/';?>assets/img/lm.png"  alt="Smiley face"></a>
                 <ul class="nav navbar-nav ml-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link separator-option" href="/">Inicio <span class="sr-only">(current)</span></a>
+                  <li class="nav-item active titulo-negritas">
+                    <a class="nav-link separator-option" href="<?php echo '/';?>">Inicio <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link disabled separator-option" href="/Mercado/nosotros">Nosotros</a>
+                    <a class="nav-link separator-option" href="/Mercado/nosotros">Nosotros</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link separator-option" href="/Mercado/galeria">Galeria</a>
+                    <a class="nav-link separator-option" href="/Mercado/galeria">Galería</a>
                   </li>
+                  <li class="nav-item active">
+                    <a class="nav-link separator-option" href="/Mercado/descargas">App Móvil</a>
+                  </li>
+                  
                 </ul>
-              <form method="POST" action="/Mercado/busqueda" class="form-inline mt-2 mt-md-0">
-                <button class="btn btn-light sepbtn" type="submit">Buscar</button>
-                <input class="form-control mr-sm-2 sepbtn" type="text" placeholder="Mercado" aria-label="Mercado" id="tags" name="tags">
+               <form method="POST" action="<?php echo '/';?>Mercado/busqueda" class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Ej. nieve,tlayuda" aria-label="Mercado" id="tags" name="tags">
+                <button class="btn btn-light" type="submit">Buscar</button>
               </form>
           </div>
       </nav>
@@ -44,18 +50,18 @@
   <div class="row">
     <div class="col-xs-12 col-md-12">
       <br>
-      <h1 class="text-center color-pink bold"><label>Todos los Mercados</label></h1>
+      <h1 class="text-center color-pink bold"><label>Conoce los mercados</label></h1>
       <hr>
+      <h5 class="text-center color-gray"><label>Del Municipio de Oaxaca de Juárez</label></h5>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12 col-md-12">
-       <h5 class="text-center text-secondary"><label>Conoce los 14 mercados que te ofrece Oaxaca</label></h5>
+      
     </div>
   </div>
   <div class="row">
-    <h2 class="color-orange">Mercados Zona Centro</h2>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner row w-100 mx-auto">
       <?php $flag=true; foreach ($CH as $key => $value) {  ?>
       <div class="carousel-item col-md-4 <?php if($flag){ echo 'active'; $flag=false; } ?>">
@@ -64,7 +70,7 @@
               <div class="card-body">
                 <h4><?php echo $value['nombre']; ?></h4>
                 <p class="card-text text-justify"><?php echo $value['descripcion']; ?></p>
-                <a href="<?php echo 'Mercado/mercado/'.$value['idMercado']; ?>" class="btn btn-sm btn-ovalo nav-bar-color text-white">Ver mas</a>
+                <a href="<?php echo '/'.'Mercado/mercado/'.$value['idMercado']; ?>" class="btn btn-sm btn-ovalo nav-bar-color text-white">Ver más</a>
               </div>
           </div>
       </div>
@@ -76,96 +82,31 @@
               <div class="card-body">
                 <h4><?php echo $value['nombre']; ?></h4>
                 <p class="card-text text-justify"><?php echo $value['descripcion']; ?></p>
-                <a href="<?php echo '/Mercado/mercado/'.$value['idMercado']; ?>" class="btn btn-sm btn-ovalo nav-bar-color text-white">Ver mas</a>
+                <a href="<?php echo '/'.'Mercado/mercado/'.$value['idMercado']; ?>" class="btn btn-sm btn-ovalo nav-bar-color text-white">Ver más</a>
               </div>
           </div>
       </div>
      <?php } ?>
     </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <a class="carousel-control-prev" id="espaciobtnizq" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" id="btnizquierdo" aria-hidden="false"></span>
       <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="carousel-control-next-icon" id="btnderecho" aria-hidden="false"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
-  </div>
+  
   <br>
-  <div class="row">
-    <h2 class="color-orange">Mercados Zona Norte</h2>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner row w-100 mx-auto">
-       <?php $flag=true; foreach ($N as $key => $value) {  ?>
-              <div class="carousel-item col-md-4 <?php if($flag){ echo 'active'; $flag=false; } ?>">
-               <div class="card text-center shadow-lg">
-                  <img class="card-img-top img-fluid" src="<?php echo '/'.$value['imagen']; ?>"></img>
-                <div class="card-body">
-                    <h4><?php echo $value['nombre']; ?></h4>
-                    <p class="card-text text-justify"><?php echo $value['descripcion']; ?></p>
-                    <a href="<?php echo '/Mercado/mercado/'.$value['idMercado']; ?>" class="btn btn-sm btn-ovalo nav-bar-color text-white">Ver mas</a>
-                </div>
-               </div>
-              </div>
-       <?php } ?>
-    </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  </div>
-  <br>
-  <div class="row">
-    <h2 class="color-orange">Mercados Sur, Este y Poniente</h2>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner row w-100 mx-auto">
-       <?php $flag=true; foreach ($S as $key => $value) {  ?>
-              <div class="carousel-item col-md-4 <?php if($flag){ echo 'active'; $flag=false; } ?>">
-               <div class="card text-center shadow-lg">
-                  <img class="card-img-top img-fluid" src="<?php echo base_url().$value['imagen']; ?>"></img>
-                <div class="card-body">
-                    <h4><?php echo $value['nombre']; ?></h4>
-                    <p class="card-text text-justify"><?php echo $value['descripcion']; ?></p>
-                    <a href="<?php echo base_url().'Mercado/mercado/'.$value['idMercado']; ?>" class="btn btn-sm btn-ovalo nav-bar-color text-white">Ver mas</a>
-                </div>
-               </div>
-              </div>
-       <?php } ?>
-       <?php $flag=true; foreach ($P as $key => $value) {  ?>
-              <div class="carousel-item col-md-4">
-               <div class="card text-center shadow-lg">
-                  <img class="card-img-top img-fluid" src="<?php echo base_url().$value['imagen']; ?>"></img>
-                <div class="card-body">
-                    <h4><?php echo $value['nombre']; ?></h4>
-                    <p class="card-text text-justify"><?php echo $value['descripcion']; ?></p>
-                    <a href="<?php echo base_url().'Mercado/mercado/'.$value['idMercado']; ?>" class="btn btn-sm btn-ovalo nav-bar-color text-white">Ver mas</a>
-                </div>
-               </div>
-              </div>
-       <?php } ?>
-    </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+ 
   </div>
   </div>
 
 <div class="container-fluid">
   <br>
   <div class="contenedor">
-    <img class="img-fluid imageninicio" src="/assets/img/andador.jpg">
+    <img class="img-fluid imageninicio" src="<?php echo '/';?>assets/img/andador.jpg">
     <div class="centrado"><h1 class="text-white font-img-size bold">Conoce más de</h1></div>
     <div class="centrado"><h1 class="color-pink font-img-size bold"><br><br>#Oaxaca</h1></div>
   </div>  
@@ -182,7 +123,7 @@ Oaxaca es célebre por su gastronomía. Como parte de sus riquezas naturales, 
       </div>
       <div class="col-xs-12 col-md-6">
         <br><br><br><br>
-        <img class="img-fluid shadow-lg" src="/assets/recursos/img/original/General_005.JPG" height="350" width="550">
+        <img class="img-fluid shadow-lg" src="<?php echo '/';?>assets/recursos/img/original/General_005.JPG" height="350" width="550">
       </div>
   </div>
 </div>
@@ -255,9 +196,9 @@ Los mercados oaxaqueños son una fiesta para los sentidos.
            </div>
             <div class="col-xs-5 col-md-2 col-xl-2 text-center">
             <h5 class="text-orange texto-foot">Redes Sociales</h5>
-            <a href="https://www.facebook.com/GobCdOax/"><img class="img-tam text-right" src="/assets/img/facebook-icono.png"></a>
-            <a href="https://twitter.com/gobcdoax?lang=es"><img class="img-tam text-right" src="/assets/img/twitter-icono.png"></a>
-             <a href="https://www.instagram.com/oaxtravel/?hl=es-la"><img class="img-tam text-right" src="/assets/img/instagram-icono.png"></a>
+            <a href="https://www.facebook.com/GobCdOax/"><img class="img-tam text-right" src="<?php echo '/';?>assets/img/facebook-icono.png"></a>
+            <a href="https://twitter.com/gobcdoax?lang=es"><img class="img-tam text-right" src="<?php echo '/';?>assets/img/twitter-icono.png"></a>
+            
            </div>
            <div class="col-xs-1 col-md-1 col-xl-1">
           </div>
@@ -270,10 +211,12 @@ Los mercados oaxaqueños son una fiesta para los sentidos.
       </div>
       
 </footer>
+
+</script>
     <!-- Optional JavaScript -->
-    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="/assets/js/popper.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <!--script src="/assets/js/js/carrucel-card-script.js" --><!--/script-->
+    <script src="<?php echo '/';?>assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="<?php echo '/';?>assets/js/popper.min.js"></script>
+    <script src="<?php echo '/';?>assets/js/bootstrap.min.js"></script>
+    <!--script src="<?php echo '/';?>assets/js/js/carrucel-card-script.js" --><!--/script-->
   </body>
 </html>

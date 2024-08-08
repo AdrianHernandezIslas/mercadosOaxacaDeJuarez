@@ -3,21 +3,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Modelomercado extends CI_Model {
 
-	function __construct(){
-		parent::__construct();
-		// aqui se caragan todas la librerias que 
-		//vamos a utilizar
-		$this->load->database();
-	}
+  	function __construct(){
+  		parent::__construct();
+  		// aqui se caragan todas la librerias que 
+  		//vamos a utilizar
+  		$this->load->database();
+  	}
 
-	public function index()
-	{
-		echo "aqui toy";
-	}
+  	public function index()
+  	{
+  		echo "aqui toy";
+  	}
 
     public function insertar($valores){
     	$query = $this->db->insert('mercado',$valores);
-    	return $query;
+    	return ($query) ? $this->db->insert_id() : 0 ;
+    }
+
+    public function eliminarMercado($idMercado){
+      $this->db->where('idMercado', $idMercado);
+      return $this->db->delete('mercado');
+    }
+
+    public function getImgRutas($idMercado){
+      $this->db->select('rutaMediana,rutaAbsoluta');
+      $this->db->from('imagen');
+      $this->db->where('idMercado',$idMercado);
+      $consulta = $this->db->get();
+      return $consulta->result_array();
     }
 
     public function getMercado($idMercado)
@@ -61,16 +74,20 @@ class Modelomercado extends CI_Model {
     {
       $this->db->select('*');
       $this->db->from('local');
-      $this->db->where('idMercado',$idMercado);
+      $this->db->join("recurso","local.idLocal = recurso.idLocal");
+      $this->db->where('local.idMercado',$idMercado);
       $consulta = $this->db->get();
       return $consulta->result_array();
     }
 
     public function busca($tags){
-      $this->db->select("mercado.idMercado,mercado.nombre as nombreMercado,local.nombre as nombreLocal,eslogan,local.historia,local.logo");
+      $this->db->select("mercado.idMercado,mercado.nombre as nombreMercado,local.nombre as nombreLocal,eslogan,local.historia,recurso.rutaAbsoluta,local.tags,local.idLocal");
       $this->db->from('mercado');
       $this->db->join('local', 'mercado.idMercado = local.idMercado');
+      $this->db->join('recurso', 'local.idLocal = recurso.idLocal');
       $this->db->like('tags',$tags);
+      $this->db->or_like('mercado.nombre',$tags);
+      $this->db->or_like('local.nombre',$tags);
       $this->db->order_by("nombreMercado");
       $consulta = $this->db->get();
       return $consulta->result_array();
@@ -87,7 +104,7 @@ class Modelomercado extends CI_Model {
     }
 
     public function getLocalByGiro($idMercado,$giro){
-      $this->db->select("nombre,nombreGiro,eslogan,logo,historia");
+      $this->db->select('*');
       $this->db->from("local");
       $this->db->join("giro","local.idGiro = giro.idGiro");
       $this->db->where("idMercado",$idMercado);
@@ -95,6 +112,18 @@ class Modelomercado extends CI_Model {
       $consulta = $this->db->get();
       return $consulta->result_array();
     }
+
+    public function getLocalGiro($idMercado,$giro){
+      $this->db->select('*');
+      $this->db->from("local");
+      $this->db->join("giro","local.idGiro = giro.idGiro");
+      $this->db->join("recurso","local.idLocal = recurso.idLocal");
+      $this->db->where("local.idMercado",$idMercado);
+      $this->db->where("nombreGiro",$giro);
+      $consulta = $this->db->get();
+      return $consulta->result_array();
+    }
+
 
     public function getMercados(){
       $this->db->select("idMercado,nombre,zona,latitud,longitud");

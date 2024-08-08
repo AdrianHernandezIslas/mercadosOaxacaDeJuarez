@@ -27,10 +27,10 @@
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
 
-                            <a href="<?php echo base_url().'Mercado/nuevo'; ?>">Registrar</a>
+                            <a href="<?php echo '/'.'Mercado/nuevo'; ?>">Registrar</a>
                         </li>
                         <li>
-                            <a href="#">Listar</a>
+                            <a href="<?php echo '/'.'Mercado/admin'; ?>">Listar</a>
                         </li>
                         <li>
                             <a href="#">Otro</a>
@@ -41,7 +41,7 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Local</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="<?php echo base_url().'Local/nuevo'; ?>">Registrar</a>
+                            <a href="<?php echo '/'.'Local/nuevo'; ?>">Registrar</a>
                         </li>
                         <li>
                             <a href="#">Listar</a>
@@ -70,16 +70,16 @@
 	<form method="POST" enctype="multipart/form-data" action="/Local/registrar">
 	<div class="row">
 		<div class="col-3"></div>
-		<div class="col-lg-6 col-md-7 col-sm-12">
+		<div class="col-lg-8 col-md-9 col-sm-12">
              <div class="form-group">
                   <label>Nombre</label>
-                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe nombre" required>
+                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe nombre" maxlength="87" required>
              </div>
         </div>
 	</div>
 	<div class="row">
 		<div class="col-3"></div>
-		<div class="col-md-3 col-sm-12">
+		<div class="col-md-4 col-sm-12">
             <label>Giro</label>
                 <div class="input-group">
                      <div class="input-group-prepend">
@@ -96,7 +96,7 @@
                         </select>
                 </div>  
         </div> 
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-4 col-sm-12">
             <label>Mercado</label>
                 <div class="input-group">
                      <div class="input-group-prepend">
@@ -116,40 +116,40 @@
 	<br>
 	<div class="row">
 		<div class="col-3"></div>
-		<div class="col-lg-6 col-md-7 col-sm-12">
+		<div class="col-lg-8 col-md-9 col-sm-12">
 			 <div class="form-group">
                   <label>Eslogan</label>
-                  <input type="text" class="form-control" id="eslogan" name="eslogan" placeholder="Escribe nombre" required>
+                  <input type="text" class="form-control" id="eslogan" name="eslogan" placeholder="Escribe nombre" maxlength="88" required>
              </div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-3"></div>
-		<div class="col-lg-6 col-md-7 col-sm-12">
+		<div class="col-lg-8 col-md-9 col-sm-12">
 			<div class="form-group">
   				<label for="comment">Historia o Descripción:</label>
-  				<textarea class="form-control" rows="5" id="hitoria" name="historia" required="Es requerido"></textarea>
+  				<textarea class="form-control" rows="5" id="hitoria" name="historia" maxlength="430" required="Es requerido"></textarea>
 			</div>
 		</div>
 	</div>	
 	<div class="row">
 		<div class="col-3"></div>
-		<div class="col-lg-6 col-md-7 col-sm-12">
+		<div class="col-lg-8 col-md-9 col-sm-12">
              <div class="form-group">
                   <label>Palabras Clave (Nieve, Helado, Freza)</label>
-                  <input type="text" class="form-control" id="tags" name="tags" placeholder="Escribe nombre" required>
+                  <input type="text" class="form-control" id="tags" name="tags" placeholder="Escribe nombre" maxlength="85" required>
              </div>
         </div>
 	</div>
 	<div class="row">
-		<div class="col-3"></div>
-		<div class="col-lg-6 col-md-7 col-sm-12">
+		<div class="col-4"></div>
+		<div class="col-lg-8 col-md-9 col-sm-12">
 			<label>Subir Logotipo o Fotografia</label>
-        	<input class="btn btn-warning" type="file" name="userfile" size="25">
+        	<input class="btn btn-warning" type="file" name="userfile" size="25" required>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-3"></div>
+		<div class="col-4"></div>
             <div class="col-lg-6 col-md-7 col-sm-12">
             	<label><br></label>
                 <button type="submit" class="btn btn-primary btn-block">Registrar</button>

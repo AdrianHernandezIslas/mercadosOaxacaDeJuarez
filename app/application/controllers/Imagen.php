@@ -7,11 +7,8 @@ class Imagen extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		// aqui se caragan todas la librerias que 
-		//vamos a utilizar
 		$this->load->helper('url');
-		$this->load->model('Model_Imagen');
-		$this->load->library('image_lib');
+		$this->load->model('ModeloImagen');
 		$this->LOCAL_KEY = 'r5da3dfd0dssw4hfohu9fdgrv14';
 	}
 
@@ -21,12 +18,14 @@ class Imagen extends CI_Controller {
 	}
 
 	public function eliminarImagen($nombreImg,$idMercado){
-		if($this->Model_Imagen->eliminarImg($nombreImg)){
+		if($this->ModeloImagen->eliminarImg($nombreImg)){
 			redirect(base_url().'Mercado/updateMercado/'.$idMercado);
 		}else{
 			echo "ERROR!!";
 		}
 
 	}
+
+	
 }
 ?>

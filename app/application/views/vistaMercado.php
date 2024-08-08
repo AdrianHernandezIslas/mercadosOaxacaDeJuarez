@@ -7,10 +7,29 @@
     <link rel="stylesheet" href="/assets/css/css/homeStyle.css">
     <link rel="stylesheet" href="/assets/css/lightbox.min.css">
     <link rel="shortcut icon" href="/assets/img/icono.png">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">  
     <title>Mercado <?php echo $mercado->nombre;?></title>
   </head>
+
 <body class="type-leter">
+  <div class="menu-abajo">
+    <img src="/assets/img/info.png" class="img-arriba">
+    <img src="/assets/img/document.png" class="img-arriba">
+    <img src="/assets/img/iconimagen.png" class="img-arriba">
+    <img src="/assets/img/imagenlocal.png" class="img-arriba">
+    <img src="/assets/img/ubicacion.png" class="img-arriba">
+  </div>
+  <div class="menu-abajo fixed-left">
+    <ul>
+      <li><a href="#info">Info.General</a></li>
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#locales">Locales</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#localizacion">Localización</a></li>
+    </ul>
+  </div>
+  
   <div class="row">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top nav-bar-color">  
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,14 +42,17 @@
             <a class="nav-link separator-option" href="/">Inicio <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link separator-option" href="<?php echo '/'; ?>Mercado/galeria">Galeria</a>
+            <a class="nav-link separator-option" href="/Mercado/nosotros">Nosotros</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link disabled separator-option" href="<?php echo '/'; ?>Mercado/nosotros">Nosotros</a>
+            <a class="nav-link separator-option" href="/Mercado/galeria">Galería</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link separator-option" href="/Mercado/descargas">App Móvil</a>
           </li>
         </ul>
          <form method="POST" action="/Mercado/busqueda" class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Mercado" aria-label="Mercado" id="tags" name="tags">
+                <input class="form-control mr-sm-2" type="text" placeholder="Ej. nieve,tlayuda" aria-label="Mercado" id="tags" name="tags">
                 <button class="btn btn-light" type="submit">Buscar</button>
               </form>
       </div>
@@ -41,9 +63,11 @@
   <div class="contenedor">
      <img class ="img-fluid imageninicio" src="<?php echo '/'.$principal->rutaAbsoluta; ?>" height="500">
      <div class="centrado"><h1 class="text-white bold"><?php echo '#'.$mercado->nombre; ?></h1></div>
+     <a name="info"></a>
   </div>
 </div>
 <br><br>
+
 <div class="container">
   <div class="row">
       <div class="col-xs-12 col-md-12">
@@ -79,7 +103,7 @@
       <td> <p class="text-right"><?php echo 'Todos los días '.'&nbsp &nbsp &nbsp &nbsp &nbsp'.$mercado->horario;?></p></td>
     </tr>
     <tr>
-      <th scope="row" class="color-pink"><h5><b>Telefono:</b></h5></th>
+      <th scope="row" class="color-pink"><h5><b>Teléfono:</b></h5></th>
       <td><p class="text-right"><?php if($mercado->telefono == ''){ echo 'Sin Teléfono'; }else{ echo $mercado->telefono;}  ?></p></td>
     </tr>
   </tbody>
@@ -91,6 +115,9 @@
 </div>
 </div>
 
+
+
+<a name="historia"></a>
 <div class="row">
     <div class="col-xs-12 col-md-12">
         <br><br><br>
@@ -106,7 +133,7 @@
     </div>
      <div class="columnas-separator col-xs-12 col-md-10 text-justify">
 
-       <h6><?php echo $mercado->historia;?></h6>
+       <h6 class="interlineado"><?php echo $mercado->historia;?></h6>
      </div>
      <div class="columnas-separator col-xs-12 col-md-1">
     </div>
@@ -114,8 +141,8 @@
 <br>
 
 <br>
+<a name="locales"></a>
 <div class="row margen-abajo">
-
       <div class="col-xs-12 col-md-12">
         <br>
         <h1 class = "text-center color-pink"><label><b>Locales</b></label></h1>
@@ -128,16 +155,51 @@
           <?php 
             foreach ($locales as $key) {   
           ?>
+          <?php $idnombre = $key['idLocal']; ?>
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
-          <div class="card separator-card shadow-lg style-tarjeta">
-            <img class="card-img-top" src="<?php echo '/'.$key['logo'];?>" alt="Card image cap" height="225">
+            <div class="card separator-card shadow-lg style-tarjeta">
+            <img class="card-img-top" src="<?php echo '/'.$key['rutaAbsoluta'];?>" alt="Card image cap" height="225">
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
               <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
+              <button type="button" class="btn btn-sm btn-ovalo text-boton-local" data-toggle="modal" data-target=<?php echo "#local".$idnombre ?>>Ver más</button>
+             
             </div> 
-          </div> 
+            </div> 
            <br>
+          </div>
+
+         
+          <div class="modal fade" id=<?php echo "local".$idnombre ?> tabindex="-1" role="dialog" aria-labelledby=<?php echo "label".$idnombre ?> aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title negritas color-pink" id=<?php echo "label".$idnombre ?>> <img src="/assets/img/locales_logo.png" class="margen-derecho-modal" height="34"><?php echo $key['nombre'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <div class="modal-body">
+                       <img class="card-img-top" src="<?php echo '/'.$key['rutaAbsoluta'];?>">
+                       <h6 class="negritas margen-arriba">Núm. Local: <?php echo $key['idLocal'] ?></h6>
+                       <p class="separador text-modal"><?php echo $key['historia'] ?></p>
+                       <h6 class="color-pink margen-iz-modal">Principales sabores: </h6>
+                       <?php $arre = explode(',',$key['tags']); ?>
+                       <ul>
+                         <?php 
+                            foreach ($arre as $key) {   
+                         ?>
+                            <li class="lista"><?php echo $key ?></li>
+                         <?php } ?>
+                       </ul>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-ovalo nav-bar-color" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
           </div>
           <?php } ?>
     </div>
@@ -181,17 +243,49 @@
       <?php 
          foreach ($alimentos as $key) {   
       ?>
+      <?php $idnombre = $key['idLocal']; ?>
        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
        <div class="card separator-card shadow-lg style-tarjeta">
-        <img class="card-img-top" src="<?php echo '/'.$key['logo'];?>" alt="Card image cap" height="225">
+        <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>" alt="Card image cap" height="225">
           <div class="card-body">
           <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
           <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
           <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
+          <button type="button" class="btn btn-sm btn-ovalo text-boton-local" data-toggle="modal" data-target=<?php echo "#local".$idnombre ?>>Ver más</button>
           </div> 
        </div> 
        <br>
        </div>
+
+       <div class="modal fade" id=<?php echo "local".$idnombre ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title negritas color-pink" id="exampleModalLabel"> <img src="/assets/img/locales_logo.png" class="margen-derecho-modal" height="34"><?php echo $key['nombre'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <div class="modal-body">
+                       <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>">
+                       <h6 class="negritas margen-arriba">Núm. Local: <?php echo $key['idLocal'] ?></h6>
+                       <p class="separador text-modal"><?php echo $key['historia'] ?></p>
+                       <h6 class="color-pink margen-iz-modal">Principales sabores: </h6>
+                       <?php $arre = explode(',',$key['tags']); ?>
+                       <ul>
+                         <?php 
+                            foreach ($arre as $key) {   
+                         ?>
+                            <li class="lista"><?php echo $key ?></li>
+                         <?php } ?>
+                       </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-ovalo nav-bar-color" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
       <?php } ?>
     </div>
   <?php endif ?>
@@ -207,18 +301,50 @@
     <?php else: ?>
         <div class= "row mx-auto p-3 style-centrado">
           <?php 
-            foreach ($panaderia as $key) {   
+            foreach ($panaderia as $key){   
           ?>
+          <?php $idnombre = $key['idLocal']; ?>
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
           <div class="card separator-card shadow-lg style-tarjeta">
-            <img class="card-img-top" src="<?php echo '/'.$key['logo'];?>" alt="Card image cap" height="225">
+            <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>" alt="Card image cap" height="225">
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
               <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
+              <button type="button" class="btn btn-sm btn-ovalo text-boton-local" data-toggle="modal" data-target=<?php echo "#local".$idnombre ?>>Ver más</button>
             </div> 
           </div> 
            <br>
+          </div>
+
+          <div class="modal fade" id=<?php echo "local".$idnombre ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title negritas color-pink" id="exampleModalLabel"> <img src="/assets/img/locales_logo.png" class="margen-derecho-modal" height="34"><?php echo $key['nombre'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <div class="modal-body">
+                       <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>">
+                       <h6 class="negritas margen-arriba">Núm. Local: <?php echo $key['idLocal'] ?></h6>
+                       <p class="separador text-modal"><?php echo $key['historia'] ?></p>
+                       <h6 class="color-pink margen-iz-modal">Principales sabores: </h6>
+                       <?php $arre = explode(',',$key['tags']); ?>
+                       <ul>
+                         <?php 
+                            foreach ($arre as $key) {   
+                         ?>
+                            <li class="lista"><?php echo $key ?></li>
+                         <?php } ?>
+                       </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-ovalo nav-bar-color" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
           </div>
           <?php } ?>
         </div>
@@ -236,16 +362,48 @@
           <?php 
             foreach ($menudo as $key) {   
           ?>
+          <?php $idnombre = $key['idLocal']; ?>
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
           <div class="card separator-card shadow-lg style-tarjeta">
-            <img class="card-img-top" src="<?php echo '/'.$key['logo'];?>" alt="Card image cap" height="225">
+            <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>" alt="Card image cap" height="225">
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
               <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
+              <button type="button" class="btn btn-sm btn-ovalo text-boton-local" data-toggle="modal" data-target=<?php echo "#local".$idnombre ?>>Ver más</button>
             </div> 
           </div> 
            <br>
+          </div>
+
+          <div class="modal fade" id=<?php echo "local".$idnombre ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title negritas color-pink" id="exampleModalLabel"> <img src="/assets/img/locales_logo.png" class="margen-derecho-modal" height="34"><?php echo $key['nombre'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <div class="modal-body">
+                       <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>">
+                       <h6 class="negritas margen-arriba">Núm. Local: <?php echo $key['idLocal'] ?></h6>
+                       <p class="separador text-modal"><?php echo $key['historia'] ?></p>
+                       <h6 class="color-pink margen-iz-modal">Principales sabores: </h6>
+                       <?php $arre = explode(',',$key['tags']); ?>
+                       <ul>
+                         <?php 
+                            foreach ($arre as $key) {   
+                         ?>
+                            <li class="lista"><?php echo $key ?></li>
+                         <?php } ?>
+                       </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-ovalo nav-bar-color" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
           </div>
           <?php } ?>
         </div>
@@ -263,16 +421,48 @@
           <?php 
             foreach ($flores as $key) {   
           ?>
+          <?php $idnombre = $key['idLocal']; ?>
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
           <div class="card separator-card shadow-lg style-tarjeta">
-            <img class="card-img-top" src="<?php echo '/'.$key['logo'];?>" alt="Card image cap" height="225">
+            <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>" alt="Card image cap" height="225">
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
               <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
+              <button type="button" class="btn btn-sm btn-ovalo text-boton-local" data-toggle="modal" data-target=<?php echo "#local".$idnombre ?>>Ver más</button>
             </div> 
           </div> 
            <br>
+          </div>
+
+          <div class="modal fade" id=<?php echo "local".$idnombre ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title negritas color-pink" id="exampleModalLabel"> <img src="/assets/img/locales_logo.png" class="margen-derecho-modal" height="34"><?php echo $key['nombre'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <div class="modal-body">
+                       <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>">
+                       <h6 class="negritas margen-arriba">Núm. Local: <?php echo $key['idLocal'] ?></h6>
+                       <p class="separador text-modal"><?php echo $key['historia'] ?></p>
+                       <h6 class="color-pink margen-iz-modal">Principales sabores: </h6>
+                       <?php $arre = explode(',',$key['tags']); ?>
+                       <ul>
+                         <?php 
+                            foreach ($arre as $key) {   
+                         ?>
+                            <li class="lista"><?php echo $key ?></li>
+                         <?php } ?>
+                       </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-ovalo nav-bar-color" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
           </div>
           <?php } ?>
         </div>
@@ -290,16 +480,48 @@
           <?php 
             foreach ($carnes as $key) {   
           ?>
+          <?php $idnombre = $key['idLocal']; ?>
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
           <div class="card separator-card shadow-lg style-tarjeta">
-            <img class="card-img-top" src="<?php echo '/'.$key['logo'];?>" alt="Card image cap" height="225">
+            <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>" alt="Card image cap" height="225">
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
               <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
+              <button type="button" class="btn btn-sm btn-ovalo text-boton-local" data-toggle="modal" data-target=<?php echo "#local".$idnombre ?>>Ver más</button>
             </div> 
           </div> 
            <br>
+          </div>
+
+          <div class="modal fade" id=<?php echo "local".$idnombre ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title negritas color-pink" id="exampleModalLabel"> <img src="/assets/img/locales_logo.png" class="margen-derecho-modal" height="34"><?php echo $key['nombre'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <div class="modal-body">
+                       <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>">
+                       <h6 class="negritas margen-arriba">Núm. Local: <?php echo $key['idLocal'] ?></h6>
+                       <p class="separador text-modal"><?php echo $key['historia'] ?></p>
+                       <h6 class="color-pink margen-iz-modal">Principales sabores: </h6>
+                       <?php $arre = explode(',',$key['tags']); ?>
+                       <ul>
+                         <?php 
+                            foreach ($arre as $key) {   
+                         ?>
+                            <li class="lista"><?php echo $key ?></li>
+                         <?php } ?>
+                       </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-ovalo nav-bar-color" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
           </div>
           <?php } ?>
         </div>
@@ -316,16 +538,48 @@
           <?php 
             foreach ($artesanias as $key) {   
           ?>
+          <?php $idnombre = $key['idLocal']; ?>
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
           <div class="card separator-card shadow-lg style-tarjeta">
-            <img class="card-img-top" src="<?php echo '/'.$key['logo'];?>" alt="Card image cap" height="225">
+            <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>" alt="Card image cap" height="225">
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
               <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
+              <button type="button" class="btn btn-sm btn-ovalo text-boton-local" data-toggle="modal" data-target=<?php echo "#local".$idnombre ?>>Ver más</button>
             </div> 
           </div> 
            <br>
+          </div>
+
+          <div class="modal fade" id=<?php echo "local".$idnombre ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title negritas color-pink" id="exampleModalLabel"> <img src="/assets/img/locales_logo.png" class="margen-derecho-modal" height="34"><?php echo $key['nombre'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <div class="modal-body">
+                       <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>">
+                       <h6 class="negritas margen-arriba">Núm. Local: <?php echo $key['idLocal'] ?></h6>
+                       <p class="separador text-modal"><?php echo $key['historia'] ?></p>
+                       <h6 class="color-pink margen-iz-modal">Principales sabores: </h6>
+                       <?php $arre = explode(',',$key['tags']); ?>
+                       <ul>
+                         <?php 
+                            foreach ($arre as $key) {   
+                         ?>
+                            <li class="lista"><?php echo $key ?></li>
+                         <?php } ?>
+                       </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-ovalo nav-bar-color" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
           </div>
           <?php } ?>
         </div>
@@ -343,16 +597,48 @@
           <?php 
             foreach ($textil as $key) {   
           ?>
+          <?php $idnombre = $key['idLocal']; ?>
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 style-centrado">
           <div class="card separator-card shadow-lg style-tarjeta">
-            <img class="card-img-top" src="<?php echo '/'.$key['logo'];?>" alt="Card image cap" height="225">
+            <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>" alt="Card image cap" height="225">
             <div class="card-body">
               <h5 class="card-title"><p><b><?php echo $key['nombre'] ?></b></p></h5>
               <h6 class="card-subtitle pink-card mb-2"><b><?php echo $key['eslogan'] ?></b></h6>
               <h6 class="card-text text-min text-justify"><?php echo $key['historia'] ?></h6>
+              <button type="button" class="btn btn-sm btn-ovalo text-boton-local" data-toggle="modal" data-target=<?php echo "#local".$idnombre ?>>Ver más</button>
             </div> 
           </div> 
            <br>
+          </div>
+
+          <div class="modal fade" id=<?php echo "local".$idnombre ?> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title negritas color-pink" id="exampleModalLabel"> <img src="/assets/img/locales_logo.png" class="margen-derecho-modal" height="34"><?php echo $key['nombre'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <div class="modal-body">
+                       <img class="card-img-top" src="<?php echo '/'.$key['rutaMediana'];?>">
+                       <h6 class="negritas margen-arriba">Núm. Local: <?php echo $key['idLocal'] ?></h6>
+                       <p class="separador text-modal"><?php echo $key['historia'] ?></p>
+                       <h6 class="color-pink margen-iz-modal">Principales sabores: </h6>
+                       <?php $arre = explode(',',$key['tags']); ?>
+                       <ul>
+                         <?php 
+                            foreach ($arre as $key) {   
+                         ?>
+                            <li class="lista"><?php echo $key ?></li>
+                         <?php } ?>
+                       </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-ovalo nav-bar-color" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
           </div>
           <?php } ?>
         </div>
@@ -362,6 +648,7 @@
 <?php endif ?>
 
 <br><br>
+<a name="galeria"></a>
 <div class="row col-xs-4">
     <div class="col-xs-12 col-md-12">
         <br><br>
@@ -381,7 +668,9 @@
   <?php } ?>
 </div>
 
+
 <br><br>
+<a name="localizacion"></a>
 <div class="row">
     <div class="col-xs-12 col-md-12">
         <br><br>
@@ -475,6 +764,7 @@
    }
 </script>
 </div>
+
 <br>
 <footer class="footer nav-bar-color">
       <div class="container-fluid">
@@ -494,7 +784,6 @@
 
             <a href="https://www.facebook.com/GobCdOax/"><img class="img-tam text-right" src="/assets/img/facebook-icono.png"></a>
             <a href="https://twitter.com/gobcdoax?lang=es"><img class="img-tam text-right" src="/assets/img/twitter-icono.png"></a>
-             <a href="https://www.instagram.com/oaxtravel/?hl=es-la"><img class="img-tam text-right" src="/assets/img/instagram-icono.png"></a>
            </div>
            <div class="col-xs-1 col-md-1 col-xl-1">
           </div>
@@ -511,5 +800,6 @@
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/lightbox-plus-jquery.min.js"></script>
+
 </body>
 </html>

@@ -50,7 +50,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 function &DB($params = '', $query_builder_override = NULL)
 {
-	
 	// Load the DB config file if a DSN string wasn't passed
 	if (is_string($params) && strpos($params, '://') === FALSE)
 	{
@@ -106,7 +105,6 @@ function &DB($params = '', $query_builder_override = NULL)
 	}
 	elseif (is_string($params))
 	{
-		
 		/**
 		 * Parse the URL from the DSN string
 		 * Database settings can be passed as discreet
@@ -148,8 +146,7 @@ function &DB($params = '', $query_builder_override = NULL)
 	// No DB specified yet? Beat them senseless...
 	if (empty($params['dbdriver']))
 	{
-	
-		show_error('You have not selected a database type to connect to.'.json_encode($params));
+		show_error('You have not selected a database type to connect to.');
 	}
 
 	// Load the DB classes. Note: Since the query builder class is optional
@@ -201,7 +198,6 @@ function &DB($params = '', $query_builder_override = NULL)
 
 	// Instantiate the DB adapter
 	$driver = 'CI_DB_'.$params['dbdriver'].'_driver';
-	
 	$DB = new $driver($params);
 
 	// Check for a subdriver
