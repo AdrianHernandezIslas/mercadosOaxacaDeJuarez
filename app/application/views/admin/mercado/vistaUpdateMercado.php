@@ -151,14 +151,15 @@
     </div>
   </form>
   <br>
-  <form method="POST" enctype="multipart/form-data" action="<?php echo '/'.'Mercado/insertImgMercado/'.$mercado->idMercado;?>">
+
+  <form method="POST" enctype="multipart/form-data" action="<?php echo '/'.'Mercado/insertImgMercado/'.$mercado->idMercado;?>" id="fileForm" e-id="<?php echo $mercado->idMercado;?>">
     <div class="row">
       <div class="col-4"></div>
       <div class="col-3">
         <div class="input-group">
             <div class="custom-file">
                <input type="file" class="custom-file-input" id="foto" name="foto">
-               <label class="custom-file-label" for="inputGroupFile04">Elija el Archivo</label>
+               <label class="custom-file-label" for="foto">Elija el Archivo</label>
             </div>
             <div class="input-group-append">
               <button type="submit" class="btn btn-success">Subir</button>
@@ -173,6 +174,8 @@
       </div>
     </div>
   </form>
+
+
   <div class= "row mx-auto  style-centrado">
   <div class="col-3"></div>
     <div class="col-9">
@@ -201,5 +204,7 @@
     <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/js/file/api-file.js"></script>
+    <script src="/assets/js/js/mercado/load-file.js"></script>
   </body>
 </html>
