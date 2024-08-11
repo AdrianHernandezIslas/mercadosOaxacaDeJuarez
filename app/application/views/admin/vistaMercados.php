@@ -80,7 +80,7 @@
           </div>
           <img class="card-img-top" src="<?php echo '/'.$key['imagen'];?>" alt="Card image cap">
           <div class="card-body">
-            <a href="<?php echo '/'.'Mercado/updateMercado/'.$key['idMercado'];?>" class="btn btn-sm btn-ovalo btn-lrg nav-bar-color text-white">Editar</a>
+            <a href="<?php echo '/'.'admin/vw/mercado/'.$key['idMercado'];?>" class="btn btn-sm btn-ovalo btn-lrg nav-bar-color text-white">Editar</a>
             <a  class="btn btn-sm btn-ovalo nav-bar-color text-white" onclick= "Main.eliminar(<?php echo $key['idMercado']; ?>)">Eliminar</a>
           </div>
         </div>
@@ -100,7 +100,7 @@
           </div>
           <img class="card-img-top" src="<?php echo '/'.$key['imagen'];?>" alt="Card image cap">
           <div class="card-body">
-            <a href="<?php echo '/'.'Mercado/updateMercado/'.$key['idMercado'];?>" class="btn btn-sm btn-ovalo btn-lrg nav-bar-color text-white">Editar</a>
+            <a href="<?php echo '/'.'admin/vw/mercado/'.$key['idMercado'];?>" class="btn btn-sm btn-ovalo btn-lrg nav-bar-color text-white">Editar</a>
             <a  class="btn btn-sm btn-ovalo nav-bar-color text-white" onclick= "Main.eliminar(<?php echo $key['idMercado']; ?>)">Eliminar</a>
           </div>
         </div>
@@ -112,7 +112,7 @@
           </div>
           <img class="card-img-top" src="<?php echo '/'.$key['imagen'];?>" alt="Card image cap">
           <div class="card-body">
-            <a href="<?php echo '/'.'Mercado/updateMercado/'.$key['idMercado'];?>" class="btn btn-sm btn-ovalo btn-lrg nav-bar-color text-white">Editar</a>
+            <a href="<?php echo '/'.'admin/vw/mercado/'.$key['idMercado'];?>" class="btn btn-sm btn-ovalo btn-lrg nav-bar-color text-white">Editar</a>
             <a  class="btn btn-sm btn-ovalo nav-bar-color text-white" onclick= "Main.eliminar(<?php echo $key['idMercado']; ?>)">Eliminar</a>
           </div>
         </div>

@@ -77,7 +77,7 @@
           </div>
           <img class="card-img-top" src="<?php echo base_url().$key['imagen'];?>" alt="Card image cap">
           <div class="card-body">
-            <a href="<?php echo base_url().'Mercado/updateMercado/'.$key['idMercado'];?>" class="btn btn-sm btn-ovalo btn-lrg nav-bar-color text-white">Editar</a>
+            <a href="<?php echo base_url().'admin/vw/mercado/'.$key['idMercado'];?>" class="btn btn-sm btn-ovalo btn-lrg nav-bar-color text-white">Editar</a>
             <a href="#" class="btn btn-sm btn-ovalo nav-bar-color text-white">Eliminar</a>
           </div>
         </div>
