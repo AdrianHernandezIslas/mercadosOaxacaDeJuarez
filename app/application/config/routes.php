@@ -57,3 +57,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['admin/dashboard'] = 'Mercado/admin';
 $route['admin/vw/mercado'] = 'Mercado/nuevo';
 $route['admin/vw/mercado/(:num)'] = 'Mercado/updateMercado/$1';
+
+$route['api/v1/mercado'] = 'MercadoController/create';
