@@ -1,4 +1,4 @@
-<nav class="sidebar" id="sidebar">
+<nav class="sidebar shadow" id="sidebar">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi me-2" width="40" height="32">
                 <use xlink:href="#bootstrap" />
@@ -10,25 +10,25 @@
             <li class="nav-item">
                 <a href="#" class="nav-link active" aria-current="page">
                     <i class="bi bi-house-door me-2"></i>
-                    Home
+                    Inicio
                 </a>
             </li>
             <li>
                 <a href="#" class="nav-link text-white">
                     <i class="bi bi-speedometer2 me-2"></i>
-                    Dashboard
+                    Mercado
                 </a>
             </li>
             <li>
                 <a href="#" class="nav-link text-white">
                     <i class="bi bi-table me-2"></i>
-                    Orders
+                    Local
                 </a>
             </li>
             <li>
                 <a href="#" class="nav-link text-white">
                     <i class="bi bi-person-circle me-2"></i>
-                    Products
+                    Usuario
                 </a>
             </li>
             <li>
