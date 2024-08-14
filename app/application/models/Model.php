@@ -7,7 +7,7 @@ class Model extends CI_Model
     protected $table;
     protected $key;
 
-    function __construct($table,$key)
+    function __construct($table, $key)
     {
         parent::__construct();
         $this->load->database();
@@ -20,6 +20,14 @@ class Model extends CI_Model
         $query = $this->db->insert($this->table, $data);
         $insert_id = $this->db->insert_id();
         return ($query) ? $this->findById($insert_id) : null;
+    }
+
+    public function findAll()
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     public function findById($idMercado = 0)

@@ -22,6 +22,10 @@ class MercadoService
         return $mercadoEntity;
     }
 
+    public function findAll(){
+        return $this->mercadoModel->findAll();
+    }
+
     private function locacionBuild($values)
     {
         return array(

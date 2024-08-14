@@ -25,4 +25,10 @@ class MercadoController extends CI_Controller
 			echo json_encode($error_response, JSON_UNESCAPED_UNICODE);
 		}
 	}
+
+	public function getAll()
+	{
+		$response =  $this->mercadoService->findAll();
+		echo json_encode($response, JSON_UNESCAPED_UNICODE);
+	}
 }

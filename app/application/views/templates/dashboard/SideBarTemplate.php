@@ -8,13 +8,13 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
+                <a href="#" class="nav-link text-white" aria-current="page">
                     <i class="bi bi-house-door me-2"></i>
                     Inicio
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link text-white">
+                <a href="#" class="nav-link text-white active">
                     <i class="bi bi-speedometer2 me-2"></i>
                     Mercado
                 </a>
