@@ -1,54 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form method="POST">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    <div class="row mb-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe nombre" maxlength="45" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <input type="text" class="form-control" id="direccion" name="direccion" maxlength="50"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
 
-<head>
-    <?php include(APPPATH . 'views/templates/global/HeadTemplate.php'); ?>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Telefono</label>
+                                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="9511002240" maxlength="10" pattern="[0-9]*" onkeypress="return Validar.tipoNumero(event);" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                            <label for="inputState">Zona</label>
+                            <select id="zona" name="zona" class="form-select">
+                                <option selected disabled>Selecciona Zona...</option>
+                                <option value="C">Centro</option>
+                                <option value="S">Sur</option>
+                                <option value="CH">Centro Historico</option>
+                                <option value="N">Norte</option>
+                                <option value="P">Poniente</option>
+                                <option value="O">Oriente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
 
-    <!-- CSS de DataTables con Bootstrap 5 -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css">
-    <!-- CSS adicional -->
-    <link rel="stylesheet" href="/assets/css/dashboard.css">
-    <title>Mercado</title>
-</head>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" maxlength="105" required>
+                            </div>
+                        </div>
 
-<body>
-    <!-- Navigation -->
-    <?php include(APPPATH . 'views/templates/dashboard/MainNavigationTemplate.php'); ?>
+                    </div>
+                    <div class="row mb-3">
 
-    <!-- Main Content -->
-    <div class="main-content" id="mainContent">
-        <div class="card p-4 shadow">
-            <div class="card-body">
-                <h3 class="card-title mb-2">Mercado</h3>
-                <table id="example" class="table table-hover" style="width:100%">
-                    <thead>
-                        <tr class="active">
-                            <th>Nombre</th>
-                            <th>Dirección</th>
-                            <th>Zona</th>
-                            <th>Horario</th>
-                            <th>Telefono</th>
-                            <th>Coordenadas</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Historia</label>
+                                <textarea class="form-control" id="historia" name="historia" rows="3" maxlength="1060"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>latitud</label>
+                                <input type="text" class="form-control" id="latitud" name="latitud" placeholder="12.3444" minlength="3" maxlength="10" onkeypress="return Validar.filterFloat(event,this);" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Longitud</label>
+                                <input type="text" class="form-control" id="longitud" name="longitud" placeholder="2332.12" minlength="3" maxlength="10" onkeypress="return Validar.filterFloat(event,this);" required></input>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Hora Apertura</label>
+                                <input type="time" class="form-control" id="horaA" name="horaA" placeholder="Horario" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Hora Cierre</label>
+                                <input type="time" class="form-control" id="horaC" name="horaC" placeholder="10:10" required>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary"> <i class="bi bi-plus-lg"></i> Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i> Cancelar</button>
+                </div>
             </div>
 
         </div>
-    </div>
-
-    <?php include(APPPATH . 'views/templates/global/ScriptTemplate.php'); ?>
-    <script src="/assets/js/dashboard/main.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- JS de DataTables -->
-    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
-    <!-- Archivo de traducción en español para DataTables -->
-    <script src="/assets/js/mercado/load-file.js"></script>
-</body>
-
-</html>
+    </form>
+</div>
