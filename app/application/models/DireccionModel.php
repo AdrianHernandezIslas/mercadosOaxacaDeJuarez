@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(APPPATH . 'models/Model.php');
-class LocacionModel extends Model
+class DireccionModel extends Model
 {
 
-    private $_table = "v3.locacion";
-    private $_key = "id_locacion";
+    private $_table = "v3.direccion";
+    private $_key = "id_direccion";
 
     function __construct()
     {

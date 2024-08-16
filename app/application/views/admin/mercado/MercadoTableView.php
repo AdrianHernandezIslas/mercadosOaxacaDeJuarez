@@ -31,7 +31,8 @@
                             <th>Nombre</th>
                             <th>Dirección</th>
                             <th>Zona</th>
-                            <th>Horario</th>
+                            <th>Hora Apertura</th>
+                            <th>Hora Cierre</th>
                             <th>Telefono</th>
                             <th>Coordenadas</th>
                             <th>Acciones</th>
@@ -57,6 +58,7 @@
     <script src="/assets/js/mercado/mercado.consts.js"></script>
     <script src="/assets/js/mercado/form.js"></script>
     <script src="/assets/js/mercado/main.js"></script>
+
 </body>
 
 </html>

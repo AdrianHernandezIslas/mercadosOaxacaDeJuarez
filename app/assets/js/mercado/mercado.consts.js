@@ -5,13 +5,16 @@ const MercadoConsts = {
         data: "nombre",
       }, // Ajusta los nombres de las columnas según tus datos
       {
-        data: "direccion",
+        data: null,
       },
       {
         data: "zona",
       },
       {
-        data: "horario",
+        data: "hora_apertura",
+      },
+      {
+        data: "hora_cierre",
       },
       {
         data: "telefono",

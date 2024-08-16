@@ -50,4 +50,9 @@ class Model extends CI_Model
         $this->db->where($this->key, $idMercado);
         return $this->db->delete($this->table);
     }
+
+    public function intance_db()
+    {
+        return $this->db;
+    }
 }

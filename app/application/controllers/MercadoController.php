@@ -10,7 +10,8 @@ class MercadoController extends CI_Controller
 		parent::__construct();
 		$this->load->model('MercadoModel');
 		$this->load->model('LocacionModel');
-		$this->mercadoService = new MercadoService($this->LocacionModel, $this->MercadoModel);
+		$this->load->model('DireccionModel');
+		$this->mercadoService = new MercadoService($this->LocacionModel, $this->MercadoModel, $this->DireccionModel);
 		header('Content-Type: application/json');
 	}
 

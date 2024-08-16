@@ -12,10 +12,60 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-12">
                             <div class="form-group">
-                                <label>Dirección</label>
-                                <input type="text" class="form-control" id="direccion" name="direccion" maxlength="50"></input>
+                                <label>Descripción</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" maxlength="105" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Historia</label>
+                                <textarea class="form-control" id="historia" name="historia" rows="3" maxlength="1060"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-8 col-md-8 col-sm-12">
+                            <div class="form-group">
+                                <label>Calle</label>
+                                <input type="text" class="form-control" id="calle" name="calle" maxlength="50"></input>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label>Numero</label>
+                                <input type="text" class="form-control" id="numero" name="numero" maxlength="50"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-8 col-md-8 col-sm-12">
+                            <div class="form-group">
+                                <label>Colonia</label>
+                                <input type="text" class="form-control" id="colonia" name="colonia" maxlength="50"></input>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="form-group">
+                                <label>C.P.</label>
+                                <input type="text" class="form-control" id="codigo_postal" name="codigo_postal" maxlength="5"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Municipio</label>
+                                <input type="text" class="form-control" id="municipio" name="municipio" maxlength="50"></input>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <input type="text" class="form-control" id="estado" name="estado" maxlength="50"></input>
                             </div>
                         </div>
                     </div>
@@ -41,51 +91,28 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label>Descripción</label>
-                                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" maxlength="105" required>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row mb-3">
-
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label>Historia</label>
-                                <textarea class="form-control" id="historia" name="historia" rows="3" maxlength="1060"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-
-                        <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="form-group">
                                 <label>latitud</label>
                                 <input type="text" class="form-control" id="latitud" name="latitud" placeholder="12.3444" minlength="3" maxlength="10" onkeypress="return Validar.filterFloat(event,this);" required>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="form-group">
                                 <label>Longitud</label>
-                                <input type="text" class="form-control" id="longitud" name="longitud" placeholder="2332.12" minlength="3" maxlength="10" onkeypress="return Validar.filterFloat(event,this);" required></input>
+                                <input type="text" class="form-control" id="longitud" name="longitud" placeholder="2332.12" minlength="3" maxlength="10" onkeypress="return Validar.filterFloat(event,this);" required>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="form-group">
                                 <label>Hora Apertura</label>
-                                <input type="time" class="form-control" id="horaA" name="horaA" placeholder="Horario" required>
+                                <input type="time" class="form-control" id="hora_apertura" name="hora_apertura" placeholder="Horario" required>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
                             <div class="form-group">
                                 <label>Hora Cierre</label>
-                                <input type="time" class="form-control" id="horaC" name="horaC" placeholder="10:10" required>
+                                <input type="time" class="form-control" id="hora_cierre" name="hora_cierre" placeholder="10:10" required>
                             </div>
                         </div>
                     </div>
