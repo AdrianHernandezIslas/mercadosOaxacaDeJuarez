@@ -1,5 +1,6 @@
 const MercadoConsts = {
   TABLE: {
+    ORDER: [[0, 'asc']],
     COLUMMS: [
       {
         data: "nombre",
@@ -34,4 +35,10 @@ const MercadoConsts = {
       url: "https://cdn.datatables.net/plug-ins/2.1.3/i18n/es-MX.json",
     },
   },
+  MESSAGE:{
+    ELIMINAR: "¿Esta seguro que dese eliminar el elemento?"
+  },
+  ROUTE:{
+    CREATE_MERCADO:"/api/v1/mercado"
+  }
 };

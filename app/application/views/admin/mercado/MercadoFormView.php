@@ -1,5 +1,5 @@
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <form method="POST">
+<div class="modal fade" id="mercadoFormModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="mercadoFormModalLabel" aria-hidden="true">
+    <form id="formMercado">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-body p-5">
@@ -116,10 +116,10 @@
                             </div>
                         </div>
                     </div>
-
+                    <input name="id_locacion" id="id_locacion" type="text" hidden><input id="id_direccion" name="id_direccion" type="text" hidden>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary"> <i class="bi bi-plus-lg"></i> Guardar</button>
+                    <button id="saveBtn" type="submit" class="btn btn-primary"> <i class="bi bi-plus-lg"></i> Guardar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i> Cancelar</button>
                 </div>
             </div>

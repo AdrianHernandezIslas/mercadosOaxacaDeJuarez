@@ -30,24 +30,24 @@ class Model extends CI_Model
         return $query->result_array();
     }
 
-    public function findById($idMercado = 0)
+    public function findById($id = 0)
     {
         $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->where($this->key, $idMercado);
+        $this->db->where($this->key, $id);
         $record = $this->db->get();
         return $record->row();
     }
 
-    public function update($idMercado, $data)
+    public function update($data,$id)
     {
-        $this->db->where($this->key, $idMercado);
+        $this->db->where($this->key, $id);
         return $this->db->update($this->table, $data);
     }
 
-    public function delete($idMercado)
+    public function delete($id)
     {
-        $this->db->where($this->key, $idMercado);
+        $this->db->where($this->key, $id);
         return $this->db->delete($this->table);
     }
 

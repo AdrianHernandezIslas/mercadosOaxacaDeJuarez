@@ -10,7 +10,7 @@ class MercadoPageController extends CI_Controller
     }
 
     public function nuevo(){
-	    $this->load->view('admin/mercado/MercadoTableView');
+	    $this->load->view('admin/mercado/index.php');
 	}
 
 }

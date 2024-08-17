@@ -59,3 +59,4 @@ $route['admin/vw/mercado'] = 'Mercado/nuevo';
 $route['admin/vw/mercado/(:num)'] = 'Mercado/updateMercado/$1';
 
 $route['api/v1/mercado'] = 'MercadoController/create';
+$route['api/v1/mercado/(:num)'] = 'MercadoController/updateOrDelete/$1';

@@ -16,20 +16,33 @@ class MercadoService
 
     public function create($data)
     {
-        
         $locacionData = $this->locacionBuild($data);
         $locacionEntity = $this->locationModel->create($locacionData);
         $direccionData = $this->direccionBuild($data);
         $direccionEntity = $this->direccionModel->create($direccionData);
-        $mercadoData = $this->mercadoBuild($data, $locacionEntity->id_locacion,$direccionEntity->id_direccion);
+        $mercadoData = $this->mercadoBuild($data, $locacionEntity->id_locacion, $direccionEntity->id_direccion);
         $mercadoEntity = $this->mercadoModel->create($mercadoData);
-       
         return $mercadoEntity;
     }
 
     public function findAll()
     {
         return $this->mercadoModel->findAll();
+    }
+
+    public function update($data, $id)
+    {
+        $locacionData = $this->locacionBuild($data);
+        $locacionEntity = $this->locationModel->update($locacionData,$data["id_locacion"]);
+        $direccionData = $this->direccionBuild($data);
+        $direccionEntity = $this->direccionModel->update($direccionData,$data["id_direccion"]);
+        $mercadoData = $this->mercadoBuild($data, $data["id_locacion"], $data["id_direccion"]);
+        $mercadoEntity = $this->mercadoModel->update($mercadoData,$id);
+        return $mercadoEntity;
+    }
+    public function delete($id)
+    {
+        return $this->mercadoModel->delete($id);
     }
 
     private function locacionBuild($values)
@@ -41,7 +54,7 @@ class MercadoService
         );
     }
 
-    private function mercadoBuild($values, $idLocacion = 0,$idDireccion = 0)
+    private function mercadoBuild($values, $idLocacion = 0, $idDireccion = 0)
     {
         return array(
             'id_locacion'  => $idLocacion,
