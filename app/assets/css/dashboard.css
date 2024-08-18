@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    margin-left: 250px;
+    /* Margen para que el navbar comience después del sidebar */
+    transition: margin-left 0.3s ease;
+    /* Transición suave para el navbar */
+    z-index: 1050;
+    /* Asegura que el navbar esté encima del sidebar */
+}
+
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    /* Ancho del sidebar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* Posición fija a la izquierda */
+    background-color: #343a40;
+    /* Color oscuro para el sidebar */
+    color: white;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    /* Transición suave para ocultar o mostrar el sidebar */
+    z-index: 1040;
+    /* Asegura que el sidebar esté debajo del navbar */
+}
+
+.sidebar.hide {
+    transform: translateX(-100%);
+    /* Oculta el sidebar moviéndolo fuera de la pantalla */
+}
+
+.main-content {
+    margin-left: 250px;
+    margin-top: 3.7rem;
+    /* Margen para el contenido principal */
+    padding: 1rem;
+    transition: margin-left 0.3s ease;
+    /* Transición suave para el margen */
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        /* Sidebar ocupa toda la pantalla en dispositivos móviles */
+        transform: translateX(-100%);
+        /* Oculto fuera de la vista */
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+        /* Muestra el sidebar en dispositivos móviles */
+    }
+
+    .navbar {
+        margin-left: 0;
+        /* Ajusta el margen para pantallas pequeñas */
+    }
+
+    .main-content {
+        margin-left: 0;
+        /* Ajusta el margen para pantallas pequeñas */
+    }
+}
