@@ -34,7 +34,6 @@ class RecursoImagen{
 
 	public function resizeImg($archivo,$ruta,$ancho,$largo){
 		 //creando imagen originalRedimensionada
-		 		
 				$config = array(
 							    'source_image'      => $archivo,
 							    'new_image'         => 'assets/recursos/img/'.$ruta.'/',
@@ -64,4 +63,5 @@ class RecursoImagen{
 
 }
 
- ?>
+
+?>
