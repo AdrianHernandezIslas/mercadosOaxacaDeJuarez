@@ -3,7 +3,7 @@
 --
 
 
-CREATE SCHEMA public;
+CREATE SCHEMA IF NOT EXISTS public;
 
 ALTER SCHEMA public OWNER TO postgres;
 
