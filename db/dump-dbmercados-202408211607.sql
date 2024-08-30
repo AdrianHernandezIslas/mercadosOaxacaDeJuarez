@@ -142,6 +142,7 @@ CREATE TABLE "direccion" (
 -- Records of direccion
 -- ----------------------------
 INSERT INTO "direccion" VALUES ('test', 't', 'test', 'd', 'd', '68030', '12.2', '10.2', 't', 1);
+INSERT INTO "direccion" VALUES ('Las Casas', '9513217244', 'Centro', 'Oaxaca', 'Mexico', '68000','17.05895','-96.72666','t',2);
 
 -- ----------------------------
 -- Table structure for giro
@@ -154,9 +155,14 @@ CREATE TABLE "giro" (
 )
 ;
 
+
 -- ----------------------------
 -- Records of giro
 -- ----------------------------
+INSERT INTO "giro" VALUES ('Alimentos','t',1);
+INSERT INTO "giro" VALUES ('Tecnologia','t',2);
+INSERT INTO "giro" VALUES ('Ropa','t',3);
+
 
 -- ----------------------------
 -- Table structure for locacion
@@ -175,6 +181,9 @@ CREATE TABLE "locacion" (
 -- ----------------------------
 INSERT INTO "locacion" VALUES ('Paz Migueles', 'test', '9514365555', 1);
 INSERT INTO "locacion" VALUES ('Paz Migueles', 'reggrte', '9514365555', 2);
+INSERT INTO "locacion" VALUES ('Benito Juarez', 'loreme isojkhocjkheiochoericer3w historia','9581065616',3);
+INSERT INTO "locacion" VALUES ('Novedades Lucas', 'loreme isojkhocjkheiochoericer3w historia local', '9581065616',4);
+INSERT INTO "locacion" VALUES ('Chuchita', 'loreme isojkhocjkheiochoericer3w historia local','9581065616',5);
 
 -- ----------------------------
 -- Table structure for locacion_archivo
@@ -218,6 +227,8 @@ CREATE TABLE "local" (
 -- ----------------------------
 -- Records of local
 -- ----------------------------
+INSERT INTO "local" VALUES ('LOC123', 'Amas es convivir','t', 3,4,2,1);
+INSERT INTO "local" VALUES ('LOC124', 'Chuchita','t', 1,5,2,2);
 
 -- ----------------------------
 -- Table structure for mercado
@@ -239,6 +250,7 @@ CREATE TABLE "mercado" (
 -- Records of mercado
 -- ----------------------------
 INSERT INTO "mercado" VALUES ('S', '19:09', '07:09', 'Test', 't', 2, 1, 1);
+INSERT INTO "mercado" VALUES ('Centro', '09:00','18:00','es un mercado grandote que esta en el centro de oaxaca','t',3,2,2);
 
 -- ----------------------------
 -- Table structure for palabra_clave
@@ -261,6 +273,10 @@ CACHE 1
 -- ----------------------------
 -- Records of palabra_clave
 -- ----------------------------
+INSERT INTO palabra_clave ("valor","id_local")
+VALUES 
+('FRUTA', 1),
+('PELUCHE', 2);
 
 -- ----------------------------
 -- Alter sequences owned by
