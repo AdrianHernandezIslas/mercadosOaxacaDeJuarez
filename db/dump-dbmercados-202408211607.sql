@@ -1,394 +1,376 @@
---
--- PostgreSQL dbmercados
---
-
-
-CREATE SCHEMA IF NOT EXISTS public;
-
-ALTER SCHEMA public OWNER TO postgres;
-
-
-CREATE TABLE IF NOT EXISTS public.archivo (
-    id integer NOT NULL,
-    nombre character varying NOT NULL,
-    ruta character varying NOT NULL,
-    tipo integer NOT NULL,
-    fecha_creacion date NOT NULL,
-    activo boolean DEFAULT true NOT NULL
-);
-
-
-ALTER TABLE public.archivo OWNER TO postgres;
-
---
--- Name: archivo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-ALTER TABLE public.archivo ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.archivo_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- Name: direccion; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE IF NOT EXISTS public.direccion (
-    id integer NOT NULL,
-    calle character varying NOT NULL,
-    numero character varying NOT NULL,
-    colonia character varying NOT NULL,
-    estado character varying NOT NULL,
-    pais character varying NOT NULL,
-    codigo_postal character varying NOT NULL,
-    latitud character varying,
-    longitud character varying,
-    activo boolean DEFAULT true NOT NULL
-);
-
-
-ALTER TABLE public.direccion OWNER TO postgres;
-
---
--- Name: direccion_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-ALTER TABLE public.direccion ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.direccion_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- Name: giro; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE IF NOT EXISTS public.giro (
-    id integer NOT NULL,
-    nombre character varying NOT NULL,
-    activo boolean DEFAULT true NOT NULL
-);
-
-
-ALTER TABLE public.giro OWNER TO postgres;
-
---
--- Name: giro_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-ALTER TABLE public.giro ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.giro_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- Name: locacion; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE IF NOT EXISTS public.locacion (
-    id integer NOT NULL,
-    nombre character varying NOT NULL,
-    historia text,
-    telefono character varying
-);
-
-
-ALTER TABLE public.locacion OWNER TO postgres;
-
---
--- Name: locacion_archivo; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE IF NOT EXISTS public.locacion_archivo (
-    id_locacion integer NOT NULL,
-    id_archivo integer NOT NULL
-);
-
-
-ALTER TABLE public.locacion_archivo OWNER TO postgres;
-
---
--- Name: locacion_id_locacion_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-ALTER TABLE public.locacion ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.locacion_id_locacion_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- Name: local; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE IF NOT EXISTS public.local (
-    id integer NOT NULL,
-    clave character varying NOT NULL,
-    eslogan character varying NOT NULL,
-    activo boolean DEFAULT true NOT NULL,
-    id_giro integer NOT NULL,
-    id_locacion integer NOT NULL,
-    id_mercado integer NOT NULL
-);
-
-
-ALTER TABLE public.local OWNER TO postgres;
-
---
--- Name: local_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-ALTER TABLE public.local ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.local_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- Name: mercado; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE IF NOT EXISTS public.mercado (
-    id integer NOT NULL,
-    zona character varying NOT NULL,
-    hora_apertura character varying NOT NULL,
-    hora_cierre character varying NOT NULL,
-    descripcion character varying NOT NULL,
-    activo boolean DEFAULT true NOT NULL,
-    id_locacion integer NOT NULL,
-    id_direccion integer NOT NULL
-);
-
-
-ALTER TABLE public.mercado OWNER TO postgres;
-
---
--- Name: mercado_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-ALTER TABLE public.mercado ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.mercado_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
-
---
--- Name: palabra_clave; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE IF NOT EXISTS public.palabra_clave (
-    id integer NOT NULL,
-    valor character varying NOT NULL,
-    activo boolean DEFAULT true NOT NULL,
-    id_local integer NOT NULL
-);
-
-
-ALTER TABLE public.palabra_clave OWNER TO postgres;
-
---
--- Name: palabra_clave_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-ALTER TABLE public.palabra_clave ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public.palabra_clave_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1
-);
-
---
--- Name: archivo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.archivo_id_seq', 1, false);
-
-
---
--- Name: direccion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.direccion_id_seq', 1, false);
-
-
---
--- Name: giro_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.giro_id_seq', 1, false);
-
-
---
--- Name: locacion_id_locacion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.locacion_id_locacion_seq', 1, false);
-
-
---
--- Name: local_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.local_id_seq', 1, false);
-
-
---
--- Name: mercado_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.mercado_id_seq', 1, false);
-
-
---
--- Name: palabra_clave_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.palabra_clave_id_seq', 1, false);
-
-
---
--- Name: archivo archivo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.archivo
-    ADD CONSTRAINT archivo_pkey PRIMARY KEY (id);
-
-
---
--- Name: direccion direccion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.direccion
-    ADD CONSTRAINT direccion_pkey PRIMARY KEY (id);
-
-
---
--- Name: giro giro_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.giro
-    ADD CONSTRAINT giro_pkey PRIMARY KEY (id);
-
-
---
--- Name: locacion locacion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.locacion
-    ADD CONSTRAINT locacion_pkey PRIMARY KEY (id);
-
-
---
--- Name: local local_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.local
-    ADD CONSTRAINT local_pkey PRIMARY KEY (id);
-
-
---
--- Name: mercado mercado_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.mercado
-    ADD CONSTRAINT mercado_pkey PRIMARY KEY (id);
-
-
---
--- Name: palabra_clave palabra_clave_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.palabra_clave
-    ADD CONSTRAINT palabra_clave_pkey PRIMARY KEY (id);
-
-
---
--- Name: locacion_archivo archivo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.locacion_archivo
-    ADD CONSTRAINT archivo FOREIGN KEY (id_archivo) REFERENCES public.archivo(id) NOT VALID;
-
-
---
--- Name: mercado direccion; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.mercado
-    ADD CONSTRAINT direccion FOREIGN KEY (id_direccion) REFERENCES public.direccion(id) NOT VALID;
-
-
---
--- Name: local giro; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.local
-    ADD CONSTRAINT giro FOREIGN KEY (id_giro) REFERENCES public.giro(id) NOT VALID;
-
-
---
--- Name: mercado locacion; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.mercado
-    ADD CONSTRAINT locacion FOREIGN KEY (id_locacion) REFERENCES public.locacion(id);
-
-
---
--- Name: local locacion; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.local
-    ADD CONSTRAINT locacion FOREIGN KEY (id_locacion) REFERENCES public.locacion(id) NOT VALID;
-
-
---
--- Name: locacion_archivo locacion; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.locacion_archivo
-    ADD CONSTRAINT locacion FOREIGN KEY (id_locacion) REFERENCES public.locacion(id) NOT VALID;
-
-
---
--- Name: palabra_clave local; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.palabra_clave
-    ADD CONSTRAINT local FOREIGN KEY (id_local) REFERENCES public.local(id) NOT VALID;
-
-
---
--- Name: local mercado; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.local
-    ADD CONSTRAINT mercado FOREIGN KEY (id_mercado) REFERENCES public.mercado(id) NOT VALID;
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : dev-dbmercados
+ Source Server Type    : PostgreSQL
+ Source Server Version : 160003 (160003)
+ Source Host           : dpg-cr90naq3esus73behu1g-a.oregon-postgres.render.com:5432
+ Source Catalog        : dbmercados_ho3y
+ Source Schema         : v3
+
+ Target Server Type    : PostgreSQL
+ Target Server Version : 160003 (160003)
+ File Encoding         : 65001
+
+ Date: 30/08/2024 22:30:24
+*/
+
+
+-- ----------------------------
+-- Sequence structure for archivo_id_archivo_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "archivo_id_archivo_seq";
+CREATE SEQUENCE "archivo_id_archivo_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for direccion_id_direccion_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "direccion_id_direccion_seq";
+CREATE SEQUENCE "direccion_id_direccion_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for giro_id_giro_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "giro_id_giro_seq";
+CREATE SEQUENCE "giro_id_giro_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for locacion_id_locacion_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "locacion_id_locacion_seq";
+CREATE SEQUENCE "locacion_id_locacion_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for local_id_local_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "local_id_local_seq";
+CREATE SEQUENCE "local_id_local_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for mercado_id_mercado_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "mercado_id_mercado_seq";
+CREATE SEQUENCE "mercado_id_mercado_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Sequence structure for palabra_clave_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "palabra_clave_id_seq";
+CREATE SEQUENCE "palabra_clave_id_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1;
+
+-- ----------------------------
+-- Table structure for archivo
+-- ----------------------------
+DROP TABLE IF EXISTS "archivo";
+CREATE TABLE "archivo" (
+  "ruta" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "tipo" int4 NOT NULL,
+  "fecha_creacion" timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "id_archivo" int4 NOT NULL DEFAULT nextval('archivo_id_archivo_seq'::regclass)
+)
+;
+
+-- ----------------------------
+-- Records of archivo
+-- ----------------------------
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_876bba0f-3d50-4320-8b22-9920ff1000cc.jpeg', 1, '2024-08-30 20:46:07', 7);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_cdccee8e-4750-4875-873d-5435d3e267f3.jpeg', 1, '2024-08-30 20:54:05', 8);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_05d85f91-b191-442f-abe3-35617bc9e11c.jpeg', 1, '2024-08-30 20:55:19', 9);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_4d0dec9e-61a5-49ab-bea1-18cb9b6cb200.jpeg', 1, '2024-08-30 21:17:33', 10);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_3aebb660-d885-4949-a3ac-dc9d2e257c72.jpeg', 1, '2024-08-30 21:17:40', 11);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_2324000c-7818-46d2-85cd-cb8d7d7aaab9.jpeg', 1, '2024-08-30 21:17:44', 12);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_a533a5ed-7a58-4cf2-924e-b9f3d1a06aa2.jpeg', 1, '2024-08-30 21:17:50', 13);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_e0c99e38-0820-4b23-bd13-dea7b7ca94b1.jpeg', 1, '2024-08-30 21:17:54', 14);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_759c3df9-4c20-4b1b-ad69-9371bde25632.jpeg', 1, '2024-08-30 21:17:58', 15);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_17c75f8b-abb2-41f2-ba91-5308d5bd0598.jpeg', 1, '2024-08-30 21:18:05', 16);
+INSERT INTO "archivo" VALUES ('files/img/mercado/file_c0867ea9-0034-4f55-b580-09eaeabf41c0.jpeg', 1, '2024-08-30 21:19:33', 17);
+
+-- ----------------------------
+-- Table structure for direccion
+-- ----------------------------
+DROP TABLE IF EXISTS "direccion";
+CREATE TABLE "direccion" (
+  "calle" varchar(100) COLLATE "pg_catalog"."default" NOT NULL,
+  "numero" varchar(30) COLLATE "pg_catalog"."default" NOT NULL,
+  "colonia" varchar(150) COLLATE "pg_catalog"."default" NOT NULL,
+  "estado" varchar(45) COLLATE "pg_catalog"."default" NOT NULL,
+  "municipio" varchar(100) COLLATE "pg_catalog"."default" NOT NULL,
+  "codigo_postal" varchar(5) COLLATE "pg_catalog"."default" NOT NULL,
+  "latitud" varchar(15) COLLATE "pg_catalog"."default",
+  "longitud" varchar(15) COLLATE "pg_catalog"."default",
+  "activo" bool NOT NULL DEFAULT true,
+  "id_direccion" int4 NOT NULL DEFAULT nextval('direccion_id_direccion_seq'::regclass)
+)
+;
+
+-- ----------------------------
+-- Records of direccion
+-- ----------------------------
+INSERT INTO "direccion" VALUES ('test', 't', 'test', 'd', 'd', '68030', '12.2', '10.2', 't', 1);
+
+-- ----------------------------
+-- Table structure for giro
+-- ----------------------------
+DROP TABLE IF EXISTS "giro";
+CREATE TABLE "giro" (
+  "nombre" varchar(150) COLLATE "pg_catalog"."default" NOT NULL,
+  "activo" bool NOT NULL DEFAULT true,
+  "id_giro" int4 NOT NULL DEFAULT nextval('giro_id_giro_seq'::regclass)
+)
+;
+
+-- ----------------------------
+-- Records of giro
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for locacion
+-- ----------------------------
+DROP TABLE IF EXISTS "locacion";
+CREATE TABLE "locacion" (
+  "nombre" varchar(120) COLLATE "pg_catalog"."default" NOT NULL,
+  "historia" text COLLATE "pg_catalog"."default",
+  "telefono" varchar(15) COLLATE "pg_catalog"."default",
+  "id_locacion" int4 NOT NULL DEFAULT nextval('locacion_id_locacion_seq'::regclass)
+)
+;
+
+-- ----------------------------
+-- Records of locacion
+-- ----------------------------
+INSERT INTO "locacion" VALUES ('Paz Migueles', 'test', '9514365555', 1);
+INSERT INTO "locacion" VALUES ('Paz Migueles', 'reggrte', '9514365555', 2);
+
+-- ----------------------------
+-- Table structure for locacion_archivo
+-- ----------------------------
+DROP TABLE IF EXISTS "locacion_archivo";
+CREATE TABLE "locacion_archivo" (
+  "id_locacion" int4 NOT NULL,
+  "id_archivo" int4 NOT NULL
+)
+;
+
+-- ----------------------------
+-- Records of locacion_archivo
+-- ----------------------------
+INSERT INTO "locacion_archivo" VALUES (1, 8);
+INSERT INTO "locacion_archivo" VALUES (1, 9);
+INSERT INTO "locacion_archivo" VALUES (1, 10);
+INSERT INTO "locacion_archivo" VALUES (1, 11);
+INSERT INTO "locacion_archivo" VALUES (1, 12);
+INSERT INTO "locacion_archivo" VALUES (1, 13);
+INSERT INTO "locacion_archivo" VALUES (1, 14);
+INSERT INTO "locacion_archivo" VALUES (1, 15);
+INSERT INTO "locacion_archivo" VALUES (1, 16);
+INSERT INTO "locacion_archivo" VALUES (1, 17);
+
+-- ----------------------------
+-- Table structure for local
+-- ----------------------------
+DROP TABLE IF EXISTS "local";
+CREATE TABLE "local" (
+  "clave" varchar(15) COLLATE "pg_catalog"."default" NOT NULL,
+  "eslogan" varchar(255) COLLATE "pg_catalog"."default" NOT NULL,
+  "activo" bool NOT NULL DEFAULT true,
+  "id_giro" int4 NOT NULL,
+  "id_locacion" int4 NOT NULL,
+  "id_mercado" int4 NOT NULL,
+  "id_local" int4 NOT NULL DEFAULT nextval('local_id_local_seq'::regclass)
+)
+;
+
+-- ----------------------------
+-- Records of local
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for mercado
+-- ----------------------------
+DROP TABLE IF EXISTS "mercado";
+CREATE TABLE "mercado" (
+  "zona" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "hora_apertura" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "hora_cierre" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "descripcion" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "activo" bool NOT NULL DEFAULT true,
+  "id_locacion" int4 NOT NULL,
+  "id_direccion" int4 NOT NULL,
+  "id_mercado" int4 NOT NULL DEFAULT nextval('mercado_id_mercado_seq'::regclass)
+)
+;
+
+-- ----------------------------
+-- Records of mercado
+-- ----------------------------
+INSERT INTO "mercado" VALUES ('S', '19:09', '07:09', 'Test', 't', 2, 1, 1);
+
+-- ----------------------------
+-- Table structure for palabra_clave
+-- ----------------------------
+DROP TABLE IF EXISTS "palabra_clave";
+CREATE TABLE "palabra_clave" (
+  "id_palabra_clave" int4 NOT NULL GENERATED ALWAYS AS IDENTITY (
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 2147483647
+START 1
+CACHE 1
+),
+  "valor" varchar COLLATE "pg_catalog"."default" NOT NULL,
+  "activo" bool NOT NULL DEFAULT true,
+  "id_local" int4 NOT NULL
+)
+;
+
+-- ----------------------------
+-- Records of palabra_clave
+-- ----------------------------
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
+ALTER SEQUENCE "archivo_id_archivo_seq"
+OWNED BY "archivo"."id_archivo";
+SELECT setval('"archivo_id_archivo_seq"', 17, true);
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
+ALTER SEQUENCE "direccion_id_direccion_seq"
+OWNED BY "direccion"."id_direccion";
+SELECT setval('"direccion_id_direccion_seq"', 1, true);
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
+ALTER SEQUENCE "giro_id_giro_seq"
+OWNED BY "giro"."id_giro";
+SELECT setval('"giro_id_giro_seq"', 1, false);
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
+ALTER SEQUENCE "locacion_id_locacion_seq"
+OWNED BY "locacion"."id_locacion";
+SELECT setval('"locacion_id_locacion_seq"', 2, true);
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
+ALTER SEQUENCE "local_id_local_seq"
+OWNED BY "local"."id_local";
+SELECT setval('"local_id_local_seq"', 1, false);
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
+ALTER SEQUENCE "mercado_id_mercado_seq"
+OWNED BY "mercado"."id_mercado";
+SELECT setval('"mercado_id_mercado_seq"', 1, true);
+
+-- ----------------------------
+-- Alter sequences owned by
+-- ----------------------------
+ALTER SEQUENCE "palabra_clave_id_seq"
+OWNED BY "palabra_clave"."id_palabra_clave";
+SELECT setval('"palabra_clave_id_seq"', 1, false);
+
+-- ----------------------------
+-- Primary Key structure for table archivo
+-- ----------------------------
+ALTER TABLE "archivo" ADD CONSTRAINT "archivo_pkey" PRIMARY KEY ("id_archivo");
+
+-- ----------------------------
+-- Primary Key structure for table direccion
+-- ----------------------------
+ALTER TABLE "direccion" ADD CONSTRAINT "direccion_pkey" PRIMARY KEY ("id_direccion");
+
+-- ----------------------------
+-- Primary Key structure for table giro
+-- ----------------------------
+ALTER TABLE "giro" ADD CONSTRAINT "giro_pkey" PRIMARY KEY ("id_giro");
+
+-- ----------------------------
+-- Primary Key structure for table locacion
+-- ----------------------------
+ALTER TABLE "locacion" ADD CONSTRAINT "locacion_pkey" PRIMARY KEY ("id_locacion");
+
+-- ----------------------------
+-- Primary Key structure for table local
+-- ----------------------------
+ALTER TABLE "local" ADD CONSTRAINT "local_pkey" PRIMARY KEY ("id_local");
+
+-- ----------------------------
+-- Primary Key structure for table mercado
+-- ----------------------------
+ALTER TABLE "mercado" ADD CONSTRAINT "mercado_pkey" PRIMARY KEY ("id_mercado");
+
+-- ----------------------------
+-- Auto increment value for palabra_clave
+-- ----------------------------
+SELECT setval('"palabra_clave_id_seq"', 1, false);
+
+-- ----------------------------
+-- Primary Key structure for table palabra_clave
+-- ----------------------------
+ALTER TABLE "palabra_clave" ADD CONSTRAINT "palabra_clave_pkey" PRIMARY KEY ("id_palabra_clave");
+
+-- ----------------------------
+-- Foreign Keys structure for table locacion_archivo
+-- ----------------------------
+ALTER TABLE "locacion_archivo" ADD CONSTRAINT "fk_archivo" FOREIGN KEY ("id_archivo") REFERENCES "archivo" ("id_archivo") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "locacion_archivo" ADD CONSTRAINT "fk_locacion" FOREIGN KEY ("id_locacion") REFERENCES "locacion" ("id_locacion") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ----------------------------
+-- Foreign Keys structure for table local
+-- ----------------------------
+ALTER TABLE "local" ADD CONSTRAINT "fk_giro" FOREIGN KEY ("id_giro") REFERENCES "giro" ("id_giro") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "local" ADD CONSTRAINT "fk_locacion" FOREIGN KEY ("id_locacion") REFERENCES "locacion" ("id_locacion") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "local" ADD CONSTRAINT "fk_mercado" FOREIGN KEY ("id_mercado") REFERENCES "mercado" ("id_mercado") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ----------------------------
+-- Foreign Keys structure for table mercado
+-- ----------------------------
+ALTER TABLE "mercado" ADD CONSTRAINT "fk_id_direccion" FOREIGN KEY ("id_direccion") REFERENCES "direccion" ("id_direccion") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "mercado" ADD CONSTRAINT "fk_id_locacion" FOREIGN KEY ("id_locacion") REFERENCES "locacion" ("id_locacion") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ----------------------------
+-- Foreign Keys structure for table palabra_clave
+-- ----------------------------
+ALTER TABLE "palabra_clave" ADD CONSTRAINT "fk_local" FOREIGN KEY ("id_local") REFERENCES "local" ("id_local") ON DELETE CASCADE ON UPDATE CASCADE;
