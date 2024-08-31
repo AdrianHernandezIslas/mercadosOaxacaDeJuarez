@@ -43,4 +43,8 @@ class ArchivoService
 
         return $fileEntity;
     }
+
+    public function findByIdLocacion($idLocacion){
+        return $this->archivoModel->findByIdLocacion($idLocacion);
+    }
 }

@@ -4,13 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería con Bootstrap 5</title>
+    <title>Archivos a detalle</title>
     <?php include(APPPATH . 'views/templates/global/HeadTemplate.php'); ?>
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
 </head>
 
 <body>
 
-    <div class="container mt-4">
+ <!-- Navigation -->
+ <?php include(APPPATH . 'views/templates/dashboard/MainNavigationTemplate.php'); ?>
+
+<!-- Main Content -->
+<div class="main-content" id="mainContent">
+<div class="container mt-4">
         <form class="needs-validation" novalidate>
             <div class="row">
                 <div class="col-10">
@@ -33,61 +39,25 @@
 
             <hr class="mt-2 mb-5">
 
-            <table class="table table-borderless">
+            <table id="example" class="table table-borderless">
                 <tbody>
-                    <tr>
-                        <td> <a href="#" class="d-block mb-1 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://api-files-cn1f.onrender.com/api/v1/file/files/img/mercado/file_db0066f9-eaa6-4ac4-b4fb-9631c3f1479f.jpeg?width=400&height=300" alt="">
-                            </a></td>
-                        <td> <a href="#" class="d-block mb-1 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://api-files-cn1f.onrender.com/api/v1/file/files/img/mercado/file_c78b31a4-e2f8-4ebf-a9cb-ac68a5453be7.jpeg?width=400&height=300" alt="">
-                            </a></td>
-                        <td> <a href="#" class="d-block mb-1 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://api-files-cn1f.onrender.com/api/v1/file/files/img/mercado/file_5e8cd529-e801-4f44-abd5-3cf0599b71fc.jpeg?width=400&height=300" alt="">
-                            </a></td>
-                    </tr>
-                    <tr>
-                        <td> <a href="#" class="d-block mb-4 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://api-files-cn1f.onrender.com/api/v1/file/files/img/mercado/file_60ac1fea-6fff-4e09-9cc3-4c209b001eaa.jpeg?width=400&height=300" alt="">
-                            </a></td>
-                        <td> <a href="#" class="d-block mb-4 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://api-files-cn1f.onrender.com/api/v1/file/files/img/mercado/file_83521f96-ba49-407e-b30c-46c5664a9308.jpeg?width=400&height=300" alt="">
-                            </a></td>
-                        <td> <a href="#" class="d-block mb-4 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://api-files-cn1f.onrender.com/api/v1/file/files/img/mercado/file_ca2224a2-5a5c-46f9-ae9b-7f70326ea237.jpeg?width=400&height=300" alt="">
-                            </a></td>
-                    </tr>
-                    <tr>
-                        <td> <a href="#" class="d-block mb-4 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://via.placeholder.com/400x300" alt="">
-                            </a></td>
-                        <td> <a href="#" class="d-block mb-4 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://via.placeholder.com/400x300" alt="">
-                            </a></td>
-                        <td> <a href="#" class="d-block mb-4 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://via.placeholder.com/400x300" alt="">
-                            </a></td>
-                    </tr>
-                    <tr>
-                        <td> <a href="#" class="d-block mb-4 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://via.placeholder.com/400x300" alt="">
-                            </a></td>
-                        <td> <a href="#" class="d-block mb-4 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://via.placeholder.com/400x300" alt="">
-                            </a></td>
-                        <td> <a href="#" class="d-block mb-4 h-100">
-                                <img class="img-fluid img-thumbnail" src="https://via.placeholder.com/400x300" alt="">
-                            </a></td>
-                    </tr>
-
                 </tbody>
             </table>
 
         </div>
         <!-- Gallery -->
     </div>
+</div>
+
+
+
 
     <?php include(APPPATH . 'views/templates/global/ScriptTemplate.php'); ?>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- JS de DataTables -->
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
     <script>
         (() => {
 
@@ -106,16 +76,43 @@
                     form.classList.add('was-validated')
                 }, false)
             })
-        })()
-
-        /*const arreglo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        const tamaño = 3;
-
-        const partes = Array.from({
-                length: Math.ceil(arreglo.length / tamaño)
+        })();
+        const render = function(data) {
+                        return data ? `<a href="#" class="d-block mb-1 h-100">
+                                <img class="img-fluid img-thumbnail" src="https://api-files-cn1f.onrender.com/api/v1/file/${data.ruta}?width=400&height=300" alt="">
+                            </a>` : '';
+                    };
+        $("#example").DataTable({
+            ajax: {
+                url: "/api/v1/archivo/by/locacion/1",
+                dataSrc: function (json) {
+                    let result = [];
+                    for (let i = 0; i < json.length; i += 3) {
+                        result.push(json.slice(i, i + 3));
+                    }
+                    return result;
+                }
             },
-            (_, i) => arreglo.slice(i * tamaño, i * tamaño + tamaño)
-        );*/
+            columns: [
+                {
+                    data: 0,
+                    render
+                },
+                {
+                    data: 1,
+                    render
+                },
+                {
+                    data: 2,
+                    render
+                }
+            ],
+            dom: 't<"bottom"ip><"clear">',
+            paging: true,
+            searching: false,
+            info: false,
+            pageLength: 2
+        });
     </script>
 </body>
 

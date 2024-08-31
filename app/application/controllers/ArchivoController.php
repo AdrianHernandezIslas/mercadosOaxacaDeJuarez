@@ -34,4 +34,12 @@ class ArchivoController extends CI_Controller
             echo json_encode($error_response, JSON_UNESCAPED_UNICODE);
         }
     }
+
+    public function findByIdLocacion($idLocacion){
+        $response = $this->archivoService->findByIdLocacion($idLocacion);
+        $this->output->set_content_type('application/json')
+                ->set_status_header(200)
+                ->set_output(json_encode($response, JSON_UNESCAPED_UNICODE));
+    }
+
 }

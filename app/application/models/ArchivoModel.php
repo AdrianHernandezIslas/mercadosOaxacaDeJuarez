@@ -16,7 +16,7 @@ class ArchivoModel extends Model
     {
         $this->db->select('*');
         $this->db->from($this->_table);
-        $this->db->join("v3.locacion_archivo", $this->_table . ".id_locacion = v3.locacion_archivo.id_locacion");
+        $this->db->join("v3.locacion_archivo", $this->_table . ".id_archivo = v3.locacion_archivo.id_archivo");
         $this->db->where("v3.locacion_archivo.id_locacion", $idLocacion);
         $query = $this->db->get();
 
