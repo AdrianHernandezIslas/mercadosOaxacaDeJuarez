@@ -20,6 +20,6 @@ class HttpClientLibrary
         // Ejecuta la solicitud y obtiene la respuesta
         $respuesta = curl_exec($ch);
         curl_close($ch);
-        return $respuesta;
+        return json_decode($respuesta, true) ;
     }
 }
