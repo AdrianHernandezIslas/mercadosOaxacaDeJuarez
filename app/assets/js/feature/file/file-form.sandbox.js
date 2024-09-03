@@ -10,10 +10,11 @@ const fileFormSandbox = (() => {
         (event) => {
           event.preventDefault();
           if (!form.checkValidity()) {
+            console.log("invalido");
             event.stopPropagation();
           }
 
-          form.classList.add("was-validated");
+          //form.classList.add("was-validated");
         },
         false
       );

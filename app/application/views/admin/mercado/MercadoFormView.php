@@ -127,3 +127,4 @@
         </div>
     </form>
 </div>
+<script src="/assets/js/feature/file/file-form.sandbox.js"></script>
