@@ -22,4 +22,40 @@ class ArchivoModel extends Model
 
         return $query->result_array();
     }
+
+    public function countAllRecords($idLocacion)
+    {
+        $this->db->from($this->table);
+        $this->db->join("v3.locacion_archivo", $this->_table . ".id_archivo = v3.locacion_archivo.id_archivo");
+        $this->db->where("v3.locacion_archivo.id_locacion", $idLocacion);
+        return $this->db->count_all_results();
+    }
+
+    public function getDataPage($idLocacion,$start, $length){
+        $this->db->from($this->table);
+        $this->db->join("v3.locacion_archivo", $this->_table . ".id_archivo = v3.locacion_archivo.id_archivo");
+        $this->db->where("v3.locacion_archivo.id_locacion", $idLocacion);
+        $this->db->limit($length, $start);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function countDataFiltered($idLocacion){
+        $this->db->from($this->table);
+        $this->db->join("v3.locacion_archivo", $this->_table . ".id_archivo = v3.locacion_archivo.id_archivo");
+        $this->db->where("v3.locacion_archivo.id_locacion", $idLocacion);
+        return $this->db->count_all_results();
+    }
+
+    public function findAllPaginationById($id, $start, $length)
+    {
+        $total_records = $this->countAllRecords($id);
+        $data = $this->getDataPage($id,$start, $length);
+        //$total_filtered = $this->countDataFiltered($id);
+        return [
+            'recordsTotal' => $total_records,
+            'recordsFiltered' => $total_records,
+            'data' => $data
+        ];
+    }
 }

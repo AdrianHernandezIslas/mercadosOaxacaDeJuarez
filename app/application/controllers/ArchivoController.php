@@ -36,10 +36,19 @@ class ArchivoController extends CI_Controller
     }
 
     public function findByIdLocacion($idLocacion){
-        $response = $this->archivoService->findByIdLocacion($idLocacion);
+        $start = $this->input->get('start'); // Offset
+        $length = $this->input->get('length'); // Limit
+        $response = $this->archivoService->findPaginationByIdLocacion($idLocacion,$start,$length);
         $this->output->set_content_type('application/json')
                 ->set_status_header(200)
                 ->set_output(json_encode($response, JSON_UNESCAPED_UNICODE));
     }
 
+    function chunkArray($array, $size) {
+        $result = [];
+        for ($i = 0; $i < count($array); $i += $size) {
+            $result[] = array_slice($array, $i, $size);
+        }
+        return $result;
+    }
 }

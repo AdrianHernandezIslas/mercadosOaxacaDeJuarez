@@ -10,13 +10,14 @@ const fileTableSandbox = (() => {
   };
   const init = () => {
     table = $("#example").DataTable({
-       
+      processing: true,
+      serverSide: true,
       ajax: {
         url: "/api/v1/archivo/by/locacion/1",
-        dataSrc: function (json) {
+        dataSrc: function ({data}) {
           let result = [];
-          for (let i = 0; i < json.length; i += 3) {
-            result.push(json.slice(i, i + 3));
+          for (let i = 0; i < data.length; i += 3) {
+            result.push(data.slice(i, i + 3));
           }
           return result;
         },
@@ -39,7 +40,7 @@ const fileTableSandbox = (() => {
       paging: true,
       searching: false,
       info: false,
-      pageLength: 2,
+      pageLength: 6,
     });
   };
 

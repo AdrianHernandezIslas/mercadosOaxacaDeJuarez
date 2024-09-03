@@ -39,7 +39,7 @@ class Model extends CI_Model
         return $record->row();
     }
 
-    public function update($data,$id)
+    public function update($data, $id)
     {
         $this->db->where($this->key, $id);
         return $this->db->update($this->table, $data);
@@ -49,6 +49,12 @@ class Model extends CI_Model
     {
         $this->db->where($this->key, $id);
         return $this->db->delete($this->table);
+    }
+
+    public function countAllRecord()
+    {
+        $this->db->from($this->table);
+        return $this->db->count_all_results();
     }
 
     public function intance_db()

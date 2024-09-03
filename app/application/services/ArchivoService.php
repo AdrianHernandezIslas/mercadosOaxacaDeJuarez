@@ -47,4 +47,8 @@ class ArchivoService
     public function findByIdLocacion($idLocacion){
         return $this->archivoModel->findByIdLocacion($idLocacion);
     }
+
+    public function findPaginationByIdLocacion($idLocacion,$start, $length){
+        return $this->archivoModel->findAllPaginationById($idLocacion,$start,$length);
+    }
 }
