@@ -53,7 +53,6 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-<<<<<<< HEAD
 
 $route['admin/dashboard'] = 'Mercado/admin';
 $route['admin/vw/mercado'] = 'Mercado/nuevo';
@@ -61,6 +60,3 @@ $route['admin/vw/mercado/(:num)'] = 'Mercado/updateMercado/$1';
 
 $route['api/v1/mercado'] = 'MercadoController/create';
 $route['api/v1/mercado/(:num)'] = 'MercadoController/updateOrDelete/$1';
-=======
-//Aqui iban las rutas :v
->>>>>>> 890ef53 (Initial commit branch aure)
