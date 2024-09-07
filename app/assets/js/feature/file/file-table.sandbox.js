@@ -4,16 +4,17 @@ const fileTableSandbox = (() => {
   const render = function (data) {
     return data
       ? `<a href="#" class="d-block mb-1 h-100">
-            <img class="img-fluid img-thumbnail" src="https://api-files-cn1f.onrender.com/api/v1/file/${data.ruta}?width=400&height=300" alt="">
+            <img loading="lazy" class="img-fluid img-thumbnail" src="https://api-files-cn1f.onrender.com/api/v1/file/${data.ruta}?width=400&height=300" alt="">
         </a>`
       : "";
   };
   const init = () => {
+    const params = urlUtil.urlSearchParams();
     table = $("#example").DataTable({
       processing: true,
       serverSide: true,
       ajax: {
-        url: "/api/v1/archivo/by/locacion/1",
+        url: `${FileConsts.TABLE.AJAX.url}/${params.get('locacion')}`,
         dataSrc: function ({data}) {
           let result = [];
           for (let i = 0; i < data.length; i += 3) {
