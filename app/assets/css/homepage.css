@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Righteous", sans-serif;
+}
+
+.nav-item{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.imagen-inicio{
+    width: 150% !important;
+}
+
+.texto-conoce{
+    margin-top: 30rem !important;
+    margin-left: 7rem !important;
+}
+
+.texto-mercados{
+    margin-top: 32rem !important;
+    margin-left: -10rem !important;
+    font-size: 100px !important;
+}
+
+.texto-oaxaca{
+    margin-top: 39rem !important;
+    margin-left: -28rem !important;
+}
+
+.input-busqueda{
+    margin-top: -170px;
+    width: 70% !important;
+    margin-left: 15% !important;
+    height: 50px !important;
+}
+
+.boton-buscar{
+    background-color: white !important;
+    border-color: transparent !important;
+}
+
+.boton-buscar:hover{
+    color: black !important;
+}
+
+.contenedor-inicio{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.imagen-busqueda{
+    width: 150% !important;
+    margin-top: -200px !important;
+}
+
+.navbar-blanco{
+    background-color: white !important;
+}

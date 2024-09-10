@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Righteous", sans-serif;
+}
+
+.nav-item{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.imagen-inicio{
+    width: 150% !important;
+}
+
+.contenedor-inicio{
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.nuevo{
+    margin: 0px !important;
+}
