@@ -60,3 +60,13 @@ $route['admin/vw/mercado/(:num)'] = 'Mercado/updateMercado/$1';
 
 $route['api/v1/mercado'] = 'MercadoController/create';
 $route['api/v1/mercado/(:num)'] = 'MercadoController/updateOrDelete/$1';
+
+
+$route['admin/dashboard'] = 'Local/admin';
+$route['admin/vw/local'] = 'Local/nuevo';
+$route['admin/vw/local/(:num)'] = 'Local/updateLocal/$1';
+
+$route['api/v1/local'] = 'LocalController/create';
+$route['api/v1/local/(:num)'] = 'LocalController/updateOrDelete/$1';
+
+

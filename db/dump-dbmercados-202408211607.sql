@@ -19,6 +19,7 @@
 -- ----------------------------
 -- Sequence structure for archivo_id_archivo_seq
 -- ----------------------------
+
 DROP SEQUENCE IF EXISTS "archivo_id_archivo_seq";
 CREATE SEQUENCE "archivo_id_archivo_seq" 
 INCREMENT 1
@@ -142,10 +143,7 @@ CREATE TABLE "direccion" (
 -- Records of direccion
 -- ----------------------------
 INSERT INTO "direccion" VALUES ('test', 't', 'test', 'd', 'd', '68030', '12.2', '10.2', 't', 1);
-<<<<<<< HEAD
 INSERT INTO "direccion" VALUES ('Las Casas', '9513217244', 'Centro', 'Oaxaca', 'Mexico', '68000','17.05895','-96.72666','t',2);
-=======
->>>>>>> e8db34b (chore: db backup update)
 
 -- ----------------------------
 -- Table structure for giro
@@ -158,7 +156,6 @@ CREATE TABLE "giro" (
 )
 ;
 
-<<<<<<< HEAD
 
 -- ----------------------------
 -- Records of giro
@@ -167,11 +164,6 @@ INSERT INTO "giro" VALUES ('Alimentos','t',1);
 INSERT INTO "giro" VALUES ('Tecnologia','t',2);
 INSERT INTO "giro" VALUES ('Ropa','t',3);
 
-=======
--- ----------------------------
--- Records of giro
--- ----------------------------
->>>>>>> e8db34b (chore: db backup update)
 
 -- ----------------------------
 -- Table structure for locacion
@@ -190,12 +182,9 @@ CREATE TABLE "locacion" (
 -- ----------------------------
 INSERT INTO "locacion" VALUES ('Paz Migueles', 'test', '9514365555', 1);
 INSERT INTO "locacion" VALUES ('Paz Migueles', 'reggrte', '9514365555', 2);
-<<<<<<< HEAD
 INSERT INTO "locacion" VALUES ('Benito Juarez', 'loreme isojkhocjkheiochoericer3w historia','9581065616',3);
 INSERT INTO "locacion" VALUES ('Novedades Lucas', 'loreme isojkhocjkheiochoericer3w historia local', '9581065616',4);
 INSERT INTO "locacion" VALUES ('Chuchita', 'loreme isojkhocjkheiochoericer3w historia local','9581065616',5);
-=======
->>>>>>> e8db34b (chore: db backup update)
 
 -- ----------------------------
 -- Table structure for locacion_archivo
@@ -239,11 +228,8 @@ CREATE TABLE "local" (
 -- ----------------------------
 -- Records of local
 -- ----------------------------
-<<<<<<< HEAD
 INSERT INTO "local" VALUES ('LOC123', 'Amas es convivir','t', 3,4,2,1);
 INSERT INTO "local" VALUES ('LOC124', 'Chuchita','t', 1,5,2,2);
-=======
->>>>>>> e8db34b (chore: db backup update)
 
 -- ----------------------------
 -- Table structure for mercado
@@ -265,10 +251,7 @@ CREATE TABLE "mercado" (
 -- Records of mercado
 -- ----------------------------
 INSERT INTO "mercado" VALUES ('S', '19:09', '07:09', 'Test', 't', 2, 1, 1);
-<<<<<<< HEAD
 INSERT INTO "mercado" VALUES ('Centro', '09:00','18:00','es un mercado grandote que esta en el centro de oaxaca','t',3,2,2);
-=======
->>>>>>> e8db34b (chore: db backup update)
 
 -- ----------------------------
 -- Table structure for palabra_clave
@@ -291,13 +274,10 @@ CACHE 1
 -- ----------------------------
 -- Records of palabra_clave
 -- ----------------------------
-<<<<<<< HEAD
 INSERT INTO palabra_clave ("valor","id_local")
 VALUES 
 ('FRUTA', 1),
 ('PELUCHE', 2);
-=======
->>>>>>> e8db34b (chore: db backup update)
 
 -- ----------------------------
 -- Alter sequences owned by

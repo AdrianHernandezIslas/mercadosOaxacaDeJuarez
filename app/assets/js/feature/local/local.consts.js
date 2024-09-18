@@ -1,4 +1,4 @@
-const MercadoConsts = {
+const LocalConsts = {
   TABLE: {
     ORDER: [[0, 'asc']],
     COLUMMS: [
@@ -6,44 +6,36 @@ const MercadoConsts = {
         data: "nombre",
       }, // Ajusta los nombres de las columnas según tus datos
       {
-        data: null,
+        data: "clave",
       },
       {
-        data: "zona",
-      },
-      {
-        data: "hora_apertura",
-      },
-      {
-        data: "hora_cierre",
+        data: "eslogan",
       },
       {
         data: "telefono",
       },
       {
-        data: null,
+        data: "nombre_giro",
+      },
+      {
+        data: "nombre_mercado",
       },
       {
         data: null,
       },
     ],
     AJAX: {
-      url: "/MercadoController/getAll", // URL del endpoint en CodeIgniter
+      url: "/LocalController/getAll", // URL del endpoint en CodeIgniter
       dataSrc: "", // Los datos están en el nivel raíz
     },
     LANG_MX: {
       url: "https://cdn.datatables.net/plug-ins/2.1.3/i18n/es-MX.json",
     },
   },
-  SELECT: {
-    AJAX: {
-      url: "/MercadoController/getAll", // URL del endpoint en CodeIgniter
-    }
-  },
   MESSAGE:{
     ELIMINAR: "¿Esta seguro que dese eliminar el elemento?"
   },
   ROUTE:{
-    CREATE_MERCADO:"/api/v1/mercado"
+    CREATE_LOCAL:"/api/v1/local"
   }
 };

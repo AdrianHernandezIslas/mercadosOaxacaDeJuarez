@@ -1,4 +1,4 @@
-const MercadoConsts = {
+const GiroConsts = {
   TABLE: {
     ORDER: [[0, 'asc']],
     COLUMMS: [
@@ -6,29 +6,14 @@ const MercadoConsts = {
         data: "nombre",
       }, // Ajusta los nombres de las columnas según tus datos
       {
-        data: null,
-      },
-      {
-        data: "zona",
-      },
-      {
-        data: "hora_apertura",
-      },
-      {
-        data: "hora_cierre",
-      },
-      {
-        data: "telefono",
-      },
-      {
-        data: null,
+        data: "activo",
       },
       {
         data: null,
       },
     ],
     AJAX: {
-      url: "/MercadoController/getAll", // URL del endpoint en CodeIgniter
+      url: "/GiroController/getAll", // URL del endpoint en CodeIgniter
       dataSrc: "", // Los datos están en el nivel raíz
     },
     LANG_MX: {
@@ -37,13 +22,13 @@ const MercadoConsts = {
   },
   SELECT: {
     AJAX: {
-      url: "/MercadoController/getAll", // URL del endpoint en CodeIgniter
+      url: "/GiroController/getAll", // URL del endpoint en CodeIgniter
     }
   },
   MESSAGE:{
     ELIMINAR: "¿Esta seguro que dese eliminar el elemento?"
   },
   ROUTE:{
-    CREATE_MERCADO:"/api/v1/mercado"
+    CREATE_GIRO:"/api/v1/giro"
   }
 };
