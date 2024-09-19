@@ -1,8 +1,8 @@
 const buttonLoaderSanbox = (() => {
   const loading = ($btn, flag = true) => {
-    const [$icon] = $btnGuardar.children;
+    const [$icon] = $btn.children;
     $icon.className = "";
-    $btnGuardar.disabled = flag;
+    $btn.disabled = flag;
     if (flag) {
       $icon.className = "spinner-border spinner-border-sm";
     } else {

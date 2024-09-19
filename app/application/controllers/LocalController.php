@@ -17,8 +17,6 @@ class LocalController extends CI_Controller
 
 	public function create()
 	{
-		echo 'Dsads';
-
 		if ($this->input->method() === 'post') {
 			$input = json_decode(file_get_contents('php://input'), true);
 			$response =  $this->localService->create($input);
@@ -30,17 +28,17 @@ class LocalController extends CI_Controller
 			echo json_encode($error_response, JSON_UNESCAPED_UNICODE);
 		}
 	}
-/*
-	public function updateOrDelete($idMercado)
+
+	public function updateOrDelete($idLocal)
 	{
 		$method = $this->input->method();
 		$response = array();
 		switch ($method) {
 			case 'put':
-				$response = $this->update($idMercado);
+				$response = $this->update($idLocal);
 				break;
 			case 'delete':
-				$response = $this->delete($idMercado);
+				$response = $this->delete($idLocal);
 				break;
 			default:
 				$response = array('status' => 'error', 'message' => 'Invalid METHOD '.$method.' input');
@@ -50,19 +48,19 @@ class LocalController extends CI_Controller
 		return json_encode($response, JSON_UNESCAPED_UNICODE);;
 	}
 
-	private function update($idMercado)
+	private function update($idLocal)
 	{
 
 		$input = json_decode(file_get_contents('php://input'), true);
-		$response = $this->mercadoService->update($input, $idMercado);
+		$response = $this->localService->update($input, $idLocal);
 		return $response;
 	}
 
-	private function delete($idMercado)
+	private function delete($idLocal)
 	{
-		$response = $this->mercadoService->delete($idMercado);
+		$response = $this->localService->delete($idLocal);
 		return $response;
-	}*/
+	}
 
 	public function getAll()
 	{

@@ -40,7 +40,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label>Giro</label>
-                                <select class="form-select" id="giroSelect"  name="giro" aria-label="Default select example">
+                                <select class="form-select" id="giroSelect"  name="id_giro" aria-label="Default select example">
                                 </select>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                         <div class="col-lg-8 col-md-8 col-sm-12">
                             <div class="form-group">
                                 <label>Mercado</label>
-                                <select class="form-select" id="mercadoSelect"  name="mercado" aria-label="Default select example">
+                                <select class="form-select" id="mercadoSelect"  name="id_mercado" aria-label="Default select example">
                                 </select>
                             </div>
                         </div>

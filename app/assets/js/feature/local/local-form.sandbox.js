@@ -1,13 +1,34 @@
 const localFormSandbox = (() => {
-  var $localForm = null;
+  var $modalForm = null;
   var primaryKeyEntity = null;
   var $localFormElement = null;
 
   const setData = (data = {}, pk = null) => {
+    console.log("se ejecutaron el set2")
+    console.log(data)
     Object.keys(data).forEach((key) => {
+      if(key==='id_giro'){
+        key= "giroSelect"
+      }else if(key==='id_mercado'){
+        key="mercadoSelect"
+      }
+
       const $input = document.getElementById(key);
       if ($input) {
         $input.value = data[key];
+        if ($input.id === "giroSelect" && data.nombre_giro) {
+          $input.value = data.id_giro;
+          const selectedOption = Array.from($input.options).find(option => option.value === data.id_giro);
+          if (selectedOption) {
+            selectedOption.textContent = data.nombre_giro;
+          }
+        } else if ($input.id === "mercadoSelect" && data.nombre_mercado) {
+          $input.value = data.id_mercado;
+          const selectedOption = Array.from($input.options).find(option => option.value === data.id_mercado);
+          if (selectedOption) {
+            selectedOption.textContent = data.nombre_mercado;
+          }
+        }
       }
     });
     primaryKeyEntity = pk;
@@ -25,6 +46,7 @@ const localFormSandbox = (() => {
         localTableSandbox.reloadData();
         $modalForm = _getModalFormElement();
         $modalForm.hide();
+        console.log("Modal ocultado");
         $formElement.reset();
       } else {
         alert("Error al procesar la peticion");
@@ -40,6 +62,7 @@ const localFormSandbox = (() => {
 
   const _getModalFormElement = () => {
     if ($modalForm === null) {
+      console.log("entre al if")
       $modalForm = new bootstrap.Modal(document.getElementById("localFormModal"), {
         keyboard: false, // Evita cerrar el modal con la tecla Esc
       });
@@ -89,8 +112,6 @@ const localFormSandbox = (() => {
       const data = await response.json();
       const selectElement = document.getElementById("mercadoSelect");
   
-      console.log(data)
-      // Limpia las opciones existentes, excepto la primera
       selectElement.innerHTML = '';
   
       if (Array.isArray(data)) {
@@ -107,9 +128,13 @@ const localFormSandbox = (() => {
   };
 
   document.addEventListener("DOMContentLoaded", () => {
+    console.log("se ejecutaron los selects")
     fillGiroSelect();
     fillMercadoSelect();
   });
+
+
+  
   
 
   return {
