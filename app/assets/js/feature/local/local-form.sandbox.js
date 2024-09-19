@@ -132,9 +132,6 @@ const localFormSandbox = (() => {
     fillGiroSelect();
     fillMercadoSelect();
   });
-
-
-  
   
 
   return {

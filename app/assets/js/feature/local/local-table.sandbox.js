@@ -2,15 +2,6 @@ const { MESSAGE } = LocalConsts;
 
 const localTableSandbox = (() => {
   var table = null;
-  /*const _handlerColumnDireccion = function (data, type, row, meta) {
-    const { calle, numero, colonia, codigo_postal, municipio } = row;
-    return `${calle} ${numero}, ${colonia} ${codigo_postal}, ${municipio} `;
-  };
-
-  const _handlerColumnCoordenadas = function (data, type, row, meta) {
-    const { latitud, longitud } = row;
-    return `${latitud}, ${longitud}`; 
-  };*/
 
   const _handlerColumnAcciones = function (data, type, row, meta) {
     return `
@@ -28,16 +19,6 @@ const localTableSandbox = (() => {
 
   const _getColumndDefs = () => {
     return [
-      /*{
-        targets: 1,
-        data: "direccion",
-        render: _handlerColumnDireccion,
-      },
-      {
-        targets: 6,
-        data: "download_link",
-        render: _handlerColumnCoordenadas,
-      },*/
       {
         targets: 6,
         data: "download_link",
